@@ -51,6 +51,33 @@ function walk(node) {
 }
 walk(spec.slides);
 
+// ---- collect icon references (bundled offline, used-only) -------------------
+// Icons come from the vendored Lucide set (template/icons/lucide-icons.json).
+// Authors reference them two ways: an "icon"/"name" field on icon-bearing blocks,
+// or inline anywhere HTML is allowed via <i data-icon="rocket"></i>. We scan the
+// spec for both and ship ONLY the referenced icons, so packages stay small.
+const ICONS_ALL = JSON.parse(fs.readFileSync(path.join(TEMPLATE, "icons", "lucide-icons.json"), "utf8"));
+const usedIcons = new Set();
+const missingIcons = new Set();
+function noteIcon(name) {
+  if (typeof name !== "string" || !name) return;
+  if (Object.prototype.hasOwnProperty.call(ICONS_ALL, name)) usedIcons.add(name);
+  else missingIcons.add(name);
+}
+function scanIcons(node) {
+  if (Array.isArray(node)) return node.forEach(scanIcons);
+  if (node && typeof node === "object") {
+    if (node.type === "icon" && typeof node.name === "string") noteIcon(node.name);
+    if (typeof node.icon === "string") noteIcon(node.icon);
+    return Object.values(node).forEach(scanIcons);
+  }
+  if (typeof node === "string") {
+    let m; const re = /data-icon=["']([^"']+)["']/g;
+    while ((m = re.exec(node))) noteIcon(m[1]);
+  }
+}
+scanIcons(spec.slides);
+
 // ---- write package ---------------------------------------------------------
 const slug = slugify(spec.slug || spec.title);
 const pkg = path.join(outDir, slug);
@@ -67,6 +94,15 @@ for (const [abs, key] of assetMap) {
   fs.mkdirSync(path.dirname(dst), { recursive: true });
   fs.copyFileSync(abs, dst);
 }
+
+// Ship a tiny icons.js with only the referenced Lucide icons (name -> inner SVG).
+const iconSubset = {};
+for (const n of usedIcons) iconSubset[n] = ICONS_ALL[n];
+fs.writeFileSync(
+  path.join(pkg, "scormcontent", "icons.js"),
+  "/* Lucide icons (ISC) — bundled subset for this lesson. */\nwindow.__ICONS__=" + JSON.stringify(iconSubset) + ";\n"
+);
+if (missingIcons.size) console.warn("⚠ unknown icon name(s) ignored: " + [...missingIcons].join(", "));
 
 const lessonJson = JSON.stringify({ title: spec.title, color: spec.color || "#008181", slides: spec.slides });
 let html = fs.readFileSync(path.join(TEMPLATE, "scormcontent", "index.html.tmpl"), "utf8");
@@ -87,7 +123,7 @@ execFileSync("zip", ["-r", "-q", "-X", zip, "."], { cwd: pkg });
 console.log("✓ package dir : " + pkg);
 console.log("✓ scorm zip   : " + zip);
 console.log("✓ preview     : file://" + path.join(pkg, "scormcontent", "index.html"));
-console.log("  slides      : " + spec.slides.length + " | assets: " + assetMap.size);
+console.log("  slides      : " + spec.slides.length + " | assets: " + assetMap.size + " | icons: " + usedIcons.size);
 
 // ---- helpers ---------------------------------------------------------------
 function listFiles(dir, base = dir) {

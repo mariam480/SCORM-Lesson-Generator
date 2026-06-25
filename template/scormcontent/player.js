@@ -32,6 +32,25 @@
   }
   function asHtml(s) { return s == null ? "" : (/^\s*</.test(String(s)) ? String(s) : "<p>" + String(s) + "</p>"); }
 
+  // ---- icons (vendored Lucide subset, bundled offline in icons.js) ---------
+  // window.__ICONS__ maps name -> inner SVG. We wrap it once and let CSS/color
+  // do the rest (stroke=currentColor, sized to 1em so it flows with text).
+  var ICONS = window.__ICONS__ || {};
+  function iconSvg(name) {
+    var body = ICONS[name];
+    if (!body) return null;
+    return '<svg class="lico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + body + "</svg>";
+  }
+  // Hydrate inline icons: any <i data-icon="name"> (in any HTML text field)
+  // becomes the SVG. Lets authors drop icons into paragraphs, lists, tabs, etc.
+  function hydrateIcons(root) {
+    [].forEach.call(root.querySelectorAll("[data-icon]"), function (host) {
+      var svg = iconSvg(host.getAttribute("data-icon"));
+      if (svg) { host.innerHTML = svg; host.classList.add("lico-host"); }
+    });
+  }
+
   // ---- SCORM 1.2 (optional) ------------------------------------------------
   // The package launches via scormdriver/indexAPI.html, whose window exposes the
   // Rustici helper API to this iframe as window.parent.* — we feature-detect each.
@@ -92,7 +111,38 @@
     audio: function (b) { return el("div", { class: "c-media" }, [el("audio", { controls: "", src: b.src })]); },
     video: function (b) { return el("div", { class: "c-media" }, [el("video", { controls: "", src: b.src, poster: b.poster || "" })]); },
     code: function (b) { return el("pre", { class: "c-code" }, [el("code", { text: b.code || "" })]); },
-    button: function (b) { return el("a", { class: "c-btn", href: b.url || "#", target: "_blank", text: b.label || "Open" }); },
+    button: function (b) {
+      var a = el("a", { class: "c-btn", href: b.url || "#", target: "_blank" });
+      var svg = b.icon && iconSvg(b.icon);
+      if (svg) a.appendChild(el("span", { class: "btn-ico", html: svg }));
+      a.appendChild(el("span", { text: b.label || "Open" }));
+      return a;
+    },
+    icon: function (b) {
+      var svg = iconSvg(b.name);
+      var badge = el("span", { class: "ico-badge" + (b.plain ? " plain" : ""), html: svg || "" });
+      if (!svg) badge.textContent = "▢";
+      if (b.size != null) badge.style.fontSize = (typeof b.size === "number" ? b.size + "px" : b.size);
+      if (b.color) badge.style.color = b.color;
+      var wrap = el("div", { class: "c-icon" + (b.align === "left" ? " left" : "") }, [badge]);
+      if (b.label) wrap.appendChild(el("div", { class: "ico-label", html: asHtml(b.label) }));
+      return wrap;
+    },
+    iconList: function (b) {
+      var cols = b.columns === 2 || b.columns === "2" ? " cols-2" : "";
+      return el("div", { class: "c-iconlist" + cols }, (b.items || []).map(function (it) {
+        var svg = it.icon && iconSvg(it.icon);
+        var badge = el("span", { class: "ico-badge", html: svg || "" });
+        if (!svg) badge.textContent = "▢";
+        return el("div", { class: "ili" }, [
+          badge,
+          el("div", { class: "ili-tx" }, [
+            it.title ? el("div", { class: "ili-h", html: asHtml(it.title).replace(/^<p>|<\/p>$/g, "") }) : null,
+            it.text ? el("div", { class: "ili-p", html: asHtml(it.text) }) : null,
+          ]),
+        ]);
+      }));
+    },
 
     accordion: function (b) {
       return el("div", { class: "c-acc" }, (b.items || []).map(function (it) {
