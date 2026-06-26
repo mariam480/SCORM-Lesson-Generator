@@ -23,8 +23,7 @@ List them with `node generate-slides.mjs --list-templates`.
 - **`SKILL.md`** — the skill definition and full authoring guide (spec format, components, examples).
 - **`generate-slides.mjs`** — the zero-dependency Node generator that builds the SCORM package.
 - **`build-themes.mjs`** — maintenance script that derives the 34 templates (palette/fonts) from the bold-template-pack design systems and bundles their fonts offline.
-- **`template/`** — the SCORM runtime: `scormdriver/` (SCORM 1.2 driver), `scormcontent/` player, the IMS/ADL XSD schemas, `icons/` (the vendored Lucide icon set), `themes/index.json` (the 34 template definitions), and `themefonts/` (the offline woff2 fonts they use).
-- **`Assets/`** — reusable artwork (backgrounds, characters) for building lessons.
+- **`template/`** — the SCORM runtime: `scormdriver/` (SCORM 1.2 driver), `scormcontent/` player, the IMS/ADL XSD schemas, `icons/` (the vendored Lucide icon set), `themes/` (the 34 template definitions + per-theme skins), and `themefonts/` (the offline woff2 fonts they use).
 
 ## Prerequisites
 
