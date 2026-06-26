@@ -1,0 +1,145 @@
+/* peoples-platform — WPA-poster / political-campaign placard system: warm paper canvas
+   with screen-print grain, Alfa Slab One ultra-heavy uppercase display, electric cobalt
+   blue structural surfaces + amber-orange energy accent, RED-AS-SHADOW-ONLY stacked
+   offset letterpress text-shadows, heavy 6px ink borders, diamond (45deg square) bullets,
+   rotated cream-bordered rubber stamps, and a square (0-radius) constructed plane.
+   Source: bold-template-pack/templates/peoples-platform/design.md */
+
+/* True dominant structural color is cobalt blue; orange is the energy accent. Keep both. */
+:root{ --accent:#F2A03A; --on-accent:#0E0E14;
+  --pp-blue:#2C2CDC; --pp-blue-deep:#1B1BB0; --pp-red:#E83A2A; --pp-red-deep:#B7281C;
+  --pp-cream:#F4E9D6; --pp-ink:#0E0E14; }
+
+/* --- square system: kill all radius (only diamond bullets/dots stay shaped) --- */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before { border-radius:0 !important; }
+
+/* --- warm paper canvas + screen-print grain overlay (two radial dot grids) --- */
+.stage{ background:var(--paper); }
+.stage::before{ content:""; position:absolute; inset:0; pointer-events:none; z-index:2;
+  background-image:radial-gradient(rgba(14,14,20,.07) 1px, transparent 1px),
+    radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:3px 3px, 5px 5px; background-position:0 0, 1px 2px;
+  mix-blend-mode:multiply; opacity:.55; }
+.slide{ z-index:3; }
+.cover, .cover.solo, .section{ background:var(--paper); }
+
+/* --- display type: Alfa Slab One uppercase + stacked red/red-deep letterpress shadow --- */
+.cover-title, .section-title, .slide-title, .c-h{
+  text-transform:uppercase; letter-spacing:.005em; }
+.cover-title{ color:var(--pp-blue);
+  text-shadow:10px 10px 0 var(--pp-red), 20px 20px 0 var(--pp-red-deep); }
+.section-title{ color:var(--pp-blue); text-shadow:6px 6px 0 var(--pp-red); }
+.slide-title{ color:var(--pp-blue); text-shadow:4px 4px 0 var(--pp-red); }
+.slide-title .u{ text-decoration:none; color:var(--accent);
+  text-shadow:4px 4px 0 var(--pp-red); }
+.cover-sub{ color:var(--pp-ink); }
+
+/* --- section ordinal: oversized amber numeral, red shadow --- */
+.section .num{ color:var(--accent); text-shadow:5px 5px 0 var(--pp-red);
+  text-transform:uppercase; }
+
+/* --- eyebrow / kicker: DM Mono uppercase, wide tracking, red ink, ink underbar --- */
+.eyebrow{ background:transparent; color:var(--pp-red); padding:0 0 10px;
+  font-family:var(--mono); font-weight:600; text-transform:uppercase;
+  letter-spacing:.20em; border-bottom:6px solid var(--pp-ink); }
+
+/* --- body copy --- */
+.c-sub, .c-p, .c-p em{ color:var(--pp-ink); }
+.c-sub{ font-family:var(--mono); text-transform:uppercase; letter-spacing:.16em; color:var(--pp-red); }
+
+/* --- diamond bullets: 45deg-rotated red square, 48px left of text --- */
+ul.c-list, ol.c-list, ul.c-check{ list-style:none; }
+ul.c-list li, ol.c-list li, ul.c-check li{ padding-left:38px; position:relative; }
+ul.c-list li::before, ol.c-list li::before, ul.c-check li::before{
+  content:""; left:2px; top:.45em; width:18px; height:18px; background:var(--pp-red);
+  border-radius:4px !important; transform:rotate(45deg); }
+
+/* --- statement: cobalt placard, inset cream frame, amber type, letterpress shadow --- */
+.c-statement{ background:var(--pp-blue); color:var(--accent); border-radius:0;
+  box-shadow:inset 0 0 0 6px var(--pp-cream); text-transform:uppercase; letter-spacing:.005em;
+  text-shadow:6px 6px 0 var(--pp-red); }
+.c-statement::after{ display:none; }
+
+/* --- note / callout: paper block, heavy ink border, amber leading bar --- */
+.c-note{ background:var(--paper); border:3px solid var(--pp-ink);
+  border-left:6px solid var(--accent); box-shadow:6px 6px 0 var(--pp-red); }
+.c-note::before{ content:none; }
+
+/* --- quote: oversized cobalt mark + amber rubber-stamp byline --- */
+.c-quote{ background:transparent; border:none; border-left:6px solid var(--pp-ink); }
+.c-quote::before{ color:var(--pp-blue); font-family:var(--display); line-height:.6;
+  text-shadow:8px 8px 0 var(--pp-red); }
+.c-quote .qt{ text-transform:uppercase; letter-spacing:.005em; color:var(--pp-ink); }
+.c-quote .by{ display:inline-block; background:var(--pp-blue); color:var(--accent);
+  font-family:var(--display); text-transform:uppercase; letter-spacing:.04em;
+  padding:8px 18px; border:5px solid var(--pp-cream); transform:rotate(-3deg);
+  box-shadow:6px 6px 0 var(--pp-red); }
+
+/* --- generic panels: square, heavy ink border, hard red offset shadow --- */
+.c-acc details, .c-tabs .tab-body, .c-iconlist .ili, .c-quiz, .c-media, .c-code{
+  background:var(--paper); border:3px solid var(--pp-ink); box-shadow:6px 6px 0 var(--pp-red); }
+
+/* --- icon badges: amber block, ink border; mono labels --- */
+.ico-badge{ background:var(--accent); color:var(--pp-ink); border:3px solid var(--pp-ink); }
+.ico-badge.plain{ background:transparent; border:none; color:var(--accent); }
+.ico-label, .ili-h{ font-family:var(--display); text-transform:uppercase; letter-spacing:.005em;
+  color:var(--pp-blue); }
+.ili-p{ color:var(--pp-ink); }
+
+/* --- tabs / pills: square ink-bordered mono tags, amber active --- */
+.c-tabs .tab-strip button{ background:transparent; border:3px solid var(--pp-ink);
+  font-family:var(--mono); text-transform:uppercase; letter-spacing:.16em; color:var(--pp-ink); }
+.c-tabs .tab-strip button.active{ background:var(--pp-blue); color:var(--accent);
+  border-color:var(--pp-ink); }
+
+/* --- accordion: heavy rows, amber +/- --- */
+.c-acc summary{ font-family:var(--display); text-transform:uppercase; color:var(--pp-blue); }
+.c-acc summary::after{ color:var(--accent); }
+
+/* --- image: offset cobalt block behind, ink frame, mono caption --- */
+.c-img::before{ background:var(--pp-blue); }
+.c-img img, .c-grid img{ border:6px solid var(--pp-ink); }
+.c-img figcaption, .c-grid figcaption{ font-family:var(--mono); text-transform:uppercase;
+  letter-spacing:.16em; color:var(--pp-red); }
+
+/* --- buttons: amber slab, ink border, hard red shadow; arrow circle stays round --- */
+.c-btn{ background:var(--accent); color:var(--pp-ink); border:6px solid var(--pp-ink);
+  font-family:var(--display); text-transform:uppercase; letter-spacing:.02em;
+  box-shadow:6px 6px 0 var(--pp-red); }
+.c-btn::after{ background:var(--pp-blue); color:var(--pp-cream); border-radius:50% !important; }
+
+/* --- timeline: heavy ink spine, amber milestone dots with red drop --- */
+.c-timeline::before{ background:var(--pp-ink); width:6px; }
+.ev::before{ background:var(--accent); border:6px solid var(--pp-ink);
+  box-shadow:6px 6px 0 var(--pp-red); }
+.date{ font-family:var(--mono); text-transform:uppercase; letter-spacing:.18em; color:var(--pp-red); }
+
+/* --- flashcards / sort: square heavy-bordered tiles --- */
+.c-flash .face{ background:var(--paper); border:6px solid var(--pp-ink);
+  box-shadow:6px 6px 0 var(--pp-red); }
+.c-flash .back{ background:var(--pp-blue); color:var(--accent); }
+.c-sort .chip{ background:var(--paper); border:3px solid var(--pp-ink); font-weight:700; }
+.c-sort .pile{ border:3px solid var(--pp-ink); }
+.c-sort .pile.over{ border-color:var(--accent); background:rgba(242,160,58,.12); }
+.c-sort .chip.correct{ background:var(--pp-blue); color:var(--accent); }
+.c-sort .chip.wrong{ background:var(--pp-red); color:var(--pp-cream); }
+
+/* --- quiz: square ink-bordered options, cobalt/amber states --- */
+.c-quiz .opt{ background:var(--paper); border:3px solid var(--pp-ink); box-shadow:none; }
+.c-quiz .opt.sel{ border-color:var(--accent); }
+.c-quiz .opt.correct{ background:var(--pp-blue); color:var(--accent); border-color:var(--pp-ink); }
+.c-quiz .opt.wrong{ background:var(--pp-red); color:var(--pp-cream); border-color:var(--pp-ink); }
+.c-quiz .check{ background:var(--accent); color:var(--pp-ink); border:6px solid var(--pp-ink);
+  font-family:var(--display); text-transform:uppercase; letter-spacing:.02em;
+  box-shadow:6px 6px 0 var(--pp-red); }
+.c-quiz .fb.ok{ color:var(--pp-blue); } .c-quiz .fb.no{ color:var(--pp-red); }
+
+/* --- chrome: cobalt nav band, heavy cream divider, mono voice, amber progress --- */
+.navbar{ background:var(--pp-blue); border-top:6px solid var(--pp-cream); }
+.progress-strip{ height:6px; background:var(--accent); }
+.navbar button{ background:var(--pp-cream); color:var(--pp-ink); border:3px solid var(--pp-ink);
+  font-family:var(--mono); text-transform:uppercase; letter-spacing:.16em; font-weight:600; }
+.navbar button.ghost{ background:transparent; color:var(--pp-cream);
+  box-shadow:inset 0 0 0 3px var(--pp-cream); }
+.navbar button:disabled{ opacity:.4; }
+.counter{ font-family:var(--mono); text-transform:uppercase; letter-spacing:.18em; color:var(--pp-cream); }

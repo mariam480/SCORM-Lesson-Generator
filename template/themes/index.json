@@ -1,0 +1,2123 @@
+{
+  "8-bit-orbit": {
+    "name": "8-Bit Orbit",
+    "tagline": "Pixel-art neon arcade aesthetic on a deep navy void.",
+    "scheme": "dark",
+    "mood": [
+      "retro-tech",
+      "playful",
+      "cyberpunk",
+      "energetic"
+    ],
+    "density": "medium",
+    "formality": "low",
+    "colors": {
+      "bg": "#0A0E27",
+      "ink": "#FFFFFF",
+      "accent": "#F4D03F",
+      "paper": "#1e2138",
+      "line": "#36394e",
+      "muted": "#989aa4"
+    },
+    "palette": {
+      "dark-void": "#0A0E27",
+      "deep-navy": "#0F1B3D",
+      "neon-cyan": "#5EDCF4",
+      "neon-pink": "#F0A6CA",
+      "neon-yellow": "#F4D03F",
+      "soft-lavender": "#E2D5F2",
+      "white": "#FFFFFF"
+    },
+    "radius": "18px",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Tektur",
+        "stack": "'Tektur', cursive",
+        "google": true,
+        "weights": [
+          700,
+          900
+        ]
+      },
+      "body": {
+        "family": "Chakra Petch",
+        "stack": "'Chakra Petch', sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500
+        ]
+      },
+      "mono": {
+        "family": "Space Mono",
+        "stack": "'Space Mono', monospace",
+        "google": true,
+        "weights": [
+          400,
+          700
+        ]
+      }
+    }
+  },
+  "biennale-yellow": {
+    "name": "Biennale Yellow",
+    "tagline": "Solar yellow on warm parchment with deep indigo serif and atmospheric sun-glow gradients.",
+    "scheme": "light",
+    "mood": [
+      "editorial",
+      "atmospheric",
+      "warm",
+      "cultural-institution",
+      "poster-like"
+    ],
+    "density": "medium",
+    "formality": "high",
+    "colors": {
+      "bg": "#E9E5DB",
+      "ink": "#1B2566",
+      "accent": "#E26B4A",
+      "paper": "#DCD6C4",
+      "line": "#cdcac1",
+      "muted": "#727697"
+    },
+    "palette": {
+      "paper": "#E9E5DB",
+      "paper-deep": "#DCD6C4",
+      "sun": "#F1EE2E",
+      "sun-soft": "#F8F39B",
+      "haze": "#F0DA7C",
+      "ink": "#1B2566",
+      "ember": "#E26B4A"
+    },
+    "radius": "4px",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Instrument Serif",
+        "stack": "'Instrument Serif', Georgia, serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "Archivo",
+        "stack": "'Archivo', sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          600
+        ]
+      },
+      "mono": {
+        "family": "JetBrains Mono",
+        "stack": "'JetBrains Mono', ui-monospace, monospace",
+        "google": true,
+        "weights": [
+          400
+        ]
+      }
+    }
+  },
+  "block-frame": {
+    "name": "BlockFrame",
+    "tagline": "Neobrutalist deck with pastel-neon color blocks and chunky black borders.",
+    "scheme": "light",
+    "mood": [
+      "bold",
+      "playful",
+      "graphic",
+      "fresh"
+    ],
+    "density": "high",
+    "formality": "medium-low",
+    "colors": {
+      "bg": "#FFFFFF",
+      "ink": "#000000",
+      "accent": "#F7CB46",
+      "paper": "#FFFDF5",
+      "line": "#e0e0e0",
+      "muted": "#6b6b6b"
+    },
+    "palette": {
+      "black": "#000000",
+      "white": "#FFFFFF",
+      "offwhite": "#FFFDF5",
+      "pink": "#FE90E8",
+      "blue": "#C0F7FE",
+      "green": "#99E885",
+      "yellow": "#F7CB46",
+      "cream": "#FFDC8B"
+    },
+    "radius": "0",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Inter",
+        "stack": "'Inter', sans-serif",
+        "google": true,
+        "weights": [
+          500,
+          700,
+          800,
+          900
+        ]
+      },
+      "body": {
+        "family": "Inter",
+        "stack": "'Inter', sans-serif",
+        "google": true,
+        "weights": [
+          500,
+          700,
+          800,
+          900
+        ]
+      },
+      "mono": {
+        "family": "Space Grotesk",
+        "stack": "'Space Grotesk', monospace",
+        "google": true,
+        "weights": [
+          500,
+          600,
+          700
+        ]
+      }
+    }
+  },
+  "blue-professional": {
+    "name": "Blue Professional",
+    "tagline": "Cream paper background with electric cobalt blue accents; clean modern professional.",
+    "scheme": "light",
+    "mood": [
+      "professional",
+      "modern",
+      "calm",
+      "trustworthy"
+    ],
+    "density": "medium",
+    "formality": "medium-high",
+    "colors": {
+      "bg": "#fdfae7",
+      "ink": "#111111",
+      "accent": "#1e2bfa",
+      "paper": "#f4f1df",
+      "line": "#dfdccb",
+      "muted": "#74736b"
+    },
+    "palette": {
+      "bg": "#fdfae7",
+      "primary": "#1e2bfa",
+      "text": "#111111",
+      "text-muted": "#6b6b6b",
+      "text-light": "#9a9a9a",
+      "positive": "#059669",
+      "negative": "#dc2626"
+    },
+    "radius": "14px",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Space Grotesk",
+        "stack": "'Space Grotesk', sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600,
+          700
+        ]
+      },
+      "body": {
+        "family": "Inter",
+        "stack": "'Inter', sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600
+        ]
+      },
+      "mono": {
+        "family": "Inter",
+        "stack": "'Inter', sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600
+        ]
+      }
+    }
+  },
+  "bold-poster": {
+    "name": "Bold Poster",
+    "tagline": "Editorial poster aesthetic with massive Shrikhand display and a single fire-engine red accent.",
+    "scheme": "light",
+    "mood": [
+      "bold",
+      "editorial",
+      "loud",
+      "confident"
+    ],
+    "density": "low",
+    "formality": "medium",
+    "colors": {
+      "bg": "#FFFFFF",
+      "ink": "#1C1410",
+      "accent": "#D8000F",
+      "paper": "#F5F2EF",
+      "line": "#e0e0e0",
+      "muted": "#7b7774"
+    },
+    "palette": {
+      "bg": "#FFFFFF",
+      "dark": "#1C1410",
+      "red": "#D8000F",
+      "light": "#F5F2EF"
+    },
+    "radius": "4px",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Shrikhand",
+        "stack": "'Shrikhand', cursive",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "Libre Baskerville",
+        "stack": "'Libre Baskerville', serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "mono": {
+        "family": "Space Grotesk",
+        "stack": "'Space Grotesk', sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          600
+        ]
+      }
+    }
+  },
+  "broadside": {
+    "name": "Broadside",
+    "tagline": "Dark editorial canvas with a single fire orange accent and bilingual Latin/Chinese type stack.",
+    "scheme": "dark",
+    "mood": [
+      "editorial",
+      "dramatic",
+      "loud",
+      "newspaper"
+    ],
+    "density": "medium",
+    "formality": "medium-high",
+    "colors": {
+      "bg": "#111111",
+      "ink": "#F0ECE5",
+      "accent": "#E85D26",
+      "paper": "#1A1A18",
+      "line": "#3c3c3c",
+      "muted": "#92908c"
+    },
+    "palette": {
+      "ink-black": "#111111",
+      "ink-black-alt": "#1A1A18",
+      "fire-orange": "#E85D26",
+      "cream": "#F0ECE5",
+      "cream-muted": "#888880",
+      "cream-hint": "#505048",
+      "border-dark": "#282826"
+    },
+    "radius": "4px",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Barlow",
+        "stack": "Barlow, Noto Sans SC, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          600,
+          700,
+          800,
+          900
+        ]
+      },
+      "body": {
+        "family": "Barlow",
+        "stack": "Barlow, Noto Sans SC, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          600,
+          700,
+          800,
+          900
+        ]
+      },
+      "mono": {
+        "family": "IBM Plex Mono",
+        "stack": "IBM Plex Mono, monospace",
+        "google": true,
+        "weights": [
+          500
+        ]
+      }
+    }
+  },
+  "capsule": {
+    "name": "Capsule",
+    "tagline": "Modular pill-shaped cards on warm bone with a full pastel-pop palette.",
+    "scheme": "light",
+    "mood": [
+      "playful",
+      "modern",
+      "warm",
+      "fresh",
+      "fun"
+    ],
+    "density": "medium",
+    "formality": "medium-low",
+    "colors": {
+      "bg": "#FFFFFF",
+      "ink": "#1A1A1A",
+      "accent": "#E85D4E",
+      "paper": "#F5F5F0",
+      "line": "#e0e0e0",
+      "muted": "#7a7a7a"
+    },
+    "palette": {
+      "cream": "#F5F5F0",
+      "ink": "#1A1A1A",
+      "outline": "#1E1E1E",
+      "white": "#FFFFFF",
+      "coral": "#E85D4E",
+      "lime": "#C4D94E",
+      "lavender": "#C5B5E0",
+      "sky": "#8BB4F7",
+      "violet": "#A06CE8",
+      "yellow": "#F2D160",
+      "peach": "#F5B895",
+      "mint": "#A8E6CF"
+    },
+    "radius": "9999px",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Bodoni Moda",
+        "stack": "Bodoni Moda, serif",
+        "google": true,
+        "weights": [
+          600,
+          700,
+          800
+        ]
+      },
+      "body": {
+        "family": "Space Grotesk",
+        "stack": "Space Grotesk, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600
+        ]
+      },
+      "mono": {
+        "family": "Space Grotesk",
+        "stack": "Space Grotesk, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600
+        ]
+      }
+    }
+  },
+  "cartesian": {
+    "name": "Cartesian",
+    "tagline": "Quiet warm-neutral palette with classical Playfair serifs; tasteful and unhurried.",
+    "scheme": "light",
+    "mood": [
+      "quiet",
+      "considered",
+      "elegant",
+      "warm-minimal"
+    ],
+    "density": "low",
+    "formality": "high",
+    "colors": {
+      "bg": "#EDE8E0",
+      "ink": "#1A1A1A",
+      "accent": "#8A8178",
+      "paper": "#e5e0d8",
+      "line": "#d1ccc5",
+      "muted": "#73716d"
+    },
+    "palette": {
+      "bg-primary": "#EDE8E0",
+      "bg-secondary": "#E2DBD1",
+      "text-primary": "#1A1A1A",
+      "text-secondary": "#5A5A5A",
+      "accent": "#8A8178",
+      "line": "#B8B0A4"
+    },
+    "radius": "0",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Playfair Display",
+        "stack": "Playfair Display, serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "Inter",
+        "stack": "Inter, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500
+        ]
+      },
+      "mono": {
+        "family": "Inter",
+        "stack": "Inter, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500
+        ]
+      }
+    }
+  },
+  "cobalt-grid": {
+    "name": "Cobalt Grid",
+    "tagline": "Electric cobalt serifs on a graph-paper canvas, anchored by stair-stepped pixel-glitch decorations and slim hairline rules.",
+    "scheme": "light",
+    "mood": [
+      "editorial",
+      "design-research",
+      "studious",
+      "modernist",
+      "tech-print",
+      "monochrome"
+    ],
+    "density": "medium",
+    "formality": "high",
+    "colors": {
+      "bg": "#F0EBDE",
+      "ink": "#1F2BE0",
+      "accent": "#1F2BE0",
+      "paper": "#E6E0CE",
+      "line": "#d3cfc3",
+      "muted": "#777cdf"
+    },
+    "palette": {
+      "paper": "#F0EBDE",
+      "paper-2": "#E6E0CE",
+      "ink": "#1F2BE0",
+      "ink-soft": "#5560E5"
+    },
+    "radius": "4px",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Newsreader",
+        "stack": "Newsreader, Georgia, serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "Hanken Grotesk",
+        "stack": "Hanken Grotesk, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          600
+        ]
+      },
+      "mono": {
+        "family": "DM Mono",
+        "stack": "DM Mono, ui-monospace, monospace",
+        "google": true,
+        "weights": [
+          400
+        ]
+      }
+    }
+  },
+  "coral": {
+    "name": "Coral",
+    "tagline": "Cream and coral on near-black, set in oversized Bebas Neue.",
+    "scheme": "mixed",
+    "mood": [
+      "bold",
+      "warm",
+      "modern",
+      "confident"
+    ],
+    "density": "medium",
+    "formality": "medium",
+    "colors": {
+      "bg": "#FFFFFF",
+      "ink": "#1A1A1A",
+      "accent": "#E85D5D",
+      "paper": "#F5F0E8",
+      "line": "#e0e0e0",
+      "muted": "#7a7a7a"
+    },
+    "palette": {
+      "coral": "#E85D5D",
+      "coral-dark": "#D44A4A",
+      "cream": "#F5F0E8",
+      "cream-dark": "#E8E0D4",
+      "black": "#1A1A1A",
+      "gray": "#6B6B6B",
+      "light-gray": "#B0B0B0",
+      "white": "#FFFFFF"
+    },
+    "radius": "0",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Bebas Neue",
+        "stack": "Bebas Neue, sans-serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "Inter",
+        "stack": "Inter, sans-serif",
+        "google": true,
+        "weights": [
+          300,
+          400,
+          600,
+          700
+        ]
+      },
+      "mono": {
+        "family": "Inter",
+        "stack": "Inter, sans-serif",
+        "google": true,
+        "weights": [
+          300,
+          400,
+          600,
+          700
+        ]
+      }
+    }
+  },
+  "creative-mode": {
+    "name": "Creative Mode",
+    "tagline": "Cream paper canvas with confident multi-color (green, pink, orange, yellow) accents and Archivo Black display.",
+    "scheme": "light",
+    "mood": [
+      "creative",
+      "confident",
+      "playful",
+      "design-led"
+    ],
+    "density": "medium-high",
+    "formality": "medium",
+    "colors": {
+      "bg": "#EFE9D9",
+      "ink": "#0F0F0F",
+      "accent": "#E85A1F",
+      "paper": "#E4DCC4",
+      "line": "#d2cdbf",
+      "muted": "#6d6b64"
+    },
+    "palette": {
+      "cream": "#EFE9D9",
+      "cream-2": "#E4DCC4",
+      "ink": "#0F0F0F",
+      "ink-2": "#2A2A2A",
+      "green": "#1F8A4C",
+      "green-dark": "#136636",
+      "pink": "#F06CA8",
+      "pink-dark": "#D14E8B",
+      "orange": "#E85A1F",
+      "yellow": "#F5C518"
+    },
+    "radius": "999px",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Archivo Black",
+        "stack": "Archivo Black, sans-serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "Space Grotesk",
+        "stack": "Space Grotesk, sans-serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "mono": {
+        "family": "JetBrains Mono",
+        "stack": "JetBrains Mono, monospace",
+        "google": true,
+        "weights": [
+          400
+        ]
+      }
+    }
+  },
+  "daisy-days": {
+    "name": "Daisy Days",
+    "tagline": "Cheerful pastel deck with hand-drawn daisies, stars, and rainbows. Friendly, soft, and warm.",
+    "scheme": "light",
+    "mood": [
+      "cheerful",
+      "playful",
+      "warm",
+      "sunny",
+      "wholesome"
+    ],
+    "density": "medium",
+    "formality": "low",
+    "colors": {
+      "bg": "#FFFFFF",
+      "ink": "#2D2D2D",
+      "accent": "#F8635F",
+      "paper": "#F5F0E6",
+      "line": "#e0e0e0",
+      "muted": "#858585"
+    },
+    "palette": {
+      "cream": "#F5F0E6",
+      "turquoise": "#7ECDC0",
+      "soft-pink": "#F7C8D4",
+      "butter": "#FDE68A",
+      "mint": "#A8E6CF",
+      "lavender": "#D4A5E8",
+      "peach": "#FFCBA4",
+      "sky": "#A8D8F0",
+      "coral": "#F8635F",
+      "text-dark": "#2D2D2D",
+      "text-muted": "#6B6B6B",
+      "white": "#FFFFFF"
+    },
+    "radius": "4px",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Fredoka One",
+        "stack": "'Fredoka One', cursive",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "Quicksand",
+        "stack": "'Quicksand', sans-serif",
+        "google": true,
+        "weights": [
+          500,
+          600
+        ]
+      },
+      "mono": {
+        "family": "Fredoka One",
+        "stack": "'Fredoka One', cursive",
+        "google": true,
+        "weights": [
+          400
+        ]
+      }
+    }
+  },
+  "editorial-forest": {
+    "name": "Editorial Forest",
+    "tagline": "Forest green, dusty pink, and warm cream meet Source Serif 4 in a quiet, intentional quarterly-review deck.",
+    "scheme": "mixed",
+    "mood": [
+      "editorial",
+      "quiet",
+      "considered",
+      "warm",
+      "intentional"
+    ],
+    "density": "medium",
+    "formality": "medium",
+    "colors": {
+      "bg": "#efe7d4",
+      "ink": "#1a1a17",
+      "accent": "#d27e96",
+      "paper": "#e6dcc4",
+      "line": "#d2cbbb",
+      "muted": "#737066"
+    },
+    "palette": {
+      "green": "#2e4a2a",
+      "green-deep": "#243a21",
+      "green-lite": "#3a5a36",
+      "pink": "#e89cb1",
+      "pink-deep": "#d27e96",
+      "cream": "#efe7d4",
+      "cream-2": "#e6dcc4",
+      "ink": "#1a1a17"
+    },
+    "radius": "2px",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Source Serif 4",
+        "stack": "'Source Serif 4', 'Source Serif Pro', Georgia, serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600
+        ]
+      },
+      "body": {
+        "family": "Source Serif 4",
+        "stack": "'Source Serif 4', 'Source Serif Pro', Georgia, serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600
+        ]
+      },
+      "mono": {
+        "family": "JetBrains Mono",
+        "stack": "'JetBrains Mono', ui-monospace, Menlo, monospace",
+        "google": true,
+        "weights": [
+          500
+        ]
+      }
+    }
+  },
+  "editorial-tri-tone": {
+    "name": "Editorial Tri-Tone",
+    "tagline": "Three-color editorial system: dusty pink, mustard cream, and deep burgundy, set in Bricolage + Instrument Serif.",
+    "scheme": "mixed",
+    "mood": [
+      "editorial",
+      "warm",
+      "intentional",
+      "moody"
+    ],
+    "density": "medium",
+    "formality": "medium-high",
+    "colors": {
+      "bg": "#F2D86A",
+      "ink": "#7A1F35",
+      "accent": "#7A1F35",
+      "paper": "#ead066",
+      "line": "#d5be5d",
+      "muted": "#ac6d4b"
+    },
+    "palette": {
+      "pink": "#F2B6C6",
+      "butter": "#F2D86A",
+      "burgundy": "#7A1F35"
+    },
+    "radius": "999px",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Bricolage Grotesque",
+        "stack": "Bricolage Grotesque, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600,
+          700,
+          800
+        ]
+      },
+      "body": {
+        "family": "Bricolage Grotesque",
+        "stack": "Bricolage Grotesque, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600,
+          700,
+          800
+        ]
+      },
+      "mono": {
+        "family": "JetBrains Mono",
+        "stack": "JetBrains Mono, monospace",
+        "google": true,
+        "weights": [
+          400
+        ]
+      }
+    }
+  },
+  "emerald-editorial": {
+    "name": "Emerald Editorial",
+    "tagline": "A magazine-cover business deck: emerald + navy + paper, double-rule masthead ornaments, and a bold Bodoni-style display serif.",
+    "scheme": "mixed",
+    "mood": [
+      "editorial",
+      "considered",
+      "confident",
+      "magazine-cover"
+    ],
+    "density": "medium",
+    "formality": "medium-high",
+    "colors": {
+      "bg": "#3CD896",
+      "ink": "#0F1A5C",
+      "accent": "#1B2774",
+      "paper": "#2DC684",
+      "line": "#35be84",
+      "muted": "#226a74"
+    },
+    "palette": {
+      "bg": "#3CD896",
+      "bg-2": "#2DC684",
+      "bg-3": "#25B377",
+      "ink": "#0F1A5C",
+      "ink-2": "#1B2774",
+      "ink-3": "#3A4593",
+      "paper": "#F1E9D6"
+    },
+    "radius": "4px",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Bodoni Moda",
+        "stack": "'Bodoni Moda', serif",
+        "google": true,
+        "weights": [
+          800,
+          900
+        ]
+      },
+      "body": {
+        "family": "Manrope",
+        "stack": "'Manrope', sans-serif",
+        "google": true,
+        "weights": [
+          500,
+          700,
+          800
+        ]
+      },
+      "mono": {
+        "family": "Manrope",
+        "stack": "'Manrope', sans-serif",
+        "google": true,
+        "weights": [
+          500,
+          700,
+          800
+        ]
+      }
+    }
+  },
+  "grove": {
+    "name": "Grove",
+    "tagline": "Forest-green canvas with cream type, classical Playfair serifs, and a single rust accent.",
+    "scheme": "mixed",
+    "mood": [
+      "organic",
+      "considered",
+      "warm",
+      "literary",
+      "natural"
+    ],
+    "density": "medium",
+    "formality": "medium-high",
+    "colors": {
+      "bg": "#192b1b",
+      "ink": "#e8e4d6",
+      "accent": "#c8524a",
+      "paper": "#1e3221",
+      "line": "#162618",
+      "muted": "#919687"
+    },
+    "palette": {
+      "bg": "#192b1b",
+      "bg-alt": "#1e3221",
+      "bg-light": "#e8e4d6",
+      "bg-light-alt": "#dedad0",
+      "fg": "#d4cfbf",
+      "fg-light": "#192b1b",
+      "accent": "#c8524a"
+    },
+    "radius": "18px",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Playfair Display",
+        "stack": "'Playfair Display', 'Noto Serif SC', Georgia, serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "Jost",
+        "stack": "'Jost', 'Noto Sans SC', system-ui, sans-serif",
+        "google": true,
+        "weights": [
+          300
+        ]
+      },
+      "mono": {
+        "family": "JetBrains Mono",
+        "stack": "'JetBrains Mono', monospace",
+        "google": true,
+        "weights": [
+          300
+        ]
+      }
+    }
+  },
+  "long-table": {
+    "name": "Long Table",
+    "tagline": "Warm cream and rust-red supper-club aesthetic with bold uppercase grotesk headlines, Fraunces serifs, and pill-shaped outlined buttons.",
+    "scheme": "light",
+    "mood": [
+      "warm",
+      "intimate",
+      "modern",
+      "friendly",
+      "small-batch",
+      "social",
+      "hospitality"
+    ],
+    "density": "medium",
+    "formality": "medium",
+    "colors": {
+      "bg": "#FAF1E2",
+      "ink": "#8E2D1F",
+      "accent": "#B53D2A",
+      "paper": "#F2E5CF",
+      "line": "#dcd4c7",
+      "muted": "#bb7f71"
+    },
+    "palette": {
+      "paper": "#FAF1E2",
+      "paper-d": "#F2E5CF",
+      "paper-vd": "#E8D7B6",
+      "ink": "#B53D2A",
+      "ink-dp": "#8E2D1F",
+      "rule": "#B53D2A"
+    },
+    "radius": "999px",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Bricolage Grotesque",
+        "stack": "'Bricolage Grotesque', sans-serif",
+        "google": true,
+        "weights": [
+          700,
+          800
+        ]
+      },
+      "body": {
+        "family": "Fraunces",
+        "stack": "'Fraunces', Georgia, serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "mono": {
+        "family": "Bricolage Grotesque",
+        "stack": "'Bricolage Grotesque', sans-serif",
+        "google": true,
+        "weights": [
+          700,
+          800
+        ]
+      }
+    }
+  },
+  "mat": {
+    "name": "Mat",
+    "tagline": "Dark sage canvas with bone paper and burnt-orange accent; mid-century modern with wood undertones.",
+    "scheme": "mixed",
+    "mood": [
+      "warm-modern",
+      "considered",
+      "tactile",
+      "mid-century"
+    ],
+    "density": "medium",
+    "formality": "medium",
+    "colors": {
+      "bg": "#F0E8D2",
+      "ink": "#1E2820",
+      "accent": "#C07030",
+      "paper": "#EDE6D0",
+      "line": "#d3ccb9",
+      "muted": "#76796b"
+    },
+    "palette": {
+      "bg-dark": "#232E26",
+      "bg-dark-alt": "#2E3D30",
+      "bg-cream": "#EDE6D0",
+      "bg-cream-alt": "#E4DAC4",
+      "ink-cream": "#F0E8D2",
+      "ink-dark": "#1E2820",
+      "accent-orange": "#C07030",
+      "wood-glow": "#7A4E24"
+    },
+    "radius": "18px",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Bricolage Grotesque",
+        "stack": "Bricolage Grotesque, Noto Sans SC, sans-serif",
+        "google": true,
+        "weights": [
+          600,
+          700,
+          800
+        ]
+      },
+      "body": {
+        "family": "DM Sans",
+        "stack": "DM Sans, Noto Sans SC, sans-serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "mono": {
+        "family": "DM Mono",
+        "stack": "DM Mono, monospace",
+        "google": true,
+        "weights": [
+          400
+        ]
+      }
+    }
+  },
+  "monochrome": {
+    "name": "Monochrome",
+    "tagline": "Ivory ledger paper with all-black type; Lora serif headlines, Jost body, no color at all.",
+    "scheme": "light",
+    "mood": [
+      "restrained",
+      "literary",
+      "archival",
+      "ledger"
+    ],
+    "density": "high",
+    "formality": "high",
+    "colors": {
+      "bg": "#FAFADF",
+      "ink": "#1A1A16",
+      "accent": "#1A1A16",
+      "paper": "#F2F2D2",
+      "line": "#dcdcc4",
+      "muted": "#78786a"
+    },
+    "palette": {
+      "cream-paper": "#FAFADF",
+      "cream-paper-2": "#F2F2D2",
+      "cream-paper-3": "#F0F0D4",
+      "cream-warm": "#F5F0E4",
+      "ink-black": "#1A1A16",
+      "ink-graphite": "#5E5E54",
+      "ink-graphite-light": "#8A8A80"
+    },
+    "radius": "16px",
+    "deco": "soft",
+    "fonts": {
+      "display": {
+        "family": "Jost",
+        "stack": "Jost, Noto Sans SC, system-ui, sans-serif",
+        "google": true,
+        "weights": [
+          200,
+          300,
+          400
+        ]
+      },
+      "body": {
+        "family": "Jost",
+        "stack": "Jost, Noto Sans SC, system-ui, sans-serif",
+        "google": true,
+        "weights": [
+          200,
+          300,
+          400
+        ]
+      },
+      "mono": {
+        "family": "JetBrains Mono",
+        "stack": "JetBrains Mono, monospace",
+        "google": true,
+        "weights": [
+          400
+        ]
+      }
+    }
+  },
+  "neo-grid-bold": {
+    "name": "Neo-Grid Bold",
+    "tagline": "Editorial neo-brutalism with a single neon yellow accent on off-white paper.",
+    "scheme": "light",
+    "mood": [
+      "confident",
+      "punchy",
+      "editorial",
+      "modern"
+    ],
+    "density": "high",
+    "formality": "medium",
+    "colors": {
+      "bg": "#ECECE8",
+      "ink": "#0A0A0A",
+      "accent": "#E6FF3D",
+      "paper": "#F5F4EF",
+      "line": "#d0d0cc",
+      "muted": "#696967"
+    },
+    "palette": {
+      "paper": "#F5F4EF",
+      "bg": "#ECECE8",
+      "ink": "#0A0A0A",
+      "accent-lemon": "#E6FF3D",
+      "muted": "#8A8A85",
+      "stage-bg": "#1A1A1A"
+    },
+    "radius": "4px",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Space Grotesk",
+        "stack": "Space Grotesk, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          700
+        ]
+      },
+      "body": {
+        "family": "Space Grotesk",
+        "stack": "Space Grotesk, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          700
+        ]
+      },
+      "mono": {
+        "family": "JetBrains Mono",
+        "stack": "JetBrains Mono, ui-monospace, monospace",
+        "google": true,
+        "weights": [
+          400
+        ]
+      }
+    }
+  },
+  "peoples-platform": {
+    "name": "People's Platform (Block & Bold)",
+    "tagline": "Activist poster energy: blue, orange, red on cream, with Alfa Slab + Caveat Brush.",
+    "scheme": "light",
+    "mood": [
+      "activist",
+      "loud",
+      "graphic",
+      "honest"
+    ],
+    "density": "medium-high",
+    "formality": "medium-low",
+    "colors": {
+      "bg": "#F5F2EA",
+      "ink": "#0E0E14",
+      "accent": "#E89321",
+      "paper": "#F4E9D6",
+      "line": "#d8d5ce",
+      "muted": "#6f6e6e"
+    },
+    "palette": {
+      "blue": "#2C2CDC",
+      "blue-deep": "#1B1BB0",
+      "orange": "#F2A03A",
+      "orange-deep": "#E89321",
+      "red": "#E83A2A",
+      "red-deep": "#B7281C",
+      "cream": "#F4E9D6",
+      "paper": "#F5F2EA",
+      "ink": "#0E0E14"
+    },
+    "radius": "0",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Alfa Slab One",
+        "stack": "Alfa Slab One, serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "Caveat Brush",
+        "stack": "Caveat Brush, cursive",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "mono": {
+        "family": "DM Mono",
+        "stack": "DM Mono, monospace",
+        "google": true,
+        "weights": [
+          400,
+          600
+        ]
+      }
+    }
+  },
+  "pin-and-paper": {
+    "name": "Pin & Paper",
+    "tagline": "Yellow paper with safety-pin illustrations, ink-blue handwritten Caveat, paper-grain texture.",
+    "scheme": "light",
+    "mood": [
+      "crafted",
+      "handmade",
+      "warm",
+      "thoughtful",
+      "literary"
+    ],
+    "density": "medium",
+    "formality": "medium",
+    "colors": {
+      "bg": "#F8F1D6",
+      "ink": "#0E1430",
+      "accent": "#D8702A",
+      "paper": "#EFE56A",
+      "line": "#dad4bc",
+      "muted": "#707176"
+    },
+    "palette": {
+      "paper": "#EFE56A",
+      "paper-2": "#F5ECA0",
+      "paper-3": "#E8D85A",
+      "paper-extra": "#FBE6A4",
+      "cream": "#F8F1D6",
+      "kraft": "#C9A66B",
+      "ink": "#1F3A8A",
+      "ink-soft": "#2D4FB8",
+      "ink-line": "#3457C4",
+      "ink-deep": "#0E1430",
+      "red": "#C2342B",
+      "olive": "#6B7A2E",
+      "orange": "#D8702A"
+    },
+    "radius": "4px",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Space Grotesk",
+        "stack": "Space Grotesk, Helvetica Neue, Arial, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600,
+          700
+        ]
+      },
+      "body": {
+        "family": "Space Grotesk",
+        "stack": "Space Grotesk, Helvetica Neue, Arial, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600,
+          700
+        ]
+      },
+      "mono": {
+        "family": "DM Mono",
+        "stack": "DM Mono, ui-monospace, monospace",
+        "google": true,
+        "weights": [
+          500
+        ]
+      }
+    }
+  },
+  "pink-script": {
+    "name": "Pink Script — After Hours",
+    "tagline": "Black canvas, hot pink accent, pearl-cream paper, Instrument Serif headlines: late-night editorial luxury.",
+    "scheme": "dark",
+    "mood": [
+      "nocturnal",
+      "moody",
+      "intentional",
+      "luxe",
+      "expressive"
+    ],
+    "density": "low",
+    "formality": "medium-high",
+    "colors": {
+      "bg": "#060507",
+      "ink": "#F5EDF1",
+      "accent": "#ED3D8C",
+      "paper": "#1a191b",
+      "line": "#333234",
+      "muted": "#918c8f"
+    },
+    "palette": {
+      "ink-deep": "#060507",
+      "ink-violet": "#0F0D11",
+      "paper-blush": "#F5EDF1",
+      "pink": "#ED3D8C",
+      "pink-light": "#FF66A8",
+      "pink-deep": "#B81D67"
+    },
+    "radius": "18px",
+    "deco": "soft",
+    "fonts": {
+      "display": {
+        "family": "DM Serif Display",
+        "stack": "DM Serif Display, serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "Inter",
+        "stack": "Inter, system-ui, sans-serif",
+        "google": true,
+        "weights": [
+          300
+        ]
+      },
+      "mono": {
+        "family": "JetBrains Mono",
+        "stack": "JetBrains Mono, monospace",
+        "google": true,
+        "weights": [
+          400
+        ]
+      }
+    }
+  },
+  "playful": {
+    "name": "Playful",
+    "tagline": "Sun-warm peach background with Syne display: a friendly indie launch deck.",
+    "scheme": "light",
+    "mood": [
+      "warm",
+      "approachable",
+      "indie",
+      "friendly"
+    ],
+    "density": "medium",
+    "formality": "low",
+    "colors": {
+      "bg": "#F0C8A0",
+      "ink": "#1A1A1A",
+      "accent": "#1A1A1A",
+      "paper": "#E8B88E",
+      "line": "#d3b08d",
+      "muted": "#746352"
+    },
+    "palette": {
+      "bg": "#F0C8A0",
+      "bg-alt": "#E8B88E",
+      "light": "#F7DEC6",
+      "text": "#1A1A1A"
+    },
+    "radius": "0",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Syne",
+        "stack": "Syne, sans-serif",
+        "google": true,
+        "weights": [
+          700,
+          800
+        ]
+      },
+      "body": {
+        "family": "Space Grotesk",
+        "stack": "Space Grotesk, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600
+        ]
+      },
+      "mono": {
+        "family": "Space Grotesk",
+        "stack": "Space Grotesk, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600
+        ]
+      }
+    }
+  },
+  "raw-grid": {
+    "name": "Raw Grid",
+    "tagline": "Neo-brutalist deck with thick borders, offset shadows, and a pink/sage/ink palette.",
+    "scheme": "light",
+    "mood": [
+      "raw",
+      "punchy",
+      "energetic",
+      "confident"
+    ],
+    "density": "high",
+    "formality": "medium-low",
+    "colors": {
+      "bg": "#FFFFFF",
+      "ink": "#0A0A0A",
+      "accent": "#0A0A0A",
+      "paper": "#f6f6f6",
+      "line": "#e0e0e0",
+      "muted": "#717171"
+    },
+    "palette": {
+      "black": "#0A0A0A",
+      "white": "#FFFFFF",
+      "pink": "#F2D4CF",
+      "green": "#E5EDD6",
+      "gray": "#F5F5F5",
+      "darkgray": "#333333"
+    },
+    "radius": "18px",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Segoe UI",
+        "stack": "Segoe UI, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "google": false,
+        "weights": []
+      },
+      "body": {
+        "family": "Segoe UI",
+        "stack": "Segoe UI, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "google": false,
+        "weights": []
+      },
+      "mono": {
+        "family": "Segoe UI",
+        "stack": "Segoe UI, system-ui, -apple-system, Helvetica, Arial, sans-serif",
+        "google": false,
+        "weights": []
+      }
+    }
+  },
+  "retro-windows": {
+    "name": "Retro Windows",
+    "tagline": "Windows 95 chrome: gray title bars, MS Sans Serif, pixel typography, full nostalgia.",
+    "scheme": "light",
+    "mood": [
+      "nostalgic",
+      "retro",
+      "geeky",
+      "playful"
+    ],
+    "density": "medium",
+    "formality": "low",
+    "colors": {
+      "bg": "#ffffff",
+      "ink": "#000000",
+      "accent": "#808000",
+      "paper": "#d4d0c8",
+      "line": "#e0e0e0",
+      "muted": "#6b6b6b"
+    },
+    "palette": {
+      "bg-gray": "#c0c0c0",
+      "bg-light": "#d4d0c8",
+      "bg-dark": "#808080",
+      "white": "#ffffff",
+      "black": "#000000",
+      "text-dark": "#222222",
+      "blue-navy": "#000080",
+      "blue-bright": "#0000a0",
+      "blue-light": "#1084d0",
+      "green-retro": "#008000",
+      "red-retro": "#800000",
+      "yellow-retro": "#808000",
+      "cyan-retro": "#008080",
+      "text-gray": "#555555"
+    },
+    "radius": "18px",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Press Start 2P",
+        "stack": "'Press Start 2P', cursive",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "MS Sans Serif",
+        "stack": "MS Sans Serif, Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
+        "google": false,
+        "weights": []
+      },
+      "mono": {
+        "family": "VT323",
+        "stack": "'VT323', monospace",
+        "google": true,
+        "weights": [
+          400
+        ]
+      }
+    }
+  },
+  "retro-zine": {
+    "name": "Retro Zine",
+    "tagline": "Beige paper with green accent and Bebas Neue + Caveat: a riso-printed zine in HTML form.",
+    "scheme": "light",
+    "mood": [
+      "crafted",
+      "lo-fi",
+      "underground",
+      "warm-retro"
+    ],
+    "density": "medium",
+    "formality": "medium-low",
+    "colors": {
+      "bg": "#C8B99A",
+      "ink": "#1A1A1A",
+      "accent": "#00A85D",
+      "paper": "#c1b395",
+      "line": "#b0a388",
+      "muted": "#635d50"
+    },
+    "palette": {
+      "bg": "#C8B99A",
+      "bg-dark": "#B8A98A",
+      "green": "#008F4D",
+      "green-light": "#00A85D",
+      "black": "#1A1A1A",
+      "white": "#F4EFE6"
+    },
+    "radius": "18px",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Bebas Neue",
+        "stack": "'Bebas Neue', sans-serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "Space Grotesk",
+        "stack": "'Space Grotesk', sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          600
+        ]
+      },
+      "mono": {
+        "family": "Bebas Neue",
+        "stack": "'Bebas Neue', sans-serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      }
+    }
+  },
+  "sakura-chroma": {
+    "name": "Sakura Chroma",
+    "tagline": "Vintage Japanese cassette-package aesthetic: cream paper, diagonal rainbow ribbons, condensed bold type, JIS-style spec checkboxes.",
+    "scheme": "light",
+    "mood": [
+      "retro",
+      "playful",
+      "kawaii-tech",
+      "warm",
+      "tactile",
+      "product-catalogue"
+    ],
+    "density": "medium",
+    "formality": "low",
+    "colors": {
+      "bg": "#F1E6CB",
+      "ink": "#3A2516",
+      "accent": "#F09131",
+      "paper": "#E5D6B0",
+      "line": "#d4cab3",
+      "muted": "#877662"
+    },
+    "palette": {
+      "paper": "#F1E6CB",
+      "paper-dk": "#E5D6B0",
+      "ink": "#3A2516",
+      "red": "#E5392A",
+      "pink": "#E54489",
+      "orange": "#F09131",
+      "green": "#3D9F47",
+      "blue": "#3F8BC4",
+      "yellow": "#F0BC2A"
+    },
+    "radius": "0",
+    "deco": "shapes",
+    "fonts": {
+      "display": {
+        "family": "Big Shoulders Display",
+        "stack": "'Big Shoulders Display', sans-serif",
+        "google": true,
+        "weights": [
+          700,
+          900
+        ]
+      },
+      "body": {
+        "family": "Albert Sans",
+        "stack": "'Albert Sans', sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          600,
+          700
+        ]
+      },
+      "mono": {
+        "family": "JetBrains Mono",
+        "stack": "'JetBrains Mono', ui-monospace, monospace",
+        "google": true,
+        "weights": [
+          400
+        ]
+      }
+    }
+  },
+  "scatterbrain": {
+    "name": "Scatterbrain",
+    "tagline": "Post-it inspired: pastel sticky notes, Caveat handwriting, Shrikhand and Zilla Slab type stack.",
+    "scheme": "light",
+    "mood": [
+      "playful",
+      "creative",
+      "warm",
+      "messy-on-purpose",
+      "workshop"
+    ],
+    "density": "high",
+    "formality": "low",
+    "colors": {
+      "bg": "#faf8f3",
+      "ink": "#2d2a26",
+      "accent": "#ffd43b",
+      "paper": "#f7f5f0",
+      "line": "#dcdad6",
+      "muted": "#83817c"
+    },
+    "palette": {
+      "yellow": "#ffe066",
+      "yellow-deep": "#ffd43b",
+      "blue": "#a5d8ff",
+      "blue-deep": "#74c0fc",
+      "pink": "#ffc9c9",
+      "pink-deep": "#ff9f9f",
+      "green": "#b2f2bb",
+      "green-deep": "#8ce99a",
+      "orange": "#ffcc80",
+      "purple": "#d0bfff",
+      "cream": "#faf8f3",
+      "paper": "#f7f5f0",
+      "ink": "#2d2a26",
+      "ink-light": "#5c5750"
+    },
+    "radius": "0",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Shrikhand",
+        "stack": "'Shrikhand', cursive",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "body": {
+        "family": "Zilla Slab",
+        "stack": "'Zilla Slab', serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "mono": {
+        "family": "Caveat",
+        "stack": "'Caveat', cursive",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          600
+        ]
+      }
+    }
+  },
+  "signal": {
+    "name": "Signal",
+    "tagline": "Deep navy canvas with bone paper and a single muted-gold accent; institutional with quiet weight.",
+    "scheme": "mixed",
+    "mood": [
+      "institutional",
+      "trustworthy",
+      "considered",
+      "weighty"
+    ],
+    "density": "high",
+    "formality": "high",
+    "colors": {
+      "bg": "#F0ECE3",
+      "ink": "#1A2030",
+      "accent": "#C8A870",
+      "paper": "#E6E0D4",
+      "line": "#d3d0c8",
+      "muted": "#74767b"
+    },
+    "palette": {
+      "navy": "#1C2644",
+      "navy-alt": "#232F55",
+      "cream": "#F0ECE3",
+      "cream-alt": "#E6E0D4",
+      "text-warm": "#E2DCD0",
+      "text-muted-dark": "#8A96A8",
+      "text-hint-dark": "#4E5A6E",
+      "ink": "#1A2030",
+      "text-muted-light": "#5A6270",
+      "text-hint-light": "#9AA0A8",
+      "gold": "#C8A870",
+      "border-dark": "#2E3D5C",
+      "border-light": "#CAC4B4"
+    },
+    "radius": "0",
+    "deco": "soft",
+    "fonts": {
+      "display": {
+        "family": "Source Serif 4",
+        "stack": "Source Serif 4, Noto Serif SC, Georgia, serif",
+        "google": true,
+        "weights": [
+          300,
+          400,
+          500,
+          600,
+          700
+        ]
+      },
+      "body": {
+        "family": "DM Sans",
+        "stack": "DM Sans, Noto Sans SC, system-ui, sans-serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "mono": {
+        "family": "IBM Plex Mono",
+        "stack": "IBM Plex Mono, JetBrains Mono, monospace",
+        "google": true,
+        "weights": [
+          500
+        ]
+      }
+    }
+  },
+  "soft-editorial": {
+    "name": "Soft Editorial",
+    "tagline": "Cormorant Garamond serif on warm paper with sage, blush, and lemon accents.",
+    "scheme": "light",
+    "mood": [
+      "literary",
+      "elegant",
+      "quiet",
+      "warm-classical"
+    ],
+    "density": "low",
+    "formality": "high",
+    "colors": {
+      "bg": "#F2EEDF",
+      "ink": "#2A241B",
+      "accent": "#D6DD63",
+      "paper": "#ECE6D2",
+      "line": "#d5d1c4",
+      "muted": "#7e796d"
+    },
+    "palette": {
+      "paper": "#F2EEDF",
+      "paper-2": "#ECE6D2",
+      "ink": "#2A241B",
+      "ink-soft": "#5C5345",
+      "pink": "#E1A4C2",
+      "lemon": "#D6DD63",
+      "blush": "#E8C9B6",
+      "sage": "#B7C7A8",
+      "lilac": "#C9BEDC"
+    },
+    "radius": "24px",
+    "deco": "none",
+    "fonts": {
+      "display": {
+        "family": "Cormorant Garamond",
+        "stack": "Cormorant Garamond, Garamond, serif",
+        "google": true,
+        "weights": [
+          400,
+          500
+        ]
+      },
+      "body": {
+        "family": "Work Sans",
+        "stack": "Work Sans, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500
+        ]
+      },
+      "mono": {
+        "family": "Work Sans",
+        "stack": "Work Sans, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500
+        ]
+      }
+    }
+  },
+  "stencil-tablet": {
+    "name": "Stencil & Tablet",
+    "tagline": "Bone paper with stencil-cut headlines and a six-color earth palette: archaeology meets brand.",
+    "scheme": "light",
+    "mood": [
+      "archival",
+      "earthy",
+      "tactile",
+      "considered",
+      "graphic"
+    ],
+    "density": "medium",
+    "formality": "medium-high",
+    "colors": {
+      "bg": "#F4EFE0",
+      "ink": "#000000",
+      "accent": "#EE7A2E",
+      "paper": "#ebe7d8",
+      "line": "#d7d2c5",
+      "muted": "#66645e"
+    },
+    "palette": {
+      "bone": "#E2DCC9",
+      "black": "#000000",
+      "ink": "#0A0A0A",
+      "paper": "#F4EFE0",
+      "sienna": "#A06A3C",
+      "magenta": "#C73B7A",
+      "orange": "#EE7A2E",
+      "teal": "#2D7E73",
+      "blue": "#3F73B7",
+      "mustard": "#D8A93B",
+      "olive": "#6F7A2E"
+    },
+    "radius": "26px",
+    "deco": "soft",
+    "fonts": {
+      "display": {
+        "family": "Stardos Stencil",
+        "stack": "Stardos Stencil, serif",
+        "google": true,
+        "weights": [
+          400,
+          700
+        ]
+      },
+      "body": {
+        "family": "Inter",
+        "stack": "Inter, sans-serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "mono": {
+        "family": "Barlow Condensed",
+        "stack": "Barlow Condensed, sans-serif",
+        "google": true,
+        "weights": [
+          600,
+          700,
+          800
+        ]
+      }
+    }
+  },
+  "studio": {
+    "name": "Studio",
+    "tagline": "Black canvas with electric-yellow type; high-voltage design studio aesthetic.",
+    "scheme": "dark",
+    "mood": [
+      "electric",
+      "bold",
+      "graphic",
+      "design-led",
+      "high-contrast"
+    ],
+    "density": "medium",
+    "formality": "medium",
+    "colors": {
+      "bg": "#1C1C1C",
+      "ink": "#F5D200",
+      "accent": "#F0CC00",
+      "paper": "#242422",
+      "line": "#454545",
+      "muted": "#9a860c"
+    },
+    "palette": {
+      "near-black": "#1C1C1C",
+      "near-black-alt": "#242422",
+      "acid-yellow": "#F5D200",
+      "acid-yellow-alt": "#F0CC00",
+      "border-dark": "#2E2E2C"
+    },
+    "radius": "4px",
+    "deco": "soft",
+    "fonts": {
+      "display": {
+        "family": "Barlow",
+        "stack": "Barlow, Noto Sans SC, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          700,
+          900
+        ]
+      },
+      "body": {
+        "family": "Barlow",
+        "stack": "Barlow, Noto Sans SC, system-ui, sans-serif",
+        "google": true,
+        "weights": [
+          400,
+          500,
+          700,
+          900
+        ]
+      },
+      "mono": {
+        "family": "IBM Plex Mono",
+        "stack": "IBM Plex Mono, monospace",
+        "google": true,
+        "weights": [
+          500
+        ]
+      }
+    }
+  },
+  "vellum": {
+    "name": "Vellum",
+    "tagline": "Deep navy canvas with warm-yellow Cormorant serifs and a single dusty teal accent. A quiet, scholarly aesthetic.",
+    "scheme": "dark",
+    "mood": [
+      "scholarly",
+      "literary",
+      "considered",
+      "quiet",
+      "intellectual"
+    ],
+    "density": "low",
+    "formality": "high",
+    "colors": {
+      "bg": "#1F2858",
+      "ink": "#F5E168",
+      "accent": "#3A7878",
+      "paper": "#343F80",
+      "line": "#474f76",
+      "muted": "#9b9361"
+    },
+    "palette": {
+      "navy": "#2A3870",
+      "navy-alt": "#343F80",
+      "navy-deep": "#1F2858",
+      "navy-mid": "#34407A",
+      "yellow": "#E8D85C",
+      "emphasis-yellow": "#F5E168",
+      "teal": "#3A7878"
+    },
+    "radius": "18px",
+    "deco": "soft",
+    "fonts": {
+      "display": {
+        "family": "Cormorant Garamond",
+        "stack": "Cormorant Garamond, Noto Serif SC, Georgia, serif",
+        "google": true,
+        "weights": [
+          400,
+          500
+        ]
+      },
+      "body": {
+        "family": "DM Sans",
+        "stack": "DM Sans, Noto Sans SC, system-ui, sans-serif",
+        "google": true,
+        "weights": [
+          400
+        ]
+      },
+      "mono": {
+        "family": "Courier Prime",
+        "stack": "Courier Prime, Courier New, monospace",
+        "google": true,
+        "weights": [
+          400,
+          500
+        ]
+      }
+    }
+  }
+}

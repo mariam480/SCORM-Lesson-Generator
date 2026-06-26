@@ -1,0 +1,105 @@
+/* cartesian — quiet museum-catalog editorial system (see cartesian/design.md).
+   Warm-stone canvas, Playfair-400 didone serifs + Inter sans, restraint-through-1px
+   taupe hairlines. No shadows, no fills, no radii (only true circles). Atmosphere from
+   compass-drafted rings drifting behind content. Vignelli / Cooper Hewitt register. */
+
+/* extra literal tones from the doc */
+:root{ --stone2:#E2DBD1; --taupe:#B8B0A4; }
+
+/* Canvas: warm sandstone, with a drafting-paper compass-ring atmosphere */
+.stage{ background:#EDE8E0; }
+.stage::before{ content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  /* concentric compass rings, large + offset, behind everything */
+  background:
+    radial-gradient(circle 1px at 86% 22%, var(--taupe) 100%, transparent 0) no-repeat,
+    repeating-radial-gradient(circle at 86% 22%, transparent 0 27vw, color-mix(in srgb,var(--taupe) 40%,transparent) 27vw 27.07vw, transparent 27.07vw 27.5vw) ; }
+.stage::after{ content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  /* the single drafting vertical hairline at ~8vw from left */
+  border-left:1px solid color-mix(in srgb,var(--taupe) 30%,transparent); margin-left:8vw; }
+.slide{ z-index:3; }
+
+/* Eyebrow / labels: uppercase Inter, 3px tracking, taupe, no fill/box */
+.eyebrow{ background:transparent; border:0; border-radius:0; padding:0;
+  font-family:var(--body); font-weight:500; font-size:.75rem; letter-spacing:3px;
+  text-transform:uppercase; color:#8A8178; }
+.section .num{ color:#8A8178; font-weight:400; }
+
+/* Playfair headlines: always ink, weight 400, sentence case */
+.slide-title,.cover-title,.section-title,.c-h,.c-statement,.c-quote .qt,
+.c-acc summary,.ico-label,.ili-h,.card-headline{ font-weight:400; color:#1A1A1A; }
+.slide-title .u{ text-decoration:none; border-bottom:1px solid #1A1A1A; }
+.cover-sub,.c-sub,.c-p{ color:#5A5A5A; }
+
+/* Lists: 1px taupe hairline tick markers, no dots/fills */
+ul.c-list li,ol.c-list li,ul.c-check li{ padding-left:30px; }
+ul.c-list li::before{ content:""; background:#B8B0A4; border-radius:0;
+  width:14px; height:1px; left:0; top:.85em; }
+ol.c-list{ counter-reset:cl; }
+ol.c-list li::before{ counter-increment:cl; content:counter(cl); background:transparent;
+  color:#8A8178; font-family:var(--display); font-weight:400; font-size:1.1rem;
+  width:auto; height:auto; left:0; top:-2px; border-radius:0; }
+ul.c-check li::before{ content:"—"; background:transparent; color:#8A8178;
+  width:auto; height:auto; left:0; top:0; font-weight:400; border-radius:0; }
+
+/* Cards / panels: tracing-paper — 1px taupe outline, faint white fill, flat */
+.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,
+.c-iconlist .ili,.c-img,.c-media,.c-code{
+  background:rgba(255,255,255,.3); border:1px solid #B8B0A4; border-radius:0; box-shadow:none; }
+.c-statement{ background:rgba(255,255,255,.3); color:#1A1A1A; border-left:1px solid #1A1A1A; }
+.c-statement::after{ display:none; }
+.c-note::before{ content:""; }
+
+/* Quote: oversized Playfair quote mark in faint taupe, terminal ink rule */
+.c-quote{ background:rgba(255,255,255,.3); }
+.c-quote::before{ color:#8A8178; opacity:.5; font-family:var(--display); font-weight:400; }
+.c-quote .by{ font-family:var(--body); text-transform:uppercase; letter-spacing:2px;
+  font-size:.85rem; color:#8A8178; }
+
+/* Icons: ringed taupe circle, accent glyph */
+.ico-badge{ background:transparent; border:1px solid #B8B0A4; border-radius:50%;
+  color:#8A8178; box-shadow:none; }
+.ico-badge.plain{ border:0; color:#8A8178; }
+.ili-p{ color:#5A5A5A; }
+
+/* Image: stone-tinted frame, signature crossed-X placeholder via ::before */
+.c-img img,.c-grid img{ border:1px solid #B8B0A4; border-radius:0; }
+.c-img{ background:var(--stone2); }
+.c-img::before{ content:""; border-radius:0; background:
+  linear-gradient(to top right, transparent calc(50% - .5px), #B8B0A4 calc(50% - .5px), #B8B0A4 calc(50% + .5px), transparent calc(50% + .5px)),
+  linear-gradient(to bottom right, transparent calc(50% - .5px), #B8B0A4 calc(50% - .5px), #B8B0A4 calc(50% + .5px), transparent calc(50% + .5px)); }
+.c-img figcaption{ font-family:var(--body); text-transform:uppercase; letter-spacing:2px;
+  font-size:.7rem; color:#8A8178; }
+
+/* Timeline: single 1px taupe line, no nodes — dots reduced to hairline ticks */
+.c-timeline::before{ background:#B8B0A4; width:1px; }
+.ev::before{ background:#B8B0A4; border:0; box-shadow:none; width:9px; height:1px; border-radius:0; }
+.date{ font-family:var(--body); text-transform:uppercase; letter-spacing:2px;
+  font-size:.7rem; color:#8A8178; }
+
+/* Buttons: square 1px taupe outline, transparent; hover inverts to ink */
+.c-btn{ background:transparent; color:#1A1A1A; border:1px solid #B8B0A4; border-radius:0; box-shadow:none; }
+.c-btn::after{ border-radius:0; background:transparent; border:1px solid #B8B0A4; color:#8A8178; }
+
+/* Quiz: hairline-framed options, flat selected/correct states */
+.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input{ border-radius:0; box-shadow:none; }
+.c-quiz .opt{ background:rgba(255,255,255,.3); border:1px solid #B8B0A4; }
+.c-quiz .opt.sel{ border-color:#1A1A1A; }
+.c-quiz .opt.correct{ border-color:#1A1A1A; background:var(--stone2); }
+.c-quiz .opt.wrong{ border-color:#8A8178; }
+.c-quiz .check{ background:transparent; color:#1A1A1A; border:1px solid #1A1A1A; }
+
+/* Flashcards / sorting: flat stone tiles, taupe rings */
+.c-flash .face{ border:1px solid #B8B0A4; border-radius:0; box-shadow:none; background:rgba(255,255,255,.3); }
+.c-sort .chip,.c-sort .pile{ border:1px solid #B8B0A4; border-radius:0; box-shadow:none; }
+.c-sort .pile.over{ border-color:#1A1A1A; }
+.c-sort .chip.correct{ background:var(--stone2); }
+
+/* Chrome: minimal — taupe hairline nav, ink progress, mono-feel counter */
+.navbar{ background:transparent; border-top:1px solid #B8B0A4; }
+.progress-strip{ height:1px; background:#1A1A1A; }
+.navbar button{ background:transparent; color:#1A1A1A; border:1px solid #B8B0A4; border-radius:0; box-shadow:none; }
+.navbar button.ghost{ border:1px solid #B8B0A4; }
+.navbar button:hover:not(:disabled){ background:#1A1A1A; color:#EDE8E0; }
+.navbar button:disabled{ opacity:.35; }
+.counter{ background:transparent; border:0; border-radius:0; font-family:var(--body);
+  text-transform:uppercase; letter-spacing:2px; font-size:.75rem; color:#8A8178; }

@@ -1,0 +1,100 @@
+/* biennale-yellow — literary-editorial biennale catalogue: warm parchment ground, single indigo ink,
+   atmospheric solar-yellow sun-bloom + subordinate ember counter-bloom, 1px ink hairline rules only,
+   ZERO radius / ZERO shadows, Instrument-Serif display, wide-tracked Archivo micro-labels, JetBrains-Mono data.
+   Cites: bold-template-pack/templates/biennale-yellow/design.md (Overview, Persistent Chrome, Depth/Elevation,
+   Shapes/Treatment, Signature Treatments, Do's & Don'ts, Colors→Defaults). */
+
+/* ---- local palette literals from design.md ---- */
+:root{
+  --sun:#F1EE2E; --sun-soft:#F8F39B; --haze:#F0DA7C; --ember:#E26B4A;
+  --paper-deep:#DCD6C4; --hair:rgba(27,37,102,.2);
+}
+
+/* ---- atmospheric ground: parchment + sun-bloom (off-center) + ember counter-bloom ---- */
+.stage{ background:var(--paper); position:relative; }
+.stage::before{ /* primary sun-bloom, off-center */
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background:radial-gradient(46% 42% at 68% 30%,
+    var(--sun) 0%, rgba(241,238,46,.55) 34%, rgba(240,218,124,.20) 60%, rgba(233,229,219,0) 84%);
+}
+.stage::after{ /* subordinate ember bloom, opposite corner */
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background:radial-gradient(34% 36% at 14% 88%, rgba(226,107,74,.20) 0%, rgba(226,107,74,0) 70%);
+}
+.slide{ z-index:3; }
+
+/* ---- square everything: no radius anywhere ---- */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,
+.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,
+.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,
+.c-img::before,.c-media,.c-code{ border-radius:0 !important; box-shadow:none !important; }
+
+/* ---- eyebrow / labels: Archivo 600 uppercase, wide tracking, no fill, hairline under ---- */
+.eyebrow{ background:transparent; color:var(--ink); font-family:var(--body); font-weight:600;
+  text-transform:uppercase; letter-spacing:.24em; padding:0 0 6px; border-bottom:1px solid var(--ink); }
+.section .num{ font-family:var(--display); color:var(--ink); font-weight:400; }
+.cover-sub,.ico-label,.ili-h{ letter-spacing:.04em; }
+
+/* ---- title underline uses sun, not a swap-color ---- */
+.slide-title .u{ background:linear-gradient(var(--sun),var(--sun)) bottom/100% .14em no-repeat; padding-bottom:.02em; }
+
+/* ---- list bullets: small ink square (tile-mark), or check in ink ---- */
+ul.c-list li,ol.c-list li,ul.c-check li{ padding-left:30px; }
+ul.c-list li::before{ content:""; width:9px; height:9px; left:2px; top:.55em; background:var(--ink);
+  border-radius:0; }
+ul.c-check li::before{ content:"→"; background:transparent; color:var(--ink); width:auto; height:auto;
+  left:0; top:0; font-weight:700; border-radius:0; }
+
+/* ---- panels & cards: no borders/shadows; hairline + sun left-marker only ---- */
+.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-iconlist .ili,.c-quiz,.c-media{
+  background:transparent; border:0; border-top:1px solid var(--ink); }
+.c-note{ border-top:0; border-left:4px solid var(--sun); padding-left:18px; background:transparent; }
+.c-note::before{ content:none; }
+
+/* ---- statement: flooded sun panel, ink text (signature poster-fill) ---- */
+.c-statement{ background:var(--sun); color:var(--ink); border:0; }
+.c-statement::after{ display:none; }
+
+/* ---- quote: large serif, oversized ink quote mark, en-rule byline ---- */
+.c-quote{ background:transparent; border-top:1px solid var(--ink); border-left:0; padding-top:20px; }
+.c-quote .qt{ font-family:var(--display); font-weight:400; font-style:italic; line-height:1.04; letter-spacing:-.005em; }
+.c-quote::before{ color:var(--sun); font-family:var(--display); }
+.c-quote .by{ font-family:var(--mono); letter-spacing:.04em; }
+.c-quote .by::before{ content:"— "; }
+
+/* ---- image: offset accent block becomes a flat sun tile (no radius) ---- */
+.c-img::before{ background:var(--sun); border-radius:0; }
+.c-img figcaption,.counter{ font-family:var(--mono); letter-spacing:.06em; }
+
+/* ---- icons: plain ink, no filled badges ---- */
+.ico-badge{ background:transparent; color:var(--ink); border:1px solid var(--ink); }
+.ico-badge.plain{ border:0; }
+
+/* ---- button: square, ink-hairline framed, sun arrow ---- */
+.c-btn{ background:var(--sun); color:var(--ink); border:1px solid var(--ink); }
+.c-btn::after{ background:var(--ink); color:var(--sun); }
+
+/* ---- accordion / tabs: hairline-driven, sun active marker ---- */
+.c-acc summary::after{ color:var(--ink); }
+.c-tabs .tab-strip button{ background:transparent; color:var(--ink); border-bottom:1px solid var(--hair); }
+.c-tabs .tab-strip button.active{ border-bottom:2px solid var(--ink); }
+
+/* ---- timeline: ink hairline spine, ink dot, mono dates ---- */
+.c-timeline::before{ background:var(--ink); }
+.ev::before{ background:var(--ink); border-radius:0; }
+.date{ font-family:var(--mono); letter-spacing:.04em; }
+
+/* ---- quiz: hairline options, sun-fill on correct, ink stroke ---- */
+.c-quiz,.c-quiz .opt{ background:transparent; border:1px solid var(--ink); }
+.c-quiz .opt.sel{ background:var(--sun-soft); }
+.c-quiz .opt.correct{ background:var(--sun); }
+.c-quiz .opt.wrong{ background:rgba(226,107,74,.22); }
+.c-quiz .check{ background:var(--ink); color:var(--paper); border:0; }
+
+/* ---- persistent chrome: hairline-only nav, mono counter at 75% ---- */
+.progress-strip{ height:3px; background:var(--ink); }
+.navbar{ background:var(--paper); border-top:1px solid var(--ink); }
+.navbar button{ background:transparent; color:var(--ink); border:1px solid var(--ink); }
+.navbar button.ghost{ border:1px solid var(--hair); }
+.navbar button:disabled{ opacity:.35; }
+.counter{ color:var(--ink); opacity:.75; }

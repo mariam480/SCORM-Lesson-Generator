@@ -1,0 +1,129 @@
+/* scatterbrain — Post-it-and-cork-board sketchbook system. Per templates/scatterbrain/design.md:
+   Shrikhand display (--display) + Zilla Slab body (--body) + Caveat hand-script (--mono),
+   pastel sticky-note cards (yellow default) on cork/paper/warm texture, soft drop shadows +
+   small rotations, red thumbtack pins (::before), masking tape (::after), 0px radius, corner
+   doodles, dashed hairlines. Yellow accent. var(--mono) here is Caveat (hand-written marks). */
+
+:root{ --accent:#ffe066; --on-accent:#2d2a26;
+  --sb-yellow-deep:#ffd43b; --sb-blue:#a5d8ff; --sb-pink:#ffc9c9; --sb-green:#b2f2bb;
+  --sb-pin:#c92a2a; --sb-pin-hi:#ff6b6b; --sb-tape:rgba(255,255,255,.45);
+  --sb-shadow:rgba(45,42,38,.15); --sb-shadow-deep:rgba(45,42,38,.25); }
+
+/* --- background: warm cream + 40px graph grid + soft pastel glows (paper/warm blend) --- */
+.stage{ background:
+  radial-gradient(60% 50% at 20% 15%, rgba(255,224,102,.16), transparent 70%),
+  radial-gradient(55% 45% at 85% 80%, rgba(165,216,255,.16), transparent 70%),
+  linear-gradient(135deg,#faf8f3,#f0ece3); }
+.stage::before{ content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background-image:linear-gradient(rgba(45,42,38,.06) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(45,42,38,.06) 1px,transparent 1px);
+  background-size:40px 40px; }
+/* fixed SVG grain overlay at ~4% + a corner doodle squiggle */
+.stage::after{ content:""; position:absolute; inset:0; pointer-events:none; z-index:2; opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg fill='none' stroke='%232d2a26' stroke-width='3' opacity='0.13'%3E%3Ccircle cx='28' cy='30' r='16'/%3E%3Cpath d='M110 120 q12 -18 24 0 t24 0'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:no-repeat,no-repeat; background-position:right 4% bottom 6%; }
+.slide{ z-index:3; }
+
+/* --- shared post-it treatment: yellow gradient sticky, soft shadow, tilt --- */
+.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-iconlist .ili,
+.c-quiz,.c-img img,.c-grid img,.c-media,.c-code,.c-flash .face,.c-sort .pile{
+  border-radius:0 !important;
+  box-shadow:2px 3px 15px var(--sb-shadow), 0 1px 3px var(--sb-shadow-deep); }
+
+/* eyebrow = Caveat label-script, uppercase, tracked */
+.eyebrow{ background:transparent; border:0; border-radius:0; padding:0 0 4px;
+  font-family:var(--mono); font-weight:600; text-transform:uppercase; letter-spacing:.15em;
+  color:var(--sb-pin); }
+.cover-title,.slide-title,.section-title{ transform:rotate(-1.5deg); transform-origin:left center; }
+.section .num{ color:var(--accent); -webkit-text-stroke:2px var(--sb-yellow-deep); transform:rotate(-4deg); }
+
+/* lists: hand-drawn check / dash marks in ink */
+ul.c-list li,ul.c-check li,ol.c-list li{ padding-left:30px; }
+ul.c-list li::before{ content:"✏"; background:transparent; color:var(--sb-pin);
+  width:auto; height:auto; left:0; top:1px; border-radius:0; font-size:.9em; }
+ul.c-check li::before{ content:"✓"; background:transparent; color:#2f9e44;
+  width:auto; height:auto; left:0; top:0; border-radius:0; font-weight:700; }
+
+/* statement = big yellow sticky, "officially posted" with pin + tape */
+.c-statement{ position:relative; background:linear-gradient(135deg,var(--accent),var(--sb-yellow-deep));
+  color:var(--on-accent); transform:rotate(-1.5deg); }
+.c-statement::after{ content:""; display:block; position:absolute; top:-13px; left:50%;
+  width:84px; height:24px; transform:translateX(-50%) rotate(-2deg);
+  background:var(--sb-tape); border:1px solid rgba(255,255,255,.3); box-shadow:none; }
+.c-statement::before{ content:""; position:absolute; top:-11px; left:50%; width:16px; height:16px;
+  transform:translateX(-50%); border-radius:50%; z-index:2;
+  background:radial-gradient(circle at 30% 30%,var(--sb-pin-hi),var(--sb-pin));
+  box-shadow:0 2px 4px var(--sb-shadow-deep), inset -2px -2px 4px rgba(0,0,0,.2); }
+
+/* note = blue sticky pinned with a red thumbtack */
+.c-note{ position:relative; background:linear-gradient(135deg,var(--sb-blue),#74c0fc);
+  border:0; color:var(--on-accent); transform:rotate(1.2deg); }
+.c-note::before{ content:""; position:absolute; top:-11px; left:50%; width:16px; height:16px;
+  transform:translateX(-50%); border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,var(--sb-pin-hi),var(--sb-pin));
+  box-shadow:0 2px 4px var(--sb-shadow-deep), inset -2px -2px 4px rgba(0,0,0,.2); }
+
+/* quote = pink sticky; big Shrikhand quote mark; Caveat attribution */
+.c-quote{ background:linear-gradient(135deg,var(--sb-pink),#ff9f9f); border:0; color:var(--on-accent);
+  transform:rotate(-1deg); }
+.c-quote::before{ font-family:var(--display); color:var(--sb-pin); opacity:.5; }
+.c-quote .by{ font-family:var(--mono); font-weight:600; color:var(--sb-pin); }
+
+/* cards / panels = green & white stickies; alternate tilt */
+.c-acc details,.c-tabs .tab-body,.c-iconlist .ili{ background:linear-gradient(135deg,var(--sb-green),#8ce99a);
+  border:0; color:var(--on-accent); }
+.c-iconlist .ili{ transform:rotate(-1deg); }
+.c-iconlist .ili:nth-child(even){ transform:rotate(1.4deg);
+  background:#fff; box-shadow:inset 0 0 0 2px var(--on-accent), 2px 3px 15px var(--sb-shadow); }
+
+/* tabs strip: paper tabs, active = yellow sticky */
+.c-tabs .tab-strip button{ border-radius:0; font-family:var(--mono); font-weight:600; }
+.c-tabs .tab-strip button.active{ background:var(--accent); color:var(--on-accent); }
+.c-acc summary{ font-family:var(--display); }
+
+/* feature-icon badge = 60px round ink-bordered circle, Shrikhand glyph */
+.ico-badge{ border-radius:50% !important; background:#fff; color:var(--on-accent);
+  border:3px solid var(--on-accent); box-shadow:none; font-family:var(--display); }
+.ili-h{ font-family:var(--display); }
+
+/* images = polaroid white frame, slight tilt; accent offset shape hidden */
+.c-img img,.c-grid img{ background:#fff; padding:0; }
+.c-img::before{ display:none; }
+.c-img figcaption{ font-family:var(--mono); font-weight:500; color:var(--ink); }
+.c-img{ transform:rotate(-1.2deg); }
+
+/* buttons + quiz check = ink-on-yellow sticky chips, squared */
+.c-btn,.c-quiz .check{ border-radius:0 !important; background:var(--accent); color:var(--on-accent);
+  border:2px solid var(--on-accent); font-family:var(--mono); font-weight:700;
+  box-shadow:2px 3px 0 var(--on-accent); }
+.c-btn::after{ background:var(--on-accent); color:var(--accent); border-radius:50%; }
+
+/* quiz options = paper stickies with ink border */
+.c-quiz,.c-quiz .opt,.c-quiz input{ border-radius:0 !important; }
+.c-quiz .opt{ border:2px solid var(--on-accent); background:#fff; }
+.c-quiz .opt.sel{ background:var(--sb-blue); }
+.c-quiz .opt.correct{ background:var(--sb-green); }
+.c-quiz .opt.wrong{ background:var(--sb-pink); }
+
+/* flashcards / sort chips squared & sticky-colored */
+.c-flash .face{ border-radius:0 !important; background:linear-gradient(135deg,var(--accent),var(--sb-yellow-deep)); }
+.c-sort .chip{ border-radius:0 !important; background:#fff; border:2px solid var(--on-accent);
+  box-shadow:1px 2px 6px var(--sb-shadow); }
+.c-sort .pile{ border-radius:0 !important; border:2px dashed rgba(45,42,38,.3); }
+.c-sort .pile.over{ background:rgba(255,224,102,.4); }
+
+/* timeline: dashed ink line, pin-bead dots */
+.c-timeline::before{ background:repeating-linear-gradient(rgba(45,42,38,.3) 0 8px,transparent 8px 12px); }
+.ev::before{ background:radial-gradient(circle at 30% 30%,var(--sb-pin-hi),var(--sb-pin));
+  box-shadow:inset -1px -1px 2px rgba(0,0,0,.25); }
+.ev .date{ font-family:var(--mono); font-weight:600; color:var(--sb-pin); }
+
+/* chrome: paper bar with dashed top edge, yellow progress, sticky-chip nav buttons */
+.navbar{ background:linear-gradient(135deg,#faf8f3,#f0ece3); border-top:2px dashed rgba(45,42,38,.3); }
+.progress-strip{ height:6px; background:var(--accent); }
+.navbar button{ border-radius:0 !important; font-family:var(--mono); font-weight:700;
+  background:var(--accent); color:var(--on-accent); border:2px solid var(--on-accent);
+  box-shadow:2px 2px 0 var(--on-accent); }
+.navbar button.ghost{ background:#fff; }
+.navbar button:disabled{ box-shadow:none; opacity:.45; }
+.counter{ font-family:var(--mono); font-weight:600; color:var(--ink); }

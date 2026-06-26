@@ -1,0 +1,128 @@
+/* daisy-days — cheerful storybook/sticker-sheet kawaii: cream canvas, multi-pastel
+   surfaces with a single coral pop, chunky rounded Fredoka One headlines + Quicksand
+   body. Every container = 3px charcoal outline + HARD offset shadow (no blur), generous
+   radii, butter outlined-disc bullets, daisy/floral corner ornaments. Ref: design.md
+   (Overview, Depth & Elevation, Shapes, Signature Treatments, Do's/Don'ts, Colors). */
+
+:root{
+  --dd-dark:#2D2D2D; --dd-cream:#F5F0E6; --dd-butter:#FDE68A; --dd-pink:#F7C8D4;
+  --dd-mint:#A8E6CF; --dd-turq:#7ECDC0; --dd-coral:#F8635F;
+  --dd-shadow:6px 6px 0 var(--dd-dark); --dd-shadow-sm:4px 4px 0 var(--dd-dark);
+}
+
+/* ---- Canvas: warm cream paper + a wreath of corner ornaments ---- */
+.stage{ background: var(--dd-cream); }
+.stage::before, .stage::after{ content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background-repeat:no-repeat; }
+/* daisies top-left & bottom-right (white petals, butter center, charcoal stroke) */
+.stage::before{ background-image:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110' viewBox='0 0 110 110'%3E%3Cg stroke='%232D2D2D' stroke-width='3'%3E%3Cg fill='%23fff'%3E%3Cellipse cx='55' cy='22' rx='13' ry='20'/%3E%3Cellipse cx='55' cy='88' rx='13' ry='20'/%3E%3Cellipse cx='22' cy='55' rx='20' ry='13'/%3E%3Cellipse cx='88' cy='55' rx='20' ry='13'/%3E%3Cellipse cx='32' cy='32' rx='14' ry='18' transform='rotate(-45 32 32)'/%3E%3Cellipse cx='78' cy='32' rx='14' ry='18' transform='rotate(45 78 32)'/%3E%3Cellipse cx='32' cy='78' rx='14' ry='18' transform='rotate(45 32 78)'/%3E%3Cellipse cx='78' cy='78' rx='14' ry='18' transform='rotate(-45 78 78)'/%3E%3C/g%3E%3Ccircle cx='55' cy='55' r='16' fill='%23FDE68A'/%3E%3C/g%3E%3C/svg%3E"),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46' viewBox='0 0 46 46'%3E%3Cpath d='M23 3l5.5 11.5L41 16l-9 9 2.5 13L23 32 11.5 38 14 25 5 16l12.5-1.5z' fill='%23F7C8D4' stroke='%232D2D2D' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: -28px -30px, calc(100% - 40px) 36px; }
+/* star + rainbow bottom-right region */
+.stage::after{ background-image:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath d='M26 4l6 13 14 1.5-10.5 9.5 3 14L26 47 13.5 41l3-14L6 18.5 20 17z' fill='%23A8E6CF' stroke='%232D2D2D' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E"),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='66' viewBox='0 0 120 66'%3E%3Cg fill='none' stroke-width='9'%3E%3Cpath d='M12 64a48 48 0 0196 0' stroke='%23F8635F'/%3E%3Cpath d='M24 64a36 36 0 0172 0' stroke='%23FDE68A'/%3E%3Cpath d='M36 64a24 24 0 0148 0' stroke='%23A8E6CF'/%3E%3Cpath d='M48 64a12 12 0 0124 0' stroke='%23A8D8F0'/%3E%3C/g%3E%3Cpath d='M12 64a48 48 0 0196 0M24 64a36 36 0 0172 0M36 64a24 24 0 0148 0M48 64a12 12 0 0124 0' fill='none' stroke='%232D2D2D' stroke-width='2.4'/%3E%3C/svg%3E");
+  background-position: 44px calc(100% - 48px), calc(100% - 18px) calc(100% + 6px); }
+.slide{ z-index:3; }
+
+/* ---- Headlines: chunky, sit flat on cream ---- */
+.cover-title, .slide-title, .section-title, .cover-sub{ color: var(--dd-dark); }
+.cover-sub{ color: var(--dd-coral); }
+
+/* ---- Eyebrow → butter pill badge ---- */
+.eyebrow{ display:inline-block; background: var(--dd-butter); color: var(--dd-dark);
+  border:3px solid var(--dd-dark); border-radius:50px; padding:6px 18px;
+  box-shadow: var(--dd-shadow-sm); font-family: var(--display); letter-spacing:.02em; }
+
+/* ---- Section number → outlined coral disc ---- */
+.section .num{ background: var(--dd-coral); color:#fff; border:3px solid var(--dd-dark);
+  border-radius:50%; box-shadow: var(--dd-shadow); font-family: var(--display); }
+
+/* ---- List bullets: outlined butter discs (no glyphs) ---- */
+ul.c-list li, ul.c-check li{ padding-left:34px; }
+ul.c-list li::before, ul.c-check li::before{ content:""; width:20px; height:20px;
+  background: var(--dd-butter); border:2px solid var(--dd-dark); border-radius:50%;
+  left:0; top:4px; }
+ul.c-check li::before{ background: var(--dd-mint); }
+ol.c-list li::before{ background: var(--dd-coral); color:#fff; border:2px solid var(--dd-dark);
+  border-radius:50%; font-family: var(--display); }
+
+/* ---- Cards / panels: white fill, 3px charcoal outline, HARD offset shadow ---- */
+.c-statement, .c-note, .c-quote, .c-acc details, .c-tabs .tab-body, .c-iconlist .ili,
+.c-quiz, .c-img, .c-media, .c-flash .face, .c-timeline{
+  background:#fff; border:3px solid var(--dd-dark); border-radius:20px;
+  box-shadow: var(--dd-shadow); }
+
+/* Statement → butter surface, dark ink, outlined-headline text-shadow */
+.c-statement{ background: var(--dd-butter); color: var(--dd-dark); border-radius:28px;
+  text-shadow: 3px 3px 0 rgba(0,0,0,.18); }
+.c-statement::after{ display:none; }
+
+/* Callout → mint cap feel with a daisy mark instead of lightbulb */
+.c-note{ background: var(--dd-mint); border-radius:28px; padding-left:64px; }
+.c-note::before{ content:""; position:absolute; left:18px; top:18px; width:34px; height:34px;
+  background:no-repeat center/contain
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 110 110'%3E%3Cg stroke='%232D2D2D' stroke-width='4'%3E%3Cg fill='%23fff'%3E%3Cellipse cx='55' cy='22' rx='13' ry='20'/%3E%3Cellipse cx='55' cy='88' rx='13' ry='20'/%3E%3Cellipse cx='22' cy='55' rx='20' ry='13'/%3E%3Cellipse cx='88' cy='55' rx='20' ry='13'/%3E%3Cellipse cx='32' cy='32' rx='14' ry='18' transform='rotate(-45 32 32)'/%3E%3Cellipse cx='78' cy='32' rx='14' ry='18' transform='rotate(45 78 32)'/%3E%3Cellipse cx='32' cy='78' rx='14' ry='18' transform='rotate(45 32 78)'/%3E%3Cellipse cx='78' cy='78' rx='14' ry='18' transform='rotate(-45 78 78)'/%3E%3C/g%3E%3Ccircle cx='55' cy='55' r='16' fill='%23FDE68A'/%3E%3C/g%3E%3C/svg%3E"); }
+
+/* Quote → big soft-pink quote mark */
+.c-quote{ border-radius:28px; }
+.c-quote::before{ content:"\201C"; color: var(--dd-pink); font-family: var(--display);
+  font-size:4rem; line-height:1; }
+.c-quote .by{ color: var(--dd-coral); }
+
+/* ---- Images: offset accent shape stays, pink, rounded ---- */
+.c-img img, .c-grid img{ border:3px solid var(--dd-dark); border-radius:20px; }
+.c-img::before{ background: var(--dd-pink); border-radius:20px; }
+.c-img figcaption{ color: var(--muted); }
+
+/* ---- Icon badges → outlined pastel circles ---- */
+.ico-badge{ background: var(--dd-mint); border:3px solid var(--dd-dark); border-radius:50%;
+  box-shadow: var(--dd-shadow-sm); color: var(--dd-dark); }
+.ico-badge.plain{ box-shadow:none; }
+
+/* ---- Accordion / tabs ---- */
+.c-acc summary::after{ color: var(--dd-coral); font-family: var(--display); }
+.c-tabs .tab-strip button{ background:#fff; border:3px solid var(--dd-dark); border-radius:50px;
+  font-family: var(--display); color: var(--dd-dark); box-shadow: var(--dd-shadow-sm); }
+.c-tabs .tab-strip button.active{ background: var(--dd-butter); }
+
+/* ---- Flashcards / sorting ---- */
+.c-flash .face{ border-radius:28px; }
+.c-sort .chip{ background: var(--dd-butter); border:3px solid var(--dd-dark); border-radius:50px;
+  box-shadow: var(--dd-shadow-sm); font-family: var(--display); }
+.c-sort .pile{ background:#fff; border:3px solid var(--dd-dark); border-radius:20px; }
+.c-sort .pile.over{ background: var(--dd-mint); }
+.c-sort .chip.correct{ background: var(--dd-mint); }
+.c-sort .chip.wrong{ background: var(--dd-pink); }
+
+/* ---- Timeline: charcoal line, coral dots ---- */
+.c-timeline{ background:transparent; border:none; box-shadow:none; }
+.c-timeline::before{ background: var(--dd-dark); }
+.ev::before{ background: var(--dd-coral); border:3px solid var(--dd-dark); border-radius:50%; }
+.ev .date{ color: var(--dd-coral); font-family: var(--display); }
+
+/* ---- Quiz ---- */
+.c-quiz .opt{ background:#fff; border:3px solid var(--dd-dark); border-radius:50px;
+  box-shadow: var(--dd-shadow-sm); }
+.c-quiz .opt.sel{ background: var(--dd-butter); }
+.c-quiz .opt.correct{ background: var(--dd-mint); }
+.c-quiz .opt.wrong{ background: var(--dd-pink); }
+.c-quiz .fb.ok{ color: var(--dd-dark); }
+.c-quiz .fb.no{ color: var(--dd-coral); }
+
+/* ---- Buttons: rounded pill, charcoal outline, hard offset shadow ---- */
+.c-btn, .c-quiz .check{ background: var(--dd-coral); color:#fff; border:3px solid var(--dd-dark);
+  border-radius:50px; box-shadow: var(--dd-shadow-sm); font-family: var(--display); }
+.c-btn::after{ background: var(--dd-butter); color: var(--dd-dark); border:2px solid var(--dd-dark);
+  border-radius:50%; }
+
+/* ---- Persistent chrome: counter pill + chunky nav buttons ---- */
+.navbar{ background: var(--dd-cream); border-top:3px solid var(--dd-dark); }
+.progress-strip{ height:8px; background: var(--dd-butter); }
+.navbar button{ background: var(--dd-coral); color:#fff; border:3px solid var(--dd-dark);
+  border-radius:50px; box-shadow: var(--dd-shadow-sm); font-family: var(--display); }
+.navbar button.ghost{ background:#fff; color: var(--dd-dark); }
+.navbar button:disabled{ opacity:.45; box-shadow:none; }
+.counter{ background:#fff; border:3px solid var(--dd-dark); border-radius:50px;
+  box-shadow: var(--dd-shadow-sm); font-family: var(--display); color: var(--dd-dark); }

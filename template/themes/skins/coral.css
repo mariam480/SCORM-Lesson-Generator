@@ -1,0 +1,113 @@
+/* coral — bold magazine-poster system: coral fire / ink / warm cream surfaces meeting
+   at hard edges, oversized Bebas Neue uppercase condensed display + Inter body, a signature
+   45° diagonal hatch on coral fills, ink-on-fire headlines, square everything, no shadows.
+   Per templates/coral/design.md (Overview, Persistent Chrome, Depth, Shapes, Signature
+   Treatments, Do's/Don'ts, Colors→Defaults). Bebas is uppercase-only — lean into big caps. */
+
+/* coral's literal palette (the brief gives fonts + core vars; these are doc colors) */
+:root{ --coral-dark:#D44A4A; --cream-dark:#E8E0D4; --gray:#6B6B6B; }
+
+/* Square system: kill all radius on restyled components */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before { border-radius:0 !important; }
+
+/* ---- surfaces ---- */
+.stage{ background: var(--paper); }
+/* signature 45° diagonal hatch, 6% black, 20/40 stride — atmospheric texture over the canvas */
+.stage::before{ content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0,0,0,.06) 20px, rgba(0,0,0,.06) 40px); }
+.slide{ z-index:3; }
+
+/* ---- display type: Bebas is uppercase, tracked, ink — never gray, never sentence case ---- */
+.slide-title,.cover-title,.section-title,.section .num,.c-h,.c-statement,.c-quote .qt,
+.c-acc summary,.c-tabs .tab-strip button,.c-flash .front,.c-flash .back{
+  font-family: var(--display); text-transform: uppercase; letter-spacing: 2px; line-height: .95; color: var(--ink); }
+.cover-title{ letter-spacing: 4px; }
+
+/* eyebrow / labels: Inter, coral, uppercase, heavy tracking, weight 700 */
+.eyebrow{ background: transparent; color: var(--accent); font-family: var(--body);
+  font-weight: 700; text-transform: uppercase; letter-spacing: 4px; padding: 0; }
+
+/* cover: full-width 3px ink rule @15% under the hero title (title-rule signature) */
+.cover-sub{ color: var(--gray); }
+.cover-title::after{ content:""; display:block; width:100%; height:3px; background: var(--ink); opacity:.15; margin-top:.18em; }
+
+/* section: oversized condensed ordinal numeral in coral, the cover-page mark */
+.section .num{ color: var(--accent); letter-spacing: 4px; }
+
+/* ---- lists: solid coral square bullet (icon-square language), tracked ---- */
+ul.c-list li,ul.c-check li{ padding-left: 30px; }
+ul.c-list li::before{ content:""; width:14px; height:14px; background: var(--accent);
+  border-radius:0; left:0; top:.42em; }
+ol.c-list{ counter-reset: cl; }
+ol.c-list li{ padding-left: 46px; }
+ol.c-list li::before{ counter-increment: cl; content: counter(cl,decimal-leading-zero);
+  font-family: var(--display); color: var(--accent); background: transparent;
+  font-size: 1.5em; line-height:1; left:0; top:-.05em; width:auto; height:auto; letter-spacing:1px; }
+ul.c-check li::before{ content:"✓"; background: var(--accent); color: var(--on-accent);
+  display:grid; place-items:center; font-weight:700; font-size:11px; }
+
+/* ---- cards / panels: white fill, 5px coral top border as the ONLY chrome, flat ---- */
+.c-note,.c-iconlist .ili,.c-acc details,.c-tabs .tab-body,.c-flash .face{
+  background:#fff; border:0; border-top:5px solid var(--accent); box-shadow:none; }
+.c-note::before{ content:none; }
+.c-note{ color: var(--ink); }
+
+/* statement: full coral plane, ink-on-fire, with the 45° hatch overlay; tracked caps */
+.c-statement{ background: var(--accent); color: var(--ink); box-shadow:none; overflow:hidden; }
+.c-statement::after{ content:""; display:block; position:absolute; inset:0; opacity:1;
+  background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0,0,0,.06) 20px, rgba(0,0,0,.06) 40px); }
+
+/* quote: ink plane left-marked by coral; giant Bebas quote mark @35% */
+.c-quote{ background: var(--ink); color: var(--cream,#F5F0E8); border:0; border-left:4px solid var(--accent); box-shadow:none; }
+.c-quote .qt{ color: var(--paper); font-family: var(--body); font-weight:300; text-transform:none; letter-spacing:0; }
+.c-quote .by{ color: var(--accent); text-transform:uppercase; letter-spacing:3px; font-weight:600; }
+.c-quote::before{ font-family: var(--display); color: rgba(232,93,93,.35); }
+
+/* ---- images: hard offset coral block behind, square ---- */
+.c-img::before{ background: var(--accent); border-radius:0; }
+.c-img figcaption{ color: var(--gray); text-transform:uppercase; letter-spacing:2px; font-size:11px; }
+
+/* ---- icons: 48px solid coral square, white glyph ---- */
+.ico-badge{ background: var(--accent); color: var(--on-accent); border-radius:0; }
+.ico-badge.plain{ background: transparent; color: var(--accent); }
+.ili-h{ font-family: var(--display); text-transform:uppercase; letter-spacing:1px; color: var(--ink); }
+
+/* ---- buttons: square, ink-on-fire coral fill; nav check + cta ---- */
+.c-btn,.c-quiz .check{ background: var(--accent); color: var(--on-accent); border-radius:0; box-shadow:none; }
+.c-btn::after{ background: var(--ink); color: var(--accent); border-radius:0; }
+
+/* ---- accordion / tabs ---- */
+.c-acc summary{ font-size: 1.05em; }
+.c-acc summary::after{ color: var(--accent); }
+.c-tabs .tab-strip button{ background: transparent; color: var(--gray); border:0; border-bottom:3px solid transparent; }
+.c-tabs .tab-strip button.active{ color: var(--ink); border-bottom-color: var(--accent); }
+
+/* ---- timeline: 4px ink line, coral dots with cream halo ---- */
+.c-timeline::before{ background: var(--ink); width:4px; opacity:1; }
+.c-timeline .ev::before{ background: var(--accent); border:4px solid var(--paper); border-radius:50%; }
+.c-timeline .date{ font-family: var(--display); color: var(--accent); letter-spacing:2px; }
+
+/* ---- sorting / flashcards ---- */
+.c-sort .chip{ border-radius:0; border:0; border-left:4px solid var(--accent); background:#fff; color:var(--ink); }
+.c-sort .pile{ border-radius:0; border:2px dashed var(--coral-dark); }
+.c-sort .pile.over{ background: rgba(232,93,93,.1); }
+.c-sort .chip.correct{ background: var(--accent); color: var(--on-accent); }
+.c-sort .chip.wrong{ background: var(--coral-dark); color:#fff; }
+.c-flash .hint{ color: var(--accent); text-transform:uppercase; letter-spacing:2px; }
+
+/* ---- quiz: square options, coral correct / dark-coral wrong ---- */
+.c-quiz .opt{ border-radius:0; border:2px solid var(--line); background:#fff; }
+.c-quiz .opt.sel{ border-color: var(--accent); }
+.c-quiz .opt.correct{ background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.c-quiz .opt.wrong{ background: var(--coral-dark); color:#fff; border-color: var(--coral-dark); }
+.c-quiz .fb.ok{ color: var(--accent); } .c-quiz .fb.no{ color: var(--coral-dark); }
+
+/* ---- persistent chrome: cream band, hard ink top edge, square nav, coral progress ---- */
+.navbar{ background: var(--paper); border-top:4px solid var(--ink); }
+.progress-strip{ height:6px; background: var(--accent); }
+.navbar button{ border-radius:0; box-shadow: inset 0 0 0 2px var(--ink);
+  background: transparent; color: var(--ink); font-family: var(--body);
+  text-transform:uppercase; letter-spacing:2px; font-weight:700; }
+.navbar button:not(.ghost){ background: var(--accent); color: var(--on-accent); box-shadow:none; }
+.navbar button:disabled{ opacity:.35; }
+.counter{ border-radius:0; font-family: var(--display); letter-spacing:3px; color: var(--ink); }

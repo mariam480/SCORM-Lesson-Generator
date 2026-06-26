@@ -24,13 +24,90 @@ function slugify(s) { return String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-")
 function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 function cp(s, d) { fs.cpSync(s, d, { recursive: true }); }
 
+// ---- theme (visual template) -----------------------------------------------
+// A theme re-skins the player: palette + font roles + radius + surface tints +
+// decorative vocabulary. It does NOT touch the layout/type-scale (which is tuned
+// to fit the fixed frame). Themes live in template/themes/index.json with their
+// woff2 in template/themefonts/ — built by build-themes.mjs from the bold pack.
+function relLum(hex) {
+  let h = String(hex).replace("#", "");
+  if (h.length === 3) h = h.split("").map((x) => x + x).join("");
+  if (!/^[0-9a-f]{6}$/i.test(h)) return 1;
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+  return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+}
+function loadThemes() {
+  const p = path.join(TEMPLATE, "themes", "index.json");
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : {};
+}
+function buildTheme(slug) {
+  const empty = { fontFaces: "", themeCss: "", fontFiles: [], accent: null };
+  if (!slug) return empty;
+  const themes = loadThemes();
+  const t = themes[slug];
+  if (!t) die(`unknown template "${slug}". available: ${Object.keys(themes).sort().join(", ")}`);
+  const manPath = path.join(TEMPLATE, "themefonts", "manifest.json");
+  const man = fs.existsSync(manPath) ? JSON.parse(fs.readFileSync(manPath, "utf8")) : {};
+
+  // @font-face for each bundled (family, weight) the theme uses; collect files.
+  const faces = [];
+  const files = new Set();
+  for (const role of ["display", "body", "mono"]) {
+    const f = t.fonts && t.fonts[role];
+    if (!f || !f.google) continue;
+    for (const w of f.weights || []) {
+      const file = man[f.family + "|" + w];
+      if (!file) continue;
+      faces.push(`@font-face{font-family:'${f.family}';src:url('fonts/${file}') format('woff2');font-weight:${w};font-display:swap;}`);
+      files.add(file);
+    }
+  }
+
+  const c = t.colors || {};
+  // text on accent fills must contrast with the ACCENT, not reuse the theme ink
+  // (a dark theme's ink is light, which would vanish on a light accent).
+  const onAccent = relLum(c.accent) > 0.55 ? "#15130f" : "#ffffff";
+  const stack = (role, fb) => { const f = t.fonts && t.fonts[role]; return f ? (f.stack || `'${f.family}', ${fb}`) : null; };
+  const vars = [
+    c.accent && `--accent:${c.accent};`, c.ink && `--ink:${c.ink};`, c.bg && `--bg:${c.bg};`,
+    c.paper && `--paper:${c.paper};`, c.line && `--line:${c.line};`, c.muted && `--muted:${c.muted};`,
+    stack("display", "system-ui,sans-serif") && `--display:${stack("display", "system-ui,sans-serif")};`,
+    stack("body", "system-ui,sans-serif") && `--body:${stack("body", "system-ui,sans-serif")};`,
+    stack("mono", "ui-monospace,monospace") && `--mono:${stack("mono", "ui-monospace,monospace")};`,
+    `--on-accent:${onAccent};`, t.radius && `--r:${t.radius};`,
+  ].filter(Boolean).join("");
+
+  // A theme's real visual identity lives in a hand-authored skin that recreates
+  // its design.md's decorative + component vocabulary (backgrounds, borders,
+  // bullets, cards, chrome). The generic floating shapes are always hidden for a
+  // template — each skin paints its own background.
+  const skinPath = path.join(TEMPLATE, "themes", "skins", slug + ".css");
+  const skin = fs.existsSync(skinPath) ? fs.readFileSync(skinPath, "utf8") : "";
+  const themeCss = `:root{${vars}}\n.deco{display:none !important;}\n${skin}`;
+
+  return { fontFaces: faces.join("\n"), themeCss, fontFiles: [...files], accent: c.accent || null };
+}
+
 const specPath = process.argv[2];
+// `--list-templates` prints the available visual templates and exits.
+if (specPath === "--list-templates") {
+  const themes = loadThemes();
+  const names = Object.keys(themes).sort();
+  if (!names.length) die("no templates built yet — run build-themes.mjs");
+  for (const n of names) console.log(`${n.padEnd(20)} ${themes[n].scheme.padEnd(6)} ${themes[n].tagline || ""}`);
+  process.exit(0);
+}
 const outDir = path.resolve(process.argv[3] || path.join(process.cwd(), "dist"));
-if (!specPath) die("usage: node generate-slides.mjs <slide-spec.json> [out-dir]");
+if (!specPath) die("usage: node generate-slides.mjs <slide-spec.json> [out-dir]   (or --list-templates)");
 const spec = JSON.parse(fs.readFileSync(specPath, "utf8"));
 const specDir = path.dirname(path.resolve(specPath));
 if (!spec.title) die("spec.title is required");
 if (!Array.isArray(spec.slides) || !spec.slides.length) die("spec.slides must be a non-empty array");
+
+// Resolve the visual template/theme (optional). spec.color, if given, always
+// wins over the theme's accent; otherwise the theme's accent drives the deck.
+const theme = buildTheme(spec.template);
+const accent = spec.color || theme.accent || "#008181";
 
 // ---- collect + repath referenced assets (src/poster/images[].src) ----------
 const assetMap = new Map(); // abs -> assets/<folder>/<file>
@@ -87,6 +164,10 @@ fs.mkdirSync(path.join(pkg, "scormcontent", "assets"), { recursive: true });
 cp(path.join(TEMPLATE, "scormdriver"), path.join(pkg, "scormdriver"));
 cp(path.join(TEMPLATE, "scormcontent", "player.js"), path.join(pkg, "scormcontent", "player.js"));
 cp(path.join(TEMPLATE, "scormcontent", "fonts"), path.join(pkg, "scormcontent", "fonts"));
+// bundle only the selected theme's woff2 alongside the default fonts (offline)
+for (const file of theme.fontFiles) {
+  cp(path.join(TEMPLATE, "themefonts", file), path.join(pkg, "scormcontent", "fonts", file));
+}
 for (const f of fs.readdirSync(TEMPLATE)) if (f.endsWith(".xsd")) cp(path.join(TEMPLATE, f), path.join(pkg, f));
 
 for (const [abs, key] of assetMap) {
@@ -104,11 +185,18 @@ fs.writeFileSync(
 );
 if (missingIcons.size) console.warn("⚠ unknown icon name(s) ignored: " + [...missingIcons].join(", "));
 
-const lessonJson = JSON.stringify({ title: spec.title, color: spec.color || "#008181", slides: spec.slides });
+// player.js sets --accent inline from LESSON.color, which would beat the injected
+// theme/skin CSS. So only pass color when the USER set one explicitly; for a
+// template (no user color) let the injected :root + skin own --accent (a skin may
+// legitimately override it, e.g. when the design's true accent differs).
+const lessonColor = spec.color || (spec.template ? "" : accent);
+const lessonJson = JSON.stringify({ title: spec.title, color: lessonColor, slides: spec.slides });
 let html = fs.readFileSync(path.join(TEMPLATE, "scormcontent", "index.html.tmpl"), "utf8");
 html = html
   .replace("__LESSON_TITLE__", esc(spec.title))
-  .replace("__ACCENT__", (spec.color || "#008181"))
+  .replace("__ACCENT__", accent)
+  .replace("__FONT_FACES__", theme.fontFaces)
+  .replace("__THEME_CSS__", theme.themeCss)
   // JSON sits inside a <script type=application/json> — only </script> needs neutralizing
   .replace("__LESSON_JSON__", lessonJson.replace(/<\//g, "<\\/"));
 fs.writeFileSync(path.join(pkg, "scormcontent", "index.html"), html);
@@ -123,7 +211,8 @@ execFileSync("zip", ["-r", "-q", "-X", zip, "."], { cwd: pkg });
 console.log("✓ package dir : " + pkg);
 console.log("✓ scorm zip   : " + zip);
 console.log("✓ preview     : file://" + path.join(pkg, "scormcontent", "index.html"));
-console.log("  slides      : " + spec.slides.length + " | assets: " + assetMap.size + " | icons: " + usedIcons.size);
+console.log("  slides      : " + spec.slides.length + " | assets: " + assetMap.size + " | icons: " + usedIcons.size +
+  (spec.template ? " | template: " + spec.template : ""));
 
 // ---- helpers ---------------------------------------------------------------
 function listFiles(dir, base = dir) {

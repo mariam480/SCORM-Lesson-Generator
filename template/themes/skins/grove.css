@@ -1,0 +1,105 @@
+/* grove — quiet editorial-serif monograph: deep forest-green ground, warm cream text,
+   single terracotta-coral accent, Playfair Display 400 (never bold), Jost-light body,
+   JetBrains-mono uppercase chrome. Flat: NO shadows/gradients/blur, 1px hairlines only,
+   ZERO radius, em-dash coral bullets, near-invisible 6% serif watermark numeral.
+   Recreates templates/grove/design.md (Overview, Depth & Elevation, Shapes, Signatures). */
+
+/* --- coral accent literal (design.md accent #c8524a, hairline 12% cream) --- */
+.stage { --coral: var(--accent); --hair: rgba(212,207,191,.12); --wm: rgba(212,207,191,.06);
+  background: var(--bg); }
+
+/* watermark numeral — faint Playfair texture, bottom-right of every slide (6% opacity) */
+.stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.cover::before, .section::before { content: "§"; position: absolute; right: 6%; bottom: -.12em;
+  font-family: var(--display); font-weight: 400; font-size: 32vh; line-height: 1;
+  color: var(--wm); pointer-events: none; z-index: 1; letter-spacing: -.03em; }
+.slide { z-index: 3; }
+
+/* zero radius everywhere — the only round shape is none here */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before,.c-media,.c-code { border-radius: 0 !important; }
+
+/* kicker → coral rule → headline: mono uppercase coral eyebrow with 36px hairline beneath */
+.eyebrow { background: transparent; color: var(--coral); font-family: var(--mono);
+  font-weight: 300; letter-spacing: .14em; text-transform: uppercase; padding: 0 0 14px; }
+.eyebrow::after { content: ""; display: block; width: 36px; height: 1px;
+  background: var(--coral); margin-top: 12px; }
+
+/* serif headlines at 400, never bold. <em> inside = italic coral signature accent */
+.cover-title,.slide-title,.c-h,.section-title,.c-sub { font-family: var(--display);
+  font-weight: 400; }
+.slide-title em,.cover-title em,.c-h em,.c-statement em,.c-quote .qt em { font-style: italic;
+  color: var(--coral); font-weight: 400; }
+.section .num { font-family: var(--display); font-weight: 400; color: var(--coral);
+  letter-spacing: -.03em; }
+
+/* em-dash coral bullet rendered in mono — the system's only bullet glyph */
+ul.c-list li, ul.c-check li { padding-left: 30px; }
+ul.c-list li::before, ul.c-check li::before { content: "—"; background: transparent;
+  color: var(--coral); font-family: var(--mono); font-weight: 300; width: auto; height: auto;
+  left: 0; top: 0; border-radius: 0; box-shadow: none; }
+ol.c-list li::before { color: var(--coral); font-family: var(--mono); background: transparent; }
+
+/* flat panels: no fill, no shadow — defined by a single hairline, not a box */
+.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-iconlist .ili {
+  background: transparent; box-shadow: none; border: 1px solid var(--hair); }
+.c-statement { color: var(--ink); border: none; border-left: 1px solid var(--coral);
+  padding-left: 28px; }
+.c-statement::after { display: none; }
+.c-note { border: none; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+.c-note::before { content: none; }
+
+/* quote: massive coral Playfair quote-mark above italic body */
+.c-quote { border: none; }
+.c-quote::before { content: "\201C"; font-family: var(--display); font-weight: 400;
+  font-size: 8vw; line-height: .6; color: var(--coral); }
+.c-quote .qt { font-style: italic; font-family: var(--display); font-weight: 400; }
+.c-quote .by { font-family: var(--mono); font-weight: 300; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted); }
+
+/* image: hairline frame, mono coral caption — no offset blob, system is flat */
+.c-img::before { display: none; }
+.c-img img, .c-grid img { border: 1px solid var(--hair); }
+.c-img figcaption { font-family: var(--mono); font-weight: 300; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted); }
+
+/* icons: flat, hairline, coral mark — no filled badges */
+.ico-badge { background: transparent; border: 1px solid var(--hair); color: var(--coral);
+  box-shadow: none; }
+.ico-label, .ili-h { font-family: var(--display); font-weight: 400; }
+
+/* buttons: square, hairline, mono uppercase label — coral on hover, no fill/shadow */
+.c-btn { background: transparent; color: var(--ink); border: 1px solid var(--coral);
+  font-family: var(--mono); font-weight: 300; letter-spacing: .12em; text-transform: uppercase;
+  box-shadow: none; }
+.c-btn::after { background: transparent; border: 1px solid var(--coral); color: var(--coral); }
+
+/* accordion / tabs: hairline structure, serif summaries */
+.c-acc summary { font-family: var(--display); font-weight: 400; }
+.c-acc summary::after { color: var(--coral); }
+.c-tabs .tab-strip button { background: transparent; border: 1px solid var(--hair);
+  font-family: var(--mono); font-weight: 300; letter-spacing: .12em; text-transform: uppercase; }
+.c-tabs .tab-strip button.active { color: var(--coral); border-color: var(--coral); }
+
+/* quiz: flat hairline options, coral check button */
+.c-quiz, .c-quiz .opt { border: 1px solid var(--hair); background: transparent; box-shadow: none; }
+.c-quiz .opt.sel { border-color: var(--coral); }
+.c-quiz .opt.correct { border-color: var(--coral); }
+.c-quiz .check { background: var(--coral); color: var(--on-accent); border: none;
+  font-family: var(--mono); font-weight: 300; letter-spacing: .12em; text-transform: uppercase; }
+
+/* timeline: hairline spine, coral dots */
+.c-timeline::before { background: var(--hair); }
+.c-timeline .ev::before { background: var(--coral); }
+.c-timeline .date { font-family: var(--mono); font-weight: 300; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--coral); }
+
+/* chrome: 1px hairline frame top + bottom, thin coral progress, mono counter */
+.navbar { background: var(--bg); border-top: 1px solid var(--hair); }
+.navbar button { background: transparent; border: 1px solid var(--hair); color: var(--ink);
+  font-family: var(--mono); font-weight: 300; letter-spacing: .12em; text-transform: uppercase;
+  box-shadow: none; }
+.navbar button.ghost { border-color: var(--hair); }
+.navbar button:disabled { opacity: .35; }
+.progress-strip { height: 1px; background: var(--coral); }
+.counter { background: transparent; color: var(--muted); font-family: var(--mono);
+  font-weight: 300; letter-spacing: .12em; }

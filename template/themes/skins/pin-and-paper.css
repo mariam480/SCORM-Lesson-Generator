@@ -1,0 +1,118 @@
+/* pin-and-paper — field-notebook editorial system: yellow legal-pad paper with deep
+   cobalt-blue ink, cream cards "pinned" to the page with hard ink-blue offset shadows
+   (zero blur), 1.5px ink borders + 4px micro-radius, fractal-noise paper grain on every
+   slide, push-pin / tape marks via ::before/::after, slight pinned-askew rotations, and
+   a cinnabar-red rotated rubber stamp. See pin-and-paper/design.md.
+   Override accent: the design's true primary is the cobalt ink, not the yellow paper. */
+:root{ --accent:#1F3A8A; --on-accent:#EFE56A;
+  --pp-paper:#EFE56A; --pp-paper2:#F5ECA0; --pp-extra:#FBE6A4; --pp-cream:#F8F1D6;
+  --pp-ink:#1F3A8A; --pp-red:#C2342B; --pp-dash:rgba(31,58,138,.45); }
+
+/* paper surface: upper-left highlight + lower-right shadow gradients over cadmium yellow */
+.stage{ background:
+  radial-gradient(120% 90% at 20% 10%, rgba(255,255,255,.18), transparent 60%),
+  radial-gradient(140% 100% at 80% 95%, rgba(0,0,0,.05), transparent 55%),
+  var(--pp-paper); }
+/* non-optional fractal-noise paper grain, multiply blend */
+.stage::before{ content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  opacity:.35; mix-blend-mode:multiply;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.slide{ z-index:3; }
+
+/* archival mono labels (DM Mono = --mono) */
+.eyebrow,.section .num{ font-family:var(--mono); }
+.eyebrow{ background:transparent; color:var(--pp-ink); border-radius:0;
+  font-weight:500; letter-spacing:.14em; text-transform:uppercase; padding:0 0 4px; }
+.cover-title,.slide-title,.section-title,.c-h{ letter-spacing:-.03em; }
+.cover-sub,.c-sub{ font-family:var(--mono); letter-spacing:.1em; text-transform:uppercase; }
+
+/* universal pinned card: cream + 1.5px ink border + 4px radius + hard offset shadow + pushpin */
+.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-iconlist .ili,
+.c-quiz,.c-flash .face,.c-media,.c-code,.c-img img,.c-grid img{
+  background:var(--pp-cream); border:1.5px solid var(--pp-ink); border-radius:4px;
+  box-shadow:5px 6px 0 0 var(--pp-ink); position:relative; }
+/* push-pin head atop cards, off-axis */
+.c-note::before,.c-statement::before,.c-iconlist .ili::before{ content:""; position:absolute;
+  top:-9px; left:22px; width:16px; height:16px; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #ff8a7a, var(--pp-red) 70%);
+  box-shadow:0 2px 0 rgba(31,58,138,.4); transform:rotate(-10deg); z-index:4; }
+.c-statement::after{ display:none; }
+.c-note::before{ background:radial-gradient(circle at 35% 30%, #ff8a7a, var(--pp-red) 70%); }
+
+/* statement = pinned-askew note */
+.c-statement{ transform:rotate(-.8deg); background:var(--pp-extra); }
+.c-iconlist .ili:nth-child(even){ transform:rotate(.7deg); background:var(--pp-paper2); }
+
+/* hand-script bullets via Caveat-ish accent; ink check/dash markers */
+ul.c-list li,ol.c-list li,ul.c-check li{ padding-left:30px; }
+ul.c-list li::before{ content:""; left:2px; top:11px; width:12px; height:12px;
+  background:var(--pp-ink); border-radius:50% 50% 50% 0; transform:rotate(45deg);
+  box-shadow:none; }
+ul.c-check li::before{ content:"\2713"; background:transparent; color:var(--pp-ink);
+  font-weight:700; left:0; top:0; width:auto; height:auto; border-radius:0; }
+
+/* quote: oversized script feel + bigger offset */
+.c-quote{ box-shadow:8px 9px 0 0 var(--pp-ink); background:var(--pp-paper2); }
+.c-quote::before{ color:var(--pp-ink); opacity:.85; }
+.c-quote .by{ font-family:var(--mono); letter-spacing:.12em; text-transform:uppercase; }
+
+/* note: replace bulb with pushpin (handled above); keep ink ink */
+.c-note{ background:var(--pp-extra); }
+
+/* buttons: pinned ink chips */
+.c-btn{ background:var(--pp-cream); color:var(--pp-ink); border:1.5px solid var(--pp-ink);
+  border-radius:4px; box-shadow:4px 5px 0 0 var(--pp-ink); }
+.c-btn::after{ background:var(--pp-ink); color:var(--pp-paper); border-radius:50%; }
+
+/* icon badges as little pinned tags */
+.ico-badge{ background:var(--pp-ink); color:var(--pp-paper); border-radius:4px; }
+.ico-badge.plain{ background:transparent; color:var(--pp-ink); }
+
+/* accordion / tabs */
+.c-acc summary::after{ color:var(--pp-ink); }
+.c-tabs .tab-strip button{ font-family:var(--mono); letter-spacing:.1em;
+  text-transform:uppercase; border-radius:4px 4px 0 0; }
+.c-tabs .tab-strip button.active{ background:var(--pp-ink); color:var(--pp-paper); }
+
+/* timeline: ink line + ink dots, dates in mono */
+.c-timeline::before{ background:var(--pp-ink); }
+.c-timeline .ev::before{ background:var(--pp-ink); border:2px solid var(--pp-cream); }
+.c-timeline .date{ font-family:var(--mono); letter-spacing:.12em; text-transform:uppercase; }
+
+/* sorting chips = pinned slips */
+.c-sort .chip{ background:var(--pp-cream); border:1.5px solid var(--pp-ink);
+  border-radius:4px; box-shadow:3px 4px 0 0 var(--pp-ink); }
+.c-sort .pile{ border:1.5px dashed var(--pp-dash); border-radius:4px; }
+.c-sort .pile.over{ border-color:var(--pp-ink); }
+.c-sort .chip.correct{ background:var(--pp-ink); color:var(--pp-paper); }
+.c-sort .chip.wrong{ border-color:var(--pp-red); color:var(--pp-red); }
+
+/* image: offset shape becomes a strip of tape; tilt the photo slightly */
+.c-img{ position:relative; }
+.c-img::before{ content:""; background:rgba(248,241,214,.6); border-radius:0;
+  width:120px; height:30px; transform:rotate(-6deg);
+  box-shadow:inset 0 0 0 1px rgba(31,58,138,.15); }
+.c-img img{ transform:rotate(-.8deg); }
+.c-img figcaption{ font-family:var(--mono); letter-spacing:.1em; text-transform:uppercase; }
+
+/* quiz: pinned options, ink correct / red wrong */
+.c-quiz .opt{ background:var(--pp-cream); border:1.5px solid var(--pp-ink);
+  border-radius:4px; box-shadow:3px 4px 0 0 var(--pp-ink); }
+.c-quiz .opt.sel{ background:var(--pp-paper2); }
+.c-quiz .opt.correct{ background:var(--pp-ink); color:var(--pp-paper); }
+.c-quiz .opt.wrong{ border-color:var(--pp-red); color:var(--pp-red); }
+.c-quiz .check{ background:var(--pp-ink); color:var(--pp-paper); border-radius:4px; }
+.c-quiz .fb.ok{ color:var(--pp-ink); }
+.c-quiz .fb.no{ color:var(--pp-red); }
+
+/* chrome: dashed graph-paper top rule + mono counter; rotated red "stamp" on counter */
+.navbar{ border-top:1.5px dashed var(--pp-dash); background:transparent; }
+.progress-strip{ height:5px; background:rgba(31,58,138,.18); }
+.progress-strip > *{ background:var(--pp-ink); }
+.navbar button{ border-radius:4px; background:var(--pp-cream); color:var(--pp-ink);
+  border:1.5px solid var(--pp-ink); box-shadow:3px 4px 0 0 var(--pp-ink); }
+.navbar button.ghost{ box-shadow:inset 0 0 0 1.5px var(--pp-ink); background:transparent; }
+.navbar button:disabled{ box-shadow:none; opacity:.45; }
+.counter{ font-family:var(--mono); letter-spacing:.16em; text-transform:uppercase;
+  color:var(--pp-red); border:2px solid var(--pp-red); border-radius:0;
+  padding:3px 10px; transform:rotate(-4deg); }

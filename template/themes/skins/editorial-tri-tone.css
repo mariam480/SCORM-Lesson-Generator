@@ -1,0 +1,120 @@
+/* editorial-tri-tone — literary-magazine system on a STRICT three-color palette:
+   golden-butter ground, deep-burgundy ink, blush-pink accent. No 4th color, no grays,
+   no shadows (depth = surface contrast + radius on contrasting ground). Mono § labels,
+   Instrument-Serif accent numerals/quote-marks via var(--display)? no — uses --body/--mono,
+   pink em-dash bullets, fully-rounded pills + soft 28-32px cards over square content blocks.
+   Source: bold-template-pack/templates/editorial-tri-tone/design.md
+   (Overview, Persistent Chrome, Depth/Elevation, Shapes/Treatment, Signature Treatments,
+    Do's & Don'ts, Colors→Defaults). */
+
+/* ---- the three closed-system literals from design.md ---- */
+:root{
+  --pink:#F2B6C6; --butter:#F2D86A; --burgundy:#7A1F35;
+  --div-dark:rgba(246,237,220,.28); /* whispered etched divider on dark ground */
+}
+
+/* ---- golden-butter ground, burgundy ink (no overlays — depth via surface contrast) ---- */
+.stage{ background:var(--butter); }
+.slide-title, .cover-title, .section-title, .c-h{ color:var(--burgundy); }
+
+/* ---- § section marker: mono, wide tracking, uppercase, burgundy ---- */
+.eyebrow{ background:transparent; border-radius:0; color:var(--burgundy);
+  font-family:var(--mono); font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  padding:0; }
+.eyebrow::before{ content:"\00A7  "; } /* § section sign */
+
+/* ---- chapter/section numerals → expressive serif in burgundy ---- */
+.section .num{ font-family:var(--display); font-weight:400; font-style:italic;
+  color:var(--burgundy); }
+
+/* ---- pink em-dash bullets ---- */
+ul.c-list li, ul.c-check li{ padding-left:30px; }
+ul.c-list li::before{ content:"\2014"; background:transparent; border-radius:0;
+  color:var(--burgundy); width:auto; height:auto; left:0; top:0; font-weight:700; }
+ul.c-check li::before{ content:"\2014"; background:transparent; color:var(--burgundy);
+  width:auto; height:auto; left:0; border-radius:0; font-weight:700; }
+ol.c-list li::before{ color:var(--burgundy); font-family:var(--display); font-style:italic; }
+
+/* ---- statement: dark burgundy panel, butter ink (recessed anchor surface) ---- */
+.c-statement{ background:var(--burgundy); color:var(--butter); border-radius:0;
+  border-left:6px solid var(--pink); }
+.c-statement em{ color:var(--pink); font-family:var(--display); font-style:italic; }
+.c-statement::after{ display:none; }
+
+/* ---- soft cards & panels: pink left-rule on butter, no shadow ---- */
+.c-note, .c-acc details, .c-tabs .tab-body, .c-iconlist .ili, .c-quiz, .c-media{
+  background:var(--paper); color:var(--burgundy); border-radius:0;
+  border:none; border-left:6px solid var(--pink); box-shadow:none; }
+.c-note::before{ content:"\00A7"; font-family:var(--mono); color:var(--burgundy); }
+
+/* ---- value card alternation: soft 28px radius (forward butter / recessed burgundy) ---- */
+.c-icon{ border-radius:28px; }
+
+/* ---- quote: oversized serif mark in pink, burgundy ink ---- */
+.c-quote{ background:transparent; border-radius:0; border:none;
+  border-top:1px solid var(--burgundy); border-bottom:1px solid var(--burgundy);
+  box-shadow:none; color:var(--burgundy); }
+.c-quote::before{ color:var(--pink); font-family:var(--display); font-style:italic; opacity:1; }
+.c-quote .qt{ font-family:var(--display); font-weight:400; }
+.c-quote .qt b{ font-family:var(--body); font-weight:600; color:var(--burgundy); }
+.c-quote .by{ font-family:var(--mono); letter-spacing:.12em; text-transform:uppercase;
+  color:var(--burgundy); }
+
+/* ---- icon badges: fully-rounded burgundy chips with butter glyph ---- */
+.ico-badge{ background:var(--burgundy); color:var(--butter); border-radius:999px; }
+.ico-badge.plain{ background:transparent; color:var(--burgundy); }
+.ico-label{ font-family:var(--mono); letter-spacing:.1em; text-transform:uppercase; }
+
+/* ---- image: offset PINK accent shape, square frame ---- */
+.c-img img, .c-grid img{ border-radius:0; }
+.c-img::before{ background:var(--pink); border-radius:0; }
+.c-img figcaption{ font-family:var(--mono); letter-spacing:.1em; text-transform:uppercase;
+  color:var(--burgundy); }
+
+/* ---- pill buttons (the universal tag component → 999px) ---- */
+.c-btn{ background:var(--burgundy); color:var(--butter); border-radius:999px; box-shadow:none; }
+.c-btn::after{ background:var(--pink); color:var(--burgundy); border-radius:999px; }
+
+/* ---- accordion / tabs ---- */
+.c-acc summary{ font-family:var(--body); font-weight:600; color:var(--burgundy); }
+.c-acc summary::after{ color:var(--pink); }
+.c-tabs .tab-strip button{ border-radius:999px; font-family:var(--mono); letter-spacing:.1em;
+  text-transform:uppercase; background:transparent; color:var(--burgundy); }
+.c-tabs .tab-strip button.active{ background:var(--burgundy); color:var(--butter); }
+
+/* ---- flashcards / sorting: rounded chips, square faces ---- */
+.c-flash .face{ background:var(--paper); color:var(--burgundy); border-radius:0;
+  border-left:6px solid var(--pink); box-shadow:none; }
+.c-flash .nav button{ border-radius:999px; }
+.c-sort .chip{ border-radius:999px; background:var(--burgundy); color:var(--butter); }
+.c-sort .pile{ border-radius:0; border:2px dashed var(--burgundy); }
+.c-sort .pile.over{ background:var(--pink); }
+.c-sort .chip.correct{ background:var(--butter); color:var(--burgundy);
+  box-shadow:inset 0 0 0 2px var(--burgundy); }
+.c-sort .chip.wrong{ background:var(--pink); color:var(--burgundy); }
+
+/* ---- timeline: burgundy axis, serif years, pink dots ---- */
+.c-timeline::before{ background:var(--burgundy); }
+.c-timeline .ev::before{ background:var(--burgundy); border:4px solid var(--butter);
+  border-radius:999px; }
+.c-timeline .date{ font-family:var(--display); font-style:italic; color:var(--burgundy); }
+
+/* ---- quiz: rounded options/check, pink-correct/burgundy states ---- */
+.c-quiz{ background:var(--paper); border-radius:0; border-left:6px solid var(--pink); }
+.c-quiz .opt{ border-radius:999px; border:1px solid var(--burgundy); color:var(--burgundy); }
+.c-quiz .opt.sel{ background:var(--burgundy); color:var(--butter); }
+.c-quiz .opt.correct{ background:var(--butter); color:var(--burgundy);
+  box-shadow:inset 0 0 0 2px var(--burgundy); }
+.c-quiz .opt.wrong{ background:var(--pink); color:var(--burgundy); }
+.c-quiz .check{ background:var(--burgundy); color:var(--butter); border-radius:999px; }
+.c-quiz .fb.ok{ color:var(--burgundy); } .c-quiz .fb.no{ color:var(--burgundy); }
+
+/* ---- persistent chrome: burgundy nav, butter ink, pink progress, mono counter ---- */
+.navbar{ background:var(--burgundy); border-top:1px solid var(--div-dark); }
+.progress-strip{ height:6px; background:var(--pink); }
+.navbar button{ border-radius:999px; background:var(--pink); color:var(--burgundy); box-shadow:none; }
+.navbar button.ghost{ background:transparent; color:var(--butter);
+  box-shadow:inset 0 0 0 1px var(--div-dark); }
+.navbar button:disabled{ opacity:.4; }
+.counter{ font-family:var(--mono); letter-spacing:.12em; text-transform:uppercase;
+  color:var(--butter); }

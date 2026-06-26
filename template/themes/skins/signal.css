@@ -1,0 +1,106 @@
+/* signal — literary editorial intelligence-briefing: warm cream paper (--paper) &
+   deep navy (--bg), Source Serif headlines + IBM Plex Mono chrome, single antique-gold
+   accent (#C8A870) on rules/italic-em/figures, flat-plus-hairline (no shadows, no radius),
+   em-dash gold mono bullets, near-invisible 80px grid fingerprint.
+   Recreates Signal (.../templates/signal/design.md). */
+
+:root{ --accent:#C8A870; --on-accent:#1C2644; --gold:#C8A870; }
+
+/* ---- surface: navy paper + 80px grid fingerprint ---- */
+.stage{ background: var(--bg); }
+.stage::before{ content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:80px 80px; }
+.slide{ z-index:3; }
+
+/* ---- chrome: mono labels + hairline rule ---- */
+.navbar{ background: var(--bg); border-top:1px solid var(--line); }
+.progress-strip{ height:1px; background: var(--gold); }
+.navbar button{ border-radius:0; font-family:var(--mono); font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; border:1px solid var(--line);
+  background:transparent; color:var(--ink); box-shadow:none; }
+.navbar button.ghost{ background:transparent; }
+.navbar button:disabled{ opacity:.35; }
+.counter{ font-family:var(--mono); letter-spacing:.18em; color:var(--muted);
+  border-radius:0; }
+
+/* ---- eyebrow / kicker: mono uppercase gold, 36px rule ---- */
+.eyebrow{ background:transparent; color:var(--gold); border-radius:0; padding:0 0 10px;
+  font-family:var(--mono); font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  position:relative; }
+.eyebrow::after{ content:""; position:absolute; left:0; bottom:0; width:36px; height:1px;
+  background:var(--gold); }
+
+/* ---- headlines: serif voice; italic <em> = gold italic serif ---- */
+.cover-title, .slide-title, .section-title, .c-h, .c-statement, .qt{ font-family:var(--display); }
+.cover-title em, .slide-title em, .section-title em, .c-h em, .c-statement em, .c-p em, .c-sub em{
+  font-family:var(--display); font-style:italic; color:var(--gold); font-weight:inherit; }
+.slide-title .u{ text-decoration:none; box-shadow:inset 0 -1px 0 var(--gold); }
+.section .num{ font-family:var(--mono); color:var(--gold); letter-spacing:.1em; }
+
+/* ---- chapter accent rule under section number ---- */
+.section-title{ position:relative; padding-top:18px; }
+.section-title::before{ content:""; position:absolute; left:0; top:2px; width:36px; height:1px;
+  background:var(--gold); }
+
+/* ---- statistical figure feel ---- */
+.c-statement{ background:transparent; color:var(--ink); border-radius:0;
+  border-left:none; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  box-shadow:none; }
+.c-statement::after{ display:none; }
+
+/* ---- lists: em-dash mono gold marker ---- */
+ul.c-list li, ol.c-list li, ul.c-check li{ padding-left:30px; }
+ul.c-list li::before, ul.c-check li::before{ content:"—"; background:transparent;
+  color:var(--gold); width:auto; height:auto; left:0; top:0; border-radius:0;
+  font-family:var(--mono); font-weight:500; }
+
+/* ---- panels: flat + hairline, no radius, no shadow ---- */
+.c-note, .c-quote, .c-acc details, .c-tabs .tab-body, .c-tabs .tab-strip button,
+.c-iconlist .ili, .c-quiz, .c-quiz .opt, .c-quiz .check, .c-quiz input,
+.c-flash .face, .c-sort .chip, .c-sort .pile, .ico-badge{
+  border-radius:0 !important; box-shadow:none; }
+.c-note{ background:transparent; border:none; border-left:1px solid var(--gold);
+  padding-left:18px; }
+.c-note::before{ content:none; }
+.c-quote{ background:transparent; border:none; }
+.c-quote::before{ color:var(--gold); font-family:var(--display); font-weight:300; }
+.c-quote .by{ font-family:var(--mono); letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); }
+.c-acc details, .c-tabs .tab-body, .c-iconlist .ili{ background:transparent;
+  border:1px solid var(--line); }
+.c-acc summary{ font-family:var(--display); }
+.c-tabs .tab-strip button{ border:1px solid var(--line); background:transparent;
+  font-family:var(--mono); letter-spacing:.12em; text-transform:uppercase; }
+.c-tabs .tab-strip button.active{ border-bottom-color:var(--gold); color:var(--gold); }
+
+/* ---- icons: gold mono labels, square badges ---- */
+.ico-badge{ background:transparent; border:1px solid var(--line); color:var(--gold); }
+.ili-h{ font-family:var(--display); }
+.ico-label{ font-family:var(--mono); letter-spacing:.12em; text-transform:uppercase; }
+
+/* ---- images: hairline frame, gold offset mark ---- */
+.c-img img, .c-grid img{ border-radius:0; }
+.c-img::before{ background:var(--gold); border-radius:0; }
+.c-img figcaption{ font-family:var(--mono); letter-spacing:.1em; color:var(--muted); }
+
+/* ---- timeline: hairline spine, gold dot ---- */
+.c-timeline::before{ background:var(--line); width:1px; }
+.ev::before{ background:var(--gold); border-radius:50%; width:9px; height:9px; }
+.date{ font-family:var(--mono); letter-spacing:.14em; color:var(--gold); }
+
+/* ---- buttons: square outlined, no filled arrow ---- */
+.c-btn{ border-radius:0; background:transparent; color:var(--gold);
+  border:1px solid var(--gold); box-shadow:none; font-family:var(--mono);
+  letter-spacing:.14em; text-transform:uppercase; }
+.c-btn::after{ border-radius:50%; background:transparent; border:1px solid var(--gold);
+  color:var(--gold); }
+
+/* ---- quiz: hairline, gold correct ---- */
+.c-quiz .opt{ border:1px solid var(--line); background:transparent; }
+.c-quiz .opt.sel{ border-color:var(--gold); }
+.c-quiz .opt.correct{ border-color:var(--gold); color:var(--gold); }
+.c-quiz .check{ border:1px solid var(--gold); background:transparent; color:var(--gold);
+  font-family:var(--mono); letter-spacing:.14em; text-transform:uppercase; }

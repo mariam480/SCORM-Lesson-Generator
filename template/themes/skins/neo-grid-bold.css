@@ -1,0 +1,107 @@
+/* neo-grid-bold — heavy editorial poster system (see neo-grid-bold/design.md).
+   Swiss/grid: putty-ecru stage with an EXPOSED 12-col grid overlay, Space Grotesk 700
+   UPPERCASE display, JetBrains Mono uppercase labels, acid-lemon accent signal panels,
+   bold ink rules, square corners, zero shadows. Depth = color-block adjacency only. */
+
+/* True accent is the electric lemon; text on it must be ink (dark). */
+:root{ --accent:#E6FF3D; --on-accent:#0A0A0A; --grid-line:rgba(10,10,10,.07); }
+
+/* ---- Stage: putty passe-partout + exposed grid overlay ---- */
+.stage{ background: var(--bg); }
+.stage::before{ /* the signature exposed 12-col / 8-row grid lines */
+  content:""; position:absolute; inset:40px; pointer-events:none; z-index:1;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, var(--grid-line) 1.5px, transparent 1.5px);
+  background-size: calc((100% - 40px)/12) calc((100% - 40px)/8);
+}
+.stage::after{ /* bold ink frame rule + corner block stamp tucked top-right */
+  content:""; position:absolute; inset:40px; pointer-events:none; z-index:2;
+  border:2px solid var(--ink);
+}
+.slide{ z-index:3; }
+
+/* ---- Eyebrow / labels: JetBrains Mono uppercase, wide tracking ---- */
+.eyebrow{ background:var(--ink); color:var(--paper); border-radius:0;
+  font-family:var(--mono); font-weight:500; letter-spacing:.12em; text-transform:uppercase;
+  padding:6px 12px; }
+.c-sub, .c-img figcaption, .ico-label, .date, .counter{
+  font-family:var(--mono); text-transform:uppercase; letter-spacing:.08em; }
+
+/* ---- Display type: Space Grotesk 700 UPPERCASE, tight tracking ---- */
+.cover-title, .slide-title, .section-title, .c-h, .c-statement, .section .num{
+  text-transform:uppercase; letter-spacing:-.02em; }
+.slide-title .u{ background:var(--accent); color:var(--on-accent);
+  box-decoration-break:clone; -webkit-box-decoration-break:clone; padding:0 6px;
+  text-decoration:none; }
+.section .num{ color:var(--accent); -webkit-text-stroke:2px var(--ink); }
+.c-p em{ color:var(--accent); font-style:normal; }
+
+/* ---- Lists: square ink/lemon block bullets ---- */
+ul.c-list li, ul.c-check li{ padding-left:32px; }
+ul.c-list li::before{ content:""; background:var(--ink); color:transparent;
+  width:14px; height:14px; left:0; top:.45em; border-radius:0; }
+ul.c-check li::before{ content:""; background:var(--accent); border:1.5px solid var(--ink);
+  width:14px; height:14px; left:0; top:.45em; border-radius:0; color:transparent; }
+ol.c-list li::before{ font-family:var(--mono); color:var(--ink); font-weight:500; }
+
+/* ---- Cards / panels: borderless paper blocks, square, no shadow ---- */
+.c-note, .c-quote, .c-acc details, .c-tabs .tab-body, .c-iconlist .ili, .c-quiz,
+.c-media, .c-code, .c-flash .face{
+  background:var(--paper); border-radius:0 !important; box-shadow:none;
+  border:none; border-left:6px solid var(--ink); }
+.c-note::before{ content:"// "; font-family:var(--mono); color:var(--ink); }
+
+/* Statement: full acid-lemon signal panel, dark text, no blob */
+.c-statement{ background:var(--accent); color:var(--on-accent); border-radius:0;
+  box-shadow:none; }
+.c-statement::after{ display:none; }
+
+/* Quote: big mono quote mark, ink left rule */
+.c-quote{ border-left:6px solid var(--accent); }
+.c-quote::before{ color:var(--ink); font-family:var(--display); }
+.c-quote .by{ font-family:var(--mono); text-transform:uppercase; letter-spacing:.08em; }
+
+/* ---- Images: hard offset ink/lemon shape, square ---- */
+.c-img img, .c-grid img{ border-radius:0 !important; }
+.c-img::before{ background:var(--accent); border-radius:0; }
+
+/* ---- Icons: square block badges ---- */
+.ico-badge{ background:var(--ink); color:var(--paper); border-radius:0 !important; }
+.ico-badge.plain{ background:transparent; color:var(--ink); }
+
+/* ---- Buttons / chrome: square, bold, lemon hover signal ---- */
+.c-btn{ background:var(--ink); color:var(--paper); border-radius:0 !important;
+  font-family:var(--mono); text-transform:uppercase; letter-spacing:.08em; }
+.c-btn::after{ background:var(--accent); color:var(--on-accent); border-radius:0 !important; }
+
+.navbar{ background:var(--bg); border-top:2px solid var(--ink); }
+.progress-strip{ height:6px; background:var(--accent); }
+.navbar button, .c-quiz .check{ border-radius:0 !important; background:var(--ink);
+  color:var(--paper); font-family:var(--mono); text-transform:uppercase; letter-spacing:.08em; }
+.navbar button.ghost{ background:transparent; color:var(--ink);
+  box-shadow:inset 0 0 0 2px var(--ink); }
+.navbar button:disabled{ opacity:.35; }
+.counter{ font-family:var(--mono); color:var(--ink); }
+
+/* ---- Accordion / tabs: mono, square, lemon active ---- */
+.c-acc summary{ font-family:var(--display); text-transform:uppercase; letter-spacing:-.01em; }
+.c-tabs .tab-strip button{ border-radius:0 !important; font-family:var(--mono);
+  text-transform:uppercase; letter-spacing:.08em; }
+.c-tabs .tab-strip button.active{ background:var(--accent); color:var(--on-accent); }
+
+/* ---- Quiz: square options, lemon=correct, ink=wrong-state framing ---- */
+.c-quiz .opt, .c-quiz input{ border-radius:0 !important; }
+.c-quiz .opt.sel{ box-shadow:inset 0 0 0 2px var(--ink); }
+.c-quiz .opt.correct{ background:var(--accent); color:var(--on-accent); }
+.c-quiz .opt.wrong{ background:var(--ink); color:var(--paper); }
+
+/* ---- Timeline: ink line, square lemon event blocks ---- */
+.c-timeline::before{ background:var(--ink); }
+.ev::before{ background:var(--accent); border:1.5px solid var(--ink); border-radius:0; }
+
+/* ---- Sorting: square chips/piles ---- */
+.c-sort .chip, .c-sort .pile{ border-radius:0 !important; }
+.c-sort .pile.over{ box-shadow:inset 0 0 0 2px var(--accent); }
+.c-sort .chip.correct{ background:var(--accent); color:var(--on-accent); }
+.c-sort .chip.wrong{ background:var(--ink); color:var(--paper); }

@@ -1,0 +1,100 @@
+/* broadside — protest-poster editorial: near-black ink canvas, ONE fire-orange accent
+   ("ink on fire"), Barlow-weight hierarchy, IBM Plex Mono chrome, flat plane (no
+   shadows, no radius), 1px hairline dividers, orange "/" mono bullet markers, 36×2px
+   stub accent rules, bordered mono tags, top-border-only stat cards.
+   Source: bold-template-pack/templates/broadside/design.md */
+
+/* --- square system: kill all radius per Shapes→Border Radius (0px everywhere) --- */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before { border-radius: 0 !important; }
+
+/* --- dark editorial canvas, no gradients, flat plane --- */
+.stage { background: var(--bg); }
+.cover, .cover.solo, .section { background: var(--bg); }
+
+/* --- chrome: top progress + nav bar as 1px hairline frame, mono voice --- */
+.navbar { background: var(--bg); border-top: 1px solid var(--line); }
+.progress-strip { height: 2px; background: var(--line); }
+.navbar button { background: transparent; color: var(--ink); border: 1px solid var(--line);
+  font-family: var(--mono); text-transform: uppercase; letter-spacing: .14em; font-weight: 500; }
+.navbar button.ghost { box-shadow: inset 0 0 0 1px var(--line); }
+.navbar button:disabled { opacity: .35; }
+.counter { font-family: var(--mono); text-transform: uppercase; letter-spacing: .14em;
+  color: var(--muted); }
+
+/* --- kicker / eyebrow: mono uppercase fire-orange, stub accent rule beside it --- */
+.eyebrow { background: transparent; color: var(--accent); padding: 0 0 0 46px;
+  position: relative; font-family: var(--mono); font-weight: 500; text-transform: uppercase;
+  letter-spacing: .14em; }
+.eyebrow::before { content: ""; position: absolute; left: 0; top: .55em;
+  width: 36px; height: 2px; background: var(--accent); }
+
+/* --- section divider: catalogue-mono number, lowercase heavy title, orange register --- */
+.section .num { color: var(--accent); font-family: var(--mono); letter-spacing: .1em;
+  text-transform: uppercase; }
+.section-title, .cover-title { text-transform: none; letter-spacing: -.03em; }
+.cover-sub { color: var(--muted); }
+
+/* --- "/" mono slash bullet markers in fire orange (lists + checks) --- */
+ul.c-list, ol.c-list, ul.c-check { list-style: none; }
+ul.c-list li, ol.c-list li, ul.c-check li { padding-left: 30px; position: relative; }
+ul.c-list li::before, ol.c-list li::before, ul.c-check li::before {
+  content: "/"; left: 0; top: 0; background: transparent; color: var(--accent);
+  width: auto; height: auto; font-family: var(--mono); font-weight: 700; }
+
+/* --- statement: orange register, ink-on-fire headline, no blob, no radius --- */
+.c-statement { background: var(--accent); color: var(--on-accent); border-radius: 0;
+  box-shadow: none; letter-spacing: -.02em; }
+.c-statement::after { display: none; }
+
+/* --- panels/cards: flat, 1px hairline structure, orange leading rule, no shadow --- */
+.c-note, .c-quote, .c-acc details, .c-tabs .tab-body, .c-iconlist .ili,
+.c-quiz, .c-media, .c-code {
+  background: var(--paper); border: 1px solid var(--line); box-shadow: none; }
+.c-note { border-left: 2px solid var(--accent); }
+.c-note::before { content: none; }
+
+/* --- stat / icon card: top-border-only data block --- */
+.c-iconlist .ili { border: none; border-top: 1px solid var(--line); background: transparent; }
+.ico-badge { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.ico-badge.plain { border: none; }
+.ico-label { font-family: var(--mono); text-transform: uppercase; letter-spacing: .12em;
+  color: var(--muted); }
+
+/* --- quote: oversized fire-orange opening mark, heavy ink-cream text --- */
+.c-quote { border: none; border-left: 2px solid var(--accent); background: transparent; }
+.c-quote::before { color: var(--accent); font-family: var(--display); font-weight: 900;
+  line-height: .6; }
+.c-quote .qt { letter-spacing: -.02em; font-weight: 700; }
+.c-quote .by { font-family: var(--mono); text-transform: uppercase; letter-spacing: .12em;
+  color: var(--muted); }
+
+/* --- tags / tabs: bordered mono pills, fire-orange on dark, square --- */
+.c-tabs .tab-strip button { background: transparent; border: 1px solid var(--line);
+  font-family: var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+.c-tabs .tab-strip button.active { color: var(--accent); border-color: var(--accent); }
+
+/* --- accordion: hairline rows, +/- in mono --- */
+.c-acc summary { font-weight: 700; }
+.c-acc summary::after { color: var(--accent); font-family: var(--mono); }
+
+/* --- image: offset accent shape stays sharp; mono caption --- */
+.c-img::before { background: var(--accent); }
+.c-img figcaption, .c-grid figcaption { font-family: var(--mono); text-transform: uppercase;
+  letter-spacing: .12em; color: var(--muted); }
+
+/* --- buttons: square, ink-bordered; arrow circle keeps round per affordance --- */
+.c-btn { background: var(--accent); color: var(--on-accent); border: none; }
+.c-btn::after { background: var(--on-accent); color: var(--accent); border-radius: 50% !important; }
+
+/* --- timeline: hairline spine, orange dots --- */
+.c-timeline::before { background: var(--line); }
+.ev::before { background: var(--accent); }
+.date { font-family: var(--mono); text-transform: uppercase; letter-spacing: .12em;
+  color: var(--muted); }
+
+/* --- quiz: square options, hairline borders, orange accent state --- */
+.c-quiz .opt { border: 1px solid var(--line); background: var(--paper); }
+.c-quiz .opt.sel { border-color: var(--accent); }
+.c-quiz .opt.correct { border-color: var(--accent); }
+.c-quiz .check { background: var(--accent); color: var(--on-accent); border: none;
+  font-family: var(--mono); text-transform: uppercase; letter-spacing: .12em; }

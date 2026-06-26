@@ -1,0 +1,137 @@
+/* sakura-chroma — 1970s cassette-package editorial: warm cream paper (--bg/--paper),
+   warm-brown ink (--ink #3A2516), Big Shoulders Display 900 condensed display.
+   Signature moves: 4px halftone-dot paper-grain over every slide (16%), six-color primary
+   palette (red/pink/orange/yellow/green/blue) as chips/topstrips/petals, diagonal multi-color
+   ribbon bands behind covers, hard 8px ink offset shadow (no blur), 1.5px ink borders,
+   tracked-caps micro-labels, square corners, red rectangular stamps, mono "data" spec rows.
+   Source: bold-template-pack/templates/sakura-chroma/design.md */
+
+/* The brief calls the system "orange accent"; the doc reserves red for emphasis. Use orange
+   as the primary accent, keep the rest of the locked palette as locals. */
+:root { --accent:#F09131; --on-accent:#3A2516;
+  --sc-red:#E5392A; --sc-pink:#E54489; --sc-orange:#F09131; --sc-yellow:#F0BC2A;
+  --sc-green:#3D9F47; --sc-blue:#3F8BC4; --sc-ink-a:rgba(58,37,22,.22); }
+
+/* --- square print system: kill all radius (Shapes→Border Radius: 0 everywhere) --- */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before { border-radius:0 !important; }
+
+/* --- warm cream canvas + required 4px halftone-dot paper-grain at 16% on every slide --- */
+.stage { background: var(--bg); position: relative; }
+.cover, .cover.solo, .section { background: var(--bg); }
+.stage::before { content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  opacity:.16; background-image: radial-gradient(circle at 1px 1px, rgba(58,37,22,.55) 1px, transparent 1.6px);
+  background-size: 4px 4px; }
+/* diagonal multi-color ribbon band sweeping behind cover/section spreads */
+.cover::after, .section::after { content:""; position:absolute; left:-30%; top:64%; width:160%; height:38%;
+  z-index:1; pointer-events:none; transform: rotate(-22deg);
+  background: linear-gradient(180deg,
+    var(--sc-pink) 0 20%, var(--sc-orange) 20% 40%, var(--sc-yellow) 40% 60%,
+    var(--sc-green) 60% 80%, var(--sc-blue) 80% 100%); opacity:.9; }
+.slide { z-index:3; }
+
+/* --- chrome: ink top rule, orange progress strip, square ink-bordered nav, mono counter --- */
+.navbar { background: var(--bg); border-top: 1.5px solid var(--ink); }
+.progress-strip { height: 5px; background: var(--accent); }
+.navbar button { background: var(--paper); color: var(--ink); border: 1.5px solid var(--ink);
+  font-family: var(--display); font-weight:900; text-transform: uppercase; letter-spacing:.04em; }
+.navbar button.ghost { background: transparent; box-shadow: inset 0 0 0 1.5px var(--ink); }
+.navbar button:disabled { opacity:.35; }
+.counter { background: var(--paper); border: 1.5px solid var(--ink); color: var(--ink);
+  font-family: var(--mono); letter-spacing:.06em; }
+
+/* --- eyebrow: red rectangular stamp, cream text, slight -3deg rotation --- */
+.eyebrow { background: var(--sc-red); color: var(--paper); padding: 4px 14px;
+  font-family: var(--display); font-weight:900; text-transform: uppercase; letter-spacing:.04em;
+  transform: rotate(-3deg); transform-origin: left center; }
+
+/* --- cover/section: ink Big Shoulders hero, red em emphasis, tracked sub --- */
+.cover-title, .section-title, .slide-title { color: var(--ink); letter-spacing:-.02em; }
+.section .num { color: var(--sc-red); letter-spacing:-.025em; }
+.cover-sub { color: var(--ink); }
+.c-h em, .c-statement em, .cover-title em, .slide-title em { font-style:normal; color: var(--sc-red); }
+
+/* --- lists: tracked micro-label vibe + perfect-circle petal bullets in palette colors --- */
+ul.c-list, ol.c-list, ul.c-check { list-style:none; }
+ul.c-list li, ol.c-list li, ul.c-check li { padding-left: 30px; position: relative; }
+ul.c-list li::before, ol.c-list li::before { content:""; position:absolute; left:2px; top:.45em;
+  width:13px; height:13px; border-radius:50% !important; background: var(--sc-orange); }
+ul.c-list li:nth-child(2)::before { background: var(--sc-pink); }
+ul.c-list li:nth-child(3)::before { background: var(--sc-green); }
+ul.c-list li:nth-child(4)::before { background: var(--sc-blue); }
+ul.c-list li:nth-child(5)::before { background: var(--sc-yellow); }
+ul.c-check li::before { content:"\00D7"; left:0; top:-.05em; background: var(--ink); color: var(--paper);
+  width:1.1em; height:1.1em; display:flex; align-items:center; justify-content:center;
+  border-radius:0 !important; font-family: var(--display); font-weight:900; }
+
+/* --- statement: solid ink field, cream Big Shoulders, no blob --- */
+.c-statement { background: var(--ink); color: var(--paper); box-shadow: none;
+  border: 1.5px solid var(--ink); letter-spacing:-.018em; }
+.c-statement::after { display:none; }
+.c-statement em { color: var(--sc-orange); }
+
+/* --- cards/panels: cream paper, 1.5px ink border, no soft shadow --- */
+.c-note, .c-acc details, .c-tabs .tab-body, .c-iconlist .ili, .c-quiz, .c-media, .c-code {
+  background: var(--paper); border: 1.5px solid var(--ink); box-shadow: none; }
+
+/* --- callout note: red stamp tab instead of the bulb emoji --- */
+.c-note { border-left: 6px solid var(--sc-red); }
+.c-note::before { content:"NOTE"; background: var(--sc-red); color: var(--paper);
+  font-family: var(--display); font-weight:900; letter-spacing:.06em; padding:2px 10px;
+  transform: rotate(-3deg); }
+
+/* --- quote: qbody-box — paper on ribbons with hard 8px ink offset shadow, blue quote mark --- */
+.c-quote { background: var(--paper); border: 1.5px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); }
+.c-quote::before { color: var(--sc-blue); font-family: var(--display); font-weight:900; line-height:.6; }
+.c-quote .qt { letter-spacing:-.015em; }
+.c-quote .by { color: var(--sc-red); font-family: var(--mono); letter-spacing:.04em; }
+
+/* --- icon list: cream cells, color topstrip-style ink-bordered badges --- */
+.ico-badge { background: var(--sc-orange); color: var(--paper); border: 1.5px solid var(--ink); }
+.ico-badge.plain { background: transparent; border: none; color: var(--sc-red); }
+.ili-h { font-family: var(--display); font-weight:900; letter-spacing:-.01em; }
+.ico-label { font-family: var(--display); font-weight:900; text-transform: uppercase; letter-spacing:.04em; }
+
+/* --- tabs: ink-bordered cream tags, orange active --- */
+.c-tabs .tab-strip button { background: var(--paper); border: 1.5px solid var(--ink);
+  font-family: var(--display); font-weight:900; text-transform: uppercase; letter-spacing:.04em; color: var(--ink); }
+.c-tabs .tab-strip button.active { background: var(--accent); color: var(--on-accent); }
+
+/* --- accordion: Big Shoulders summaries, red +/- --- */
+.c-acc summary { font-family: var(--display); font-weight:900; letter-spacing:-.01em; }
+.c-acc summary::after { color: var(--sc-red); }
+
+/* --- image: ink offset-block + 1.5px ink frame; mono caption (data voice) --- */
+.c-img::before { background: var(--accent); }
+.c-img img, .c-grid img { border: 1.5px solid var(--ink); }
+.c-img figcaption, .c-grid figcaption { font-family: var(--mono); letter-spacing:.04em; color: var(--ink); }
+
+/* --- buttons: red stamp — cream text, rotated -3deg, square arrow chip --- */
+.c-btn { background: var(--sc-red); color: var(--paper); border: 1.5px solid var(--ink);
+  font-family: var(--display); font-weight:900; text-transform: uppercase; letter-spacing:.04em;
+  transform: rotate(-3deg); }
+.c-btn::after { background: var(--ink); color: var(--paper); border-radius:0 !important; }
+
+/* --- timeline: ink spine, palette petal dots, mono dates --- */
+.c-timeline::before { background: var(--ink); width: 1.5px; }
+.ev::before { background: var(--sc-pink); border: 1.5px solid var(--ink); border-radius:50%; }
+.date { font-family: var(--mono); letter-spacing:.06em; color: var(--sc-red); }
+
+/* --- flashcards: cream faces, 1.5px ink border --- */
+.c-flash .face { background: var(--paper); border: 1.5px solid var(--ink); }
+
+/* --- sorting: cream chips, green correct, ink-bordered piles --- */
+.c-sort .chip { background: var(--paper); border: 1.5px solid var(--ink); font-family: var(--mono); }
+.c-sort .pile { border: 1.5px solid var(--ink); background: transparent; }
+.c-sort .chip.correct { background: var(--sc-green); color: var(--paper); }
+.c-sort .chip.wrong { background: var(--sc-red); color: var(--paper); }
+
+/* --- quiz: cream options, orange selected, green correct, red stamp check --- */
+.c-quiz .opt { background: var(--paper); border: 1.5px solid var(--ink); }
+.c-quiz .opt.sel { border-color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.c-quiz .opt.correct { background: var(--sc-green); color: var(--paper); border-color: var(--ink); }
+.c-quiz .opt.wrong { background: var(--sc-red); color: var(--paper); border-color: var(--ink); }
+.c-quiz .check { background: var(--sc-red); color: var(--paper); border: 1.5px solid var(--ink);
+  font-family: var(--display); font-weight:900; text-transform: uppercase; letter-spacing:.04em; }
+
+/* --- inline body emphasis: red color-shift, never italic --- */
+.c-p em { font-style: normal; color: var(--sc-red); font-weight: 700; }

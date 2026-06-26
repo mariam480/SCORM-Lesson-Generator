@@ -1,0 +1,124 @@
+/* emerald-editorial — fashion-masthead / 19th-c. theatrical playbill: saturated emerald
+   ground, deep navy ink, oat-cream paper tiles, Bodoni Moda 900 at scale. Signature moves:
+   double-rule ornament bracketing centered display words, 4px solid navy structural rules
+   everywhere, inverse navy tiles (emerald text) as the only "elevation", strict rectangles
+   (zero radius), zero shadows/gradients. Manrope chrome is always uppercase + tracked.
+   Source: bold-template-pack/templates/emerald-editorial/design.md */
+
+/* --- strict-rectangle system: kill ALL radius (Shapes→Border Radius: zero) --- */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before { border-radius: 0 !important; }
+
+/* --- emerald canvas, flat printed ink (no gradients, no overlays) --- */
+.stage { background: var(--bg); }
+.cover, .cover.solo, .section { background: var(--bg); }
+
+/* --- chrome: thick 4px navy rule frame, Manrope uppercase tracked --- */
+.navbar { background: var(--bg); border-top: 4px solid var(--ink); }
+.progress-strip { height: 5px; background: var(--ink); }
+.navbar button { background: var(--ink); color: var(--bg); border: none;
+  font-family: var(--body); text-transform: uppercase; letter-spacing: .12em; font-weight: 800; }
+.navbar button.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 4px var(--ink); }
+.navbar button:disabled { opacity: .3; }
+.counter { font-family: var(--body); text-transform: uppercase; letter-spacing: .12em;
+  font-weight: 700; color: var(--ink); }
+
+/* --- eyebrow: ink-on-emerald mark, uppercase wide-tracked Manrope, no fill/radius --- */
+.eyebrow { background: transparent; color: var(--ink); padding: 0 0 6px;
+  font-family: var(--body); font-weight: 800; text-transform: uppercase; letter-spacing: .18em;
+  border-bottom: 4px solid var(--ink); }
+
+/* --- display: Bodoni 900, tight negative tracking, emerald-on-navy is the only flip --- */
+.cover-title, .section-title, .slide-title, .c-h, .c-statement, .qt {
+  font-family: var(--display); font-weight: 900; letter-spacing: -.02em; line-height: .95; }
+.cover-sub { font-family: var(--body); font-weight: 500; color: var(--ink); }
+.section .num { color: var(--ink); font-family: var(--display); font-weight: 900; letter-spacing: -.02em; }
+.slide-title .u { text-decoration: none; box-shadow: inset 0 -.12em var(--ink); }
+
+/* --- double-rule ornament: section number flanked by stacked 4px navy rules (playbill) --- */
+.section .num { position: relative; display: inline-block; padding: 0 40px; }
+.section .num::before, .section .num::after { content: ""; position: absolute; top: 50%;
+  width: 28px; height: 11px; border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink); }
+.section .num::before { right: 100%; margin-top: -5px; }
+.section .num::after { left: 100%; margin-top: -5px; }
+
+/* --- bullets: 4px navy en-dash rule, the system's structural mark --- */
+ul.c-list, ol.c-list, ul.c-check { list-style: none; }
+ul.c-list li, ol.c-list li, ul.c-check li { padding-left: 36px; position: relative; }
+ul.c-list li::before, ol.c-list li::before {
+  content: ""; left: 0; top: .62em; width: 22px; height: 4px; background: var(--ink);
+  border-radius: 0; }
+ul.c-check li::before { content: "✓"; left: 0; top: 0; background: transparent; color: var(--ink);
+  width: auto; height: auto; font-family: var(--display); font-weight: 900; }
+
+/* --- statement: full navy inverse panel, emerald display type, no blob/shadow --- */
+.c-statement { background: var(--ink); color: var(--bg); box-shadow: none; letter-spacing: -.02em; }
+.c-statement em { color: var(--paper); font-style: normal; }
+.c-statement::after { display: none; }
+
+/* --- panels/tiles: flat, framed by 4px navy rules, paper fill, no shadow --- */
+.c-note, .c-quote, .c-acc details, .c-tabs .tab-body, .c-iconlist .ili,
+.c-quiz, .c-media, .c-code {
+  background: var(--paper); color: var(--ink); border: 4px solid var(--ink); box-shadow: none; }
+.c-note { border: none; border-left: 8px solid var(--ink); }
+.c-note::before { content: none; }
+
+/* --- icon list tiles: paper tiles with top 4px rule (agenda-row rhythm) --- */
+.c-iconlist .ili { border: none; border-top: 4px solid var(--ink); background: transparent; padding-top: 18px; }
+.ico-badge { background: var(--ink); color: var(--bg); }
+.ico-badge.plain { background: transparent; color: var(--ink); }
+.ico-label { font-family: var(--body); text-transform: uppercase; letter-spacing: .1em;
+  font-weight: 700; color: var(--ink); }
+.ili-h { font-family: var(--display); font-weight: 800; letter-spacing: -.005em; }
+
+/* --- quote: oversized Bodoni mark, navy left rule, no fill --- */
+.c-quote { border: none; border-left: 8px solid var(--ink); background: transparent; }
+.c-quote::before { color: var(--ink); font-family: var(--display); font-weight: 900; line-height: .6; }
+.c-quote .qt { font-weight: 900; letter-spacing: -.015em; }
+.c-quote .by { font-family: var(--body); text-transform: uppercase; letter-spacing: .12em;
+  font-weight: 700; color: var(--ink); }
+
+/* --- tabs: square ink-bordered Manrope tags, active = inverse fill --- */
+.c-tabs .tab-strip button { background: transparent; border: 4px solid var(--ink);
+  font-family: var(--body); text-transform: uppercase; letter-spacing: .1em; font-weight: 800; color: var(--ink); }
+.c-tabs .tab-strip button.active { background: var(--ink); color: var(--bg); }
+
+/* --- accordion: 4px-ruled rows, Bodoni summary, big +/- mark --- */
+.c-acc summary { font-family: var(--display); font-weight: 800; letter-spacing: -.005em; }
+.c-acc summary::after { color: var(--ink); font-family: var(--display); font-weight: 900; }
+
+/* --- image: offset navy block stays sharp; uppercase Manrope caption --- */
+.c-img::before { background: var(--ink); }
+.c-img figcaption, .c-grid figcaption { font-family: var(--body); text-transform: uppercase;
+  letter-spacing: .1em; font-weight: 700; color: var(--ink); }
+
+/* --- buttons: square inverse navy block; arrow circle keeps round affordance --- */
+.c-btn { background: var(--ink); color: var(--bg); border: none;
+  font-family: var(--body); text-transform: uppercase; letter-spacing: .1em; font-weight: 800; }
+.c-btn::after { background: var(--bg); color: var(--ink); border-radius: 50% !important; }
+
+/* --- timeline: 4px navy spine, square navy dots, uppercase date --- */
+.c-timeline::before { background: var(--ink); width: 4px; }
+.ev::before { background: var(--ink); border-radius: 0; }
+.date { font-family: var(--body); text-transform: uppercase; letter-spacing: .12em;
+  font-weight: 700; color: var(--ink); }
+
+/* --- flashcards: paper faces, 4px navy frame --- */
+.c-flash .face { background: var(--paper); color: var(--ink); border: 4px solid var(--ink); box-shadow: none; }
+.c-flash .back { background: var(--ink); color: var(--bg); }
+
+/* --- sorting: square ink-bordered chips/piles --- */
+.c-sort .chip { background: var(--paper); color: var(--ink); border: 4px solid var(--ink); }
+.c-sort .pile { border: 4px solid var(--ink); background: transparent; }
+.c-sort .pile.over { background: var(--ink); color: var(--bg); }
+.c-sort .chip.correct { background: var(--ink); color: var(--bg); }
+.c-sort .chip.wrong { opacity: .45; }
+
+/* --- quiz: square paper options, 4px frames, inverse navy correct/check --- */
+.c-quiz .opt { border: 4px solid var(--ink); background: var(--paper); color: var(--ink); }
+.c-quiz .opt.sel { background: var(--ink); color: var(--bg); }
+.c-quiz .opt.correct { background: var(--ink); color: var(--bg); }
+.c-quiz .opt.wrong { opacity: .45; }
+.c-quiz .check { background: var(--ink); color: var(--bg); border: none;
+  font-family: var(--body); text-transform: uppercase; letter-spacing: .12em; font-weight: 800; }
+.c-quiz .fb.ok { color: var(--ink); font-weight: 800; }
+.c-quiz .fb.no { color: var(--ink); opacity: .7; }

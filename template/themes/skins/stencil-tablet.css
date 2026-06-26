@@ -1,0 +1,126 @@
+/* stencil-tablet — West-Coast skate-poster meets municipal stencil signage:
+   bone/paper ground, Stardos Stencil display run HUGE + uppercase for every headline &
+   numeral, Barlow-condensed uppercase tracked chrome, ONE printed-orange accent (with a
+   retro-print secondary set), rounded 22-26px "tablet" color-block cards, FLAT plane
+   (no shadows, no gradients), 1.5-2px warm-ink hairline dividers, square stencil-ordinal
+   bullet marks, mustard action-bar callout, oversized Bowlby-style quote mark.
+   Source: bold-template-pack/templates/stencil-tablet/design.md */
+
+/* orange is the system's loudest, most-used accent — make it primary; ink reads on it */
+:root{ --accent:#EE7A2E; --on-accent:#0A0A0A;
+  --st-magenta:#C73B7A; --st-teal:#2D7E73; --st-blue:#3F73B7; --st-mustard:#D8A93B;
+  --st-sienna:#A06A3C; --st-olive:#6F7A2E; --st-ink35:rgba(10,10,10,.35); }
+
+/* --- bone field, flat, no gradients --- */
+.stage { background: var(--bg); }
+.cover, .cover.solo, .section { background: var(--bg); }
+
+/* --- every headline: Stardos Stencil, uppercase, tight, weight 700 --- */
+.cover-title,.section-title,.slide-title,.c-h,.c-statement,.c-quote .qt,
+.section .num,.card-headline,.ico-label,.ili-h {
+  font-family: var(--display); text-transform: uppercase; }
+.cover-title,.section-title,.slide-title { letter-spacing: -.012em; line-height: .92; }
+.cover-sub,.c-sub { color: var(--muted); }
+
+/* --- eyebrow / chrome labels: Barlow-style condensed uppercase, heavy tracking --- */
+.eyebrow { background: transparent; color: var(--accent); border-radius: 0; padding: 0 0 5px;
+  font-family: var(--body); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
+
+/* --- section divider: mega stencil numeral in saturated accent --- */
+.section .num { color: var(--accent); font-weight: 700; letter-spacing: -.02em; line-height: .82; }
+
+/* --- lists: square rounded "stencil mark" bullets (14px radius mark) in accent --- */
+ul.c-list, ol.c-list, ul.c-check { list-style: none; }
+ul.c-list li, ol.c-list li, ul.c-check li { padding-left: 34px; position: relative; }
+ul.c-list li::before, ol.c-list li::before {
+  content: ""; left: 0; top: .25em; width: 16px; height: 16px; border-radius: 5px;
+  background: var(--accent); }
+ul.c-check li::before { content: "✓"; left: 0; top: 0; width: 20px; height: 20px;
+  display: grid; place-items: center; border-radius: 5px; background: var(--st-teal);
+  color: var(--paper); font-family: var(--display); font-weight: 700; font-size: .8em; }
+
+/* --- statement: saturated color block, ink-on-fill, rounded tablet, no blob/shadow --- */
+.c-statement { background: var(--accent); color: var(--on-accent); border-radius: 24px;
+  box-shadow: none; letter-spacing: -.01em; line-height: .98; }
+.c-statement::after { display: none; }
+
+/* --- tablet cards / panels: rounded color blocks, flat, warm-ink hairline structure --- */
+.c-note, .c-quote, .c-acc details, .c-tabs .tab-body, .c-iconlist .ili,
+.c-quiz, .c-media, .c-code {
+  background: var(--paper); border: 1.5px solid var(--st-ink35); box-shadow: none;
+  border-radius: 22px; }
+.c-note { background: var(--st-mustard); border: none; color: var(--on-accent); }
+.c-note::before { content: "▸"; font-family: var(--display); }
+
+/* --- icon / stat tablet --- */
+.c-iconlist .ili { border-radius: 22px; }
+.ico-badge { background: var(--accent); color: var(--on-accent); border-radius: 14px; }
+.ico-badge.plain { background: transparent; color: var(--accent); }
+.ico-label,.ili-h { font-weight: 700; letter-spacing: -.005em; }
+
+/* --- quote: oversized stencil mark, big stencil quote text, magenta register --- */
+.c-quote { border: none; background: var(--st-magenta); color: var(--paper); border-radius: 26px; }
+.c-quote::before { color: var(--paper); font-family: var(--display); font-weight: 700;
+  line-height: .7; opacity: .85; }
+.c-quote .qt { letter-spacing: -.005em; line-height: 1.05; }
+.c-quote .by { font-family: var(--body); text-transform: uppercase; letter-spacing: .08em;
+  font-weight: 800; color: var(--paper); opacity: .85; }
+
+/* --- tabs: condensed uppercase tracked, pill-active --- */
+.c-tabs .tab-strip button { background: transparent; border: 1.5px solid var(--st-ink35);
+  border-radius: 999px; font-family: var(--body); text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 800; color: var(--muted); }
+.c-tabs .tab-strip button.active { background: var(--accent); color: var(--on-accent);
+  border-color: var(--accent); }
+
+/* --- accordion: rounded rows, stencil +/- --- */
+.c-acc summary { font-family: var(--display); text-transform: uppercase; font-weight: 700;
+  letter-spacing: -.005em; }
+.c-acc summary::after { color: var(--accent); font-family: var(--display); font-weight: 700; }
+
+/* --- image: offset accent shape with rounded tablet corners; condensed caption --- */
+.c-img img, .c-grid img { border-radius: 22px; }
+.c-img::before { background: var(--accent); border-radius: 22px; }
+.c-img figcaption, .c-grid figcaption { font-family: var(--body); text-transform: uppercase;
+  letter-spacing: .08em; font-weight: 600; color: var(--muted); }
+
+/* --- buttons: rounded action tablet, ink-on-accent --- */
+.c-btn { background: var(--accent); color: var(--on-accent); border: none; border-radius: 22px;
+  font-family: var(--body); text-transform: uppercase; letter-spacing: .06em; font-weight: 800; }
+.c-btn::after { background: var(--on-accent); color: var(--accent); border-radius: 50% !important; }
+
+/* --- timeline: warm-ink spine, rounded accent dots, condensed date markers --- */
+.c-timeline::before { background: var(--st-ink35); }
+.ev::before { background: var(--accent); border-radius: 5px; }
+.date { font-family: var(--body); text-transform: uppercase; letter-spacing: .08em;
+  font-weight: 700; color: var(--accent); }
+
+/* --- quiz: rounded tablet options, accent select, matrix-pill correct/wrong palette --- */
+.c-quiz .opt { border: 1.5px solid var(--st-ink35); background: var(--paper); border-radius: 16px; }
+.c-quiz .opt.sel { border-color: var(--accent); }
+.c-quiz .opt.correct { border-color: var(--st-teal); background: var(--st-teal); color: var(--paper); }
+.c-quiz .opt.wrong { border-color: var(--st-magenta); background: var(--st-magenta); color: var(--paper); }
+.c-quiz .check { background: var(--accent); color: var(--on-accent); border: none; border-radius: 22px;
+  font-family: var(--body); text-transform: uppercase; letter-spacing: .06em; font-weight: 800; }
+.c-quiz .fb.ok { color: var(--st-teal); }
+.c-quiz .fb.no { color: var(--st-magenta); }
+
+/* --- flashcards / sort: rounded tablets, accent faces --- */
+.c-flash .face { border-radius: 22px; }
+.c-sort .chip { border-radius: 14px; }
+.c-sort .pile { border-radius: 22px; border: 1.5px solid var(--st-ink35); }
+.c-sort .pile.over { border-color: var(--accent); }
+.c-sort .chip.correct { background: var(--st-teal); color: var(--paper); }
+.c-sort .chip.wrong { background: var(--st-magenta); color: var(--paper); }
+
+/* --- chrome: bottom nav bar, condensed uppercase, mustard progress strip --- */
+.navbar { background: var(--bg); border-top: 1.5px solid var(--st-ink35); }
+.progress-strip { height: 6px; background: var(--accent); }
+.navbar button { background: var(--accent); color: var(--on-accent); border: none;
+  border-radius: 22px; font-family: var(--body); text-transform: uppercase;
+  letter-spacing: .06em; font-weight: 800; }
+.navbar button.ghost { background: transparent; color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--st-ink35); }
+.navbar button:disabled { opacity: .35; }
+.counter { font-family: var(--body); text-transform: uppercase; letter-spacing: .1em;
+  font-weight: 700; color: var(--muted); }

@@ -1,0 +1,107 @@
+/* vellum — essay-pinned-to-a-wall: one deep periwinkle-navy field, warm chartreuse-yellow
+   italic Cormorant Garamond headlines, dusty-teal Courier Prime "pin-note" annotation voice.
+   Flat, square, zero shadow/gradient. Numbered mono list counters in teal; teal hairline
+   rules; brighter-yellow <em>; teal big quote-mark. Source: vellum/design.md.
+   --bg=navy ground, --ink=yellow type. Teal is the secondary accent (override below). */
+
+:root{
+  --accent:#3A7878;            /* dusty teal — the design's second accent */
+  --on-accent:#E8D85C;         /* yellow type reads on teal fills */
+  --vl-yellow:#E8D85C;
+  --vl-yellow-2:rgba(232,216,92,.62);
+  --vl-yellow-3:rgba(232,216,92,.32);
+  --vl-emph:#F5E168;           /* brighter <em> yellow */
+  --vl-teal:#3A7878;
+  --vl-line:rgba(232,216,92,.20);
+  --vl-deep:#1F2858;
+  --vl-mid:#34407A;
+}
+
+/* Flat, square everywhere */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before{ border-radius:0 !important; }
+
+/* The single navy field */
+.stage{ background:var(--bg); }
+.slide{ color:var(--vl-yellow); }
+.c-p,.c-sub{ color:var(--vl-yellow-2); }
+.c-h,.cover-title,.cover-sub,.slide-title,.section-title{ color:var(--vl-yellow); font-style:italic; }
+.c-p em,.c-h em,.slide-title em,.cover-title em{ font-style:normal; font-weight:600; color:var(--vl-emph); }
+
+/* Kicker / eyebrow — mono, teal, with a 28px hairline rule beneath */
+.eyebrow{ background:transparent; color:var(--vl-teal); font-family:var(--mono);
+  letter-spacing:.1em; padding:0 0 8px; border:none; position:relative; }
+.eyebrow::after{ content:""; position:absolute; left:0; bottom:0; width:28px; height:1px; background:var(--vl-teal); }
+
+/* Section number — italic serif, teal */
+.section .num{ font-family:var(--display); font-style:italic; color:var(--vl-teal); }
+
+/* Numbered mono list counters in teal — never dots or dashes */
+ul.c-list,ol.c-list,ul.c-check{ counter-reset:vl; }
+ul.c-list li,ol.c-list li,ul.c-check li{ padding-left:2.4em; }
+ul.c-list li::before,ol.c-list li::before,ul.c-check li::before{
+  counter-increment:vl; content:counter(vl,decimal-leading-zero) ".";
+  background:transparent; color:var(--vl-teal); font-family:var(--mono); font-size:.72em;
+  width:auto; height:auto; left:0; top:.25em; letter-spacing:.04em; border-radius:0; }
+
+/* Statement — centered headline on field, no blob */
+.c-statement{ background:transparent; color:var(--vl-yellow); font-style:italic;
+  border:none; box-shadow:none; text-align:center; }
+.c-statement::after{ display:none; }
+
+/* Note / callout — hairline frame, no emoji */
+.c-note{ background:transparent; border:1px solid var(--vl-line); box-shadow:none;
+  border-left:1px solid var(--vl-line); color:var(--vl-yellow-2); }
+.c-note::before{ content:none; }
+
+/* Quote — centered, teal big quote-mark, italic serif body */
+.c-quote{ background:transparent; border:none; box-shadow:none; text-align:center; }
+.c-quote::before{ color:var(--vl-teal); font-family:var(--display); font-style:italic; }
+.c-quote .qt{ font-family:var(--display); font-style:italic; color:var(--vl-yellow); }
+.c-quote .by{ font-family:var(--mono); color:var(--vl-teal); letter-spacing:.04em; }
+
+/* Cards / panels — flat, hairline only */
+.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.c-flash .face{
+  background:var(--vl-deep); border:1px solid var(--vl-line); box-shadow:none; }
+.c-tabs .tab-strip button.active{ background:var(--vl-mid); color:var(--vl-yellow); }
+.c-acc summary{ color:var(--vl-yellow); font-style:italic; font-family:var(--display); }
+.c-acc summary::after{ color:var(--vl-teal); }
+.ico-badge{ background:transparent; border:1px solid var(--vl-line); color:var(--vl-teal); }
+.ili-h{ color:var(--vl-yellow); }
+.ili-p{ color:var(--vl-yellow-2); }
+
+/* Image — dashed "slot" frame, no offset accent shape */
+.c-img::before{ display:none; }
+.c-img img,.c-grid img{ border:1px solid var(--vl-line); }
+.c-img figcaption{ font-family:var(--mono); color:var(--vl-yellow-3); }
+
+/* Timeline — teal line and dots */
+.c-timeline::before{ background:var(--vl-line); }
+.ev::before{ background:var(--vl-teal); border:none; }
+.date{ font-family:var(--mono); color:var(--vl-teal); }
+
+/* Buttons — flat outline, teal arrow */
+.c-btn{ background:transparent; color:var(--vl-yellow); border:1px solid var(--vl-teal); box-shadow:none; }
+.c-btn::after{ background:transparent; border:1px solid var(--vl-teal); color:var(--vl-teal); }
+
+/* Quiz — hairline cards, teal selected/correct cues */
+.c-quiz .q{ font-family:var(--display); font-style:italic; color:var(--vl-yellow); }
+.c-quiz .opt{ background:var(--vl-deep); border:1px solid var(--vl-line); }
+.c-quiz .opt.sel{ border-color:var(--vl-teal); }
+.c-quiz .opt.correct{ border-color:var(--vl-teal); background:rgba(58,120,120,.18); }
+.c-quiz .opt.wrong{ border-color:var(--vl-line); opacity:.5; }
+.c-quiz .check{ background:transparent; color:var(--vl-yellow); border:1px solid var(--vl-teal); }
+.c-quiz .fb.ok{ color:var(--vl-teal); }
+.c-quiz .fb.no{ color:var(--vl-yellow-2); }
+
+/* Sorting */
+.c-sort .chip{ background:var(--vl-deep); border:1px solid var(--vl-line); color:var(--vl-yellow); }
+.c-sort .pile{ border:1px dashed var(--vl-line); }
+.c-sort .pile.over{ border-color:var(--vl-teal); }
+
+/* Chrome — hairline bars, mono counter, teal progress */
+.navbar{ background:var(--bg); border-top:1px solid var(--vl-line); }
+.navbar button{ background:transparent; color:var(--vl-yellow); border:1px solid var(--vl-line); }
+.navbar button.ghost{ box-shadow:inset 0 0 0 1px var(--vl-line); }
+.navbar button:disabled{ opacity:.35; }
+.counter{ font-family:var(--mono); color:var(--vl-teal); letter-spacing:.06em; }
+.progress-strip{ background:var(--vl-teal); height:1px; }

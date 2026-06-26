@@ -1,0 +1,118 @@
+/* monochrome (Ivory Ledger) — literary editorial system: black ink on cream paper,
+   ultralight Jost, NO chromatic accent (accent === darker ink), 1px hairline rules,
+   em-dash bullets, square corners (16px only on cards), zero shadows, generous air.
+   Per templates/monochrome/design.md (Overview, Persistent Chrome, Depth/Elevation,
+   Shapes, Signature Treatments, Do's/Don'ts, Colors→Defaults). */
+
+/* --- surface: cream paper everywhere, never white, no texture/gradient/shadow --- */
+.stage { background: var(--paper); }
+.cover, .section, .slide-body { background: transparent; }
+
+/* square by default — the system rounds only insight cards and true circles */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before,.c-media,.c-code { border-radius: 0 !important; }
+
+/* --- eyebrow / kicker: muted mono uppercase, barely-there, 36px rule beside it --- */
+.eyebrow {
+  background: transparent; color: var(--muted);
+  font-family: var(--mono); font-weight: 400; font-size: .72rem;
+  letter-spacing: .14em; text-transform: uppercase; padding: 0;
+  display: inline-flex; align-items: center; gap: 12px; border: 0;
+}
+.eyebrow::before { content: ""; width: 36px; height: 1px; background: var(--ink); }
+
+/* --- headlines: mixed case, ultralight Jost, tight tracking, pure ink --- */
+.cover-title, .slide-title, .c-h, .section-title {
+  color: var(--ink); font-weight: 200; letter-spacing: -.02em;
+}
+.slide-title .u { border-bottom: 1px solid var(--ink); }
+.section .num { color: var(--ink); font-weight: 200; letter-spacing: -.03em; }
+.section .num::after { content: ""; display: block; width: 36px; height: 1px; background: var(--ink); margin-top: 12px; }
+
+/* --- text blocks: graphite for muted lead, ink for body --- */
+.c-sub { color: var(--muted); font-weight: 300; }
+.c-p { color: var(--ink); font-weight: 300; }
+.c-p em { font-family: var(--display); font-style: italic; font-weight: 400; color: var(--ink); }
+
+/* --- lists: em-dash marker in muted graphite via mono; never a dot/check --- */
+ul.c-list li, ol.c-list li, ul.c-check li { padding-left: 1.6em; }
+ul.c-list li::before, ol.c-list li::before, ul.c-check li::before {
+  content: "\2014"; background: transparent; color: var(--muted);
+  font-family: var(--mono); font-weight: 400;
+  width: auto; height: auto; left: 0; top: 0; border-radius: 0; box-shadow: none;
+}
+
+/* --- statement: emphasis via the 36px rule + size, NOT a fill --- */
+.c-statement {
+  background: transparent; color: var(--ink); box-shadow: none;
+  border: 0; border-top: 1px solid var(--ink); padding-top: 3vh;
+}
+.c-statement::after { display: none; }
+
+/* --- callout: hairline-framed, lamp emoji replaced by a mono label-rule --- */
+.c-note {
+  background: var(--bg); color: var(--ink); box-shadow: none;
+  border: 1px solid var(--ink); border-left: 1px solid var(--ink);
+}
+.c-note::before { content: ""; }
+
+/* --- quote: Lora italic body, oversized quote mark in ink --- */
+.c-quote { background: transparent; box-shadow: none; border: 0; border-left: 1px solid var(--ink); }
+.c-quote .qt { font-family: var(--display); font-style: italic; font-weight: 400; color: var(--ink); }
+.c-quote .by { font-family: var(--mono); text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-size: .72rem; }
+.c-quote::before { color: var(--line); font-family: var(--display); font-style: italic; }
+
+/* --- insight card: the ONE rounded surface (16px), warm cream, serif title --- */
+.c-iconlist .ili, .c-acc details, .c-tabs .tab-body {
+  background: var(--bg); box-shadow: none; border: 1px solid var(--ink);
+}
+.ico-label, .ili-h { color: var(--ink); }
+.ili-p { color: var(--muted); }
+
+/* --- icons: outline-only, no badge fill (monochrome restraint) --- */
+.ico-badge { background: transparent; color: var(--ink); border: 1px solid var(--ink); box-shadow: none; }
+.ico-badge.plain { border: 0; }
+
+/* --- image: hairline-bordered cream void, mono caption, no offset accent blob --- */
+.c-img img, .c-grid img { border: 1px solid var(--ink); }
+.c-img::before { display: none; }
+.c-img figcaption { font-family: var(--mono); text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; color: var(--muted); }
+
+/* --- buttons: hairline outline, arrow circle drawn as a ring not a fill --- */
+.c-btn { background: var(--ink); color: var(--paper); box-shadow: none; border: 1px solid var(--ink); }
+.c-btn::after { background: transparent; color: var(--paper); border: 1px solid var(--paper); }
+
+/* --- accordion / tabs: hairline rules, mono +/- and tab labels --- */
+.c-acc summary { color: var(--ink); }
+.c-acc summary::after { color: var(--muted); }
+.c-tabs .tab-strip button { background: transparent; color: var(--muted); border: 0; border-bottom: 1px solid transparent; font-family: var(--mono); text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; }
+.c-tabs .tab-strip button.active { color: var(--ink); border-bottom: 1px solid var(--ink); }
+
+/* --- timeline: 1px ink spine, 8px solid dot with cream ring --- */
+.c-timeline::before { background: var(--ink); width: 1px; }
+.c-timeline .ev::before { background: var(--ink); border: 2px solid var(--paper); box-shadow: none; }
+.c-timeline .date { font-family: var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+
+/* --- flashcards / sorting: hairline frames, square --- */
+.c-flash .face { background: var(--bg); border: 1px solid var(--ink); box-shadow: none; }
+.c-sort .chip { background: var(--bg); border: 1px solid var(--ink); box-shadow: none; }
+.c-sort .pile { background: transparent; border: 1px dashed var(--ink); }
+.c-sort .pile.over { background: transparent; border-style: solid; }
+.c-sort .chip.correct { background: var(--ink); color: var(--paper); }
+.c-sort .chip.wrong { background: transparent; border-color: var(--muted); }
+
+/* --- quiz: hairline options, ink check, selected/correct = ink fill (no color) --- */
+.c-quiz, .c-quiz .opt { background: var(--bg); border: 1px solid var(--ink); box-shadow: none; }
+.c-quiz .opt.sel { background: color-mix(in srgb, var(--ink) 8%, var(--bg)); }
+.c-quiz .opt.correct { background: var(--ink); color: var(--paper); }
+.c-quiz .opt.wrong { background: transparent; border-color: var(--muted); color: var(--muted); }
+.c-quiz .check { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+.c-quiz .fb.ok { color: var(--ink); }
+.c-quiz .fb.no { color: var(--muted); }
+
+/* --- persistent chrome: mono counter, hairline rules, ghost = outline --- */
+.navbar { border-top: 1px solid var(--ink); background: var(--paper); }
+.progress-strip { height: 1px; background: var(--ink); }
+.navbar button { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+.navbar button.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.navbar button:disabled { opacity: .35; }
+.counter { font-family: var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); background: transparent; }

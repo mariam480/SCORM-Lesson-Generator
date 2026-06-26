@@ -156,7 +156,7 @@
       (b.items || []).forEach(function (it, i) {
         var btn = el("button", { type: "button", text: it.title || ("Tab " + (i + 1)), onclick: function () {
           [].forEach.call(strip.children, function (c) { c.classList.remove("active"); });
-          btn.classList.add("active"); body.innerHTML = asHtml(it.text);
+          btn.classList.add("active"); body.innerHTML = asHtml(it.text); hydrateIcons(body);
         } });
         if (i === 0) { btn.classList.add("active"); body.innerHTML = asHtml(it.text); }
         strip.appendChild(btn);
@@ -177,6 +177,7 @@
         card.classList.remove("flipped");
         front.innerHTML = asHtml((cards[i] || {}).front);
         back.innerHTML = asHtml((cards[i] || {}).back);
+        hydrateIcons(front); hydrateIcons(back);
         counter.textContent = (i + 1) + " / " + cards.length;
       }
       var prev = el("button", { type: "button", text: "‹", onclick: function (e) { e.stopPropagation(); i = (i - 1 + cards.length) % cards.length; show(); } });
@@ -346,6 +347,20 @@
     return frag;
   }
 
+  // Staggered entrance: tag the meaningful top-level rows of the rendered slide
+  // and number them so CSS can cascade their reveal delay. Hero elements (cover
+  // art, the giant section number) scale in instead of lifting. Re-runs each
+  // slide, so navigating forward/back replays the cascade.
+  var REVEAL_SEL = ".slide-head, .wrap > *, .split-text > *, .split-media, .cover-left > *, .cover-art, .num, .section-title";
+  var POP_SEL = ".cover-art, .num";
+  function applyReveal(root) {
+    var nodes = root.querySelectorAll(REVEAL_SEL);
+    [].forEach.call(nodes, function (n, i) {
+      n.classList.add(n.matches(POP_SEL) ? "reveal-pop" : "reveal");
+      n.style.setProperty("--i", Math.min(i, 9));   // cap so long slides don't stall
+    });
+  }
+
   var reachedEnd = false;
   function render() {
     var s = slides[idx] || { blocks: [] };
@@ -364,6 +379,8 @@
       layout === "split" ? layoutSplit(s) :
       layoutDefault(s)
     );
+    hydrateIcons(slideEl);
+    applyReveal(slideEl);
     slideEl.scrollTop = 0;
 
     counterEl.textContent = (idx + 1) + " / " + slides.length;

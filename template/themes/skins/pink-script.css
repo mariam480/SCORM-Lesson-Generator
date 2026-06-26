@@ -1,0 +1,106 @@
+/* pink-script (After Hours) — nocturnal couture editorial: dim warm-black ground lit
+   from upper-left, hot fuchsia DM Serif Display script with soft 80px pink halo glow,
+   8% film-grain overlay + 1px paper-blush interior hairline frame, monochrome pink,
+   zero radius, zero drop shadows, Inter-300 prose, JetBrains-Mono uppercase chrome.
+   Per pink-script/design.md (Overview, Depth & Elevation, Shapes, Signature Treatments). */
+
+:root{ --accent:#ED3D8C; --on-accent:#060507;
+  --pink-glow:rgba(237,61,140,.18); --line-pink:rgba(237,61,140,.32);
+  --hair:rgba(245,237,241,.14); --mute:rgba(245,237,241,.55); }
+
+/* radius reset — strict-rectangle system */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before{ border-radius:0 !important; }
+
+/* surface: off-center radial softbox from upper-left -> near-black lower-right */
+.stage{ background: radial-gradient(ellipse 90% 70% at 30% 30%, #1A1218 0%, #0A0709 55%, #050306 100%) !important; }
+/* film grain (8%, screen blend) */
+.stage::before{ content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  opacity:.08; mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+/* 1px paper-blush interior frame, inset */
+.stage::after{ content:""; position:absolute; inset:36px; pointer-events:none; z-index:2;
+  border:1px solid var(--hair); }
+.slide{ z-index:3; }
+
+/* editorial voices */
+.slide-title,.cover-title,.section-title,.c-h,.c-statement,.c-quote .qt{
+  font-family:var(--display); font-weight:400; padding-bottom:.1em; }
+.c-p,.c-sub,.cover-sub,.ili-p,.ili-h{ font-family:var(--body); font-weight:300; }
+
+/* hero scripts in pink with soft halo glow */
+.cover-title,.section .num{ color:var(--accent); text-shadow:0 0 80px var(--pink-glow); }
+.section .num{ text-shadow:0 0 120px rgba(237,61,140,.22); }
+.slide-title .u,.c-p em,.c-h em{ color:var(--accent); font-style:normal; }
+
+/* pink mono kicker eyebrow */
+.eyebrow{ background:transparent; color:var(--accent); font-family:var(--mono);
+  font-weight:400; letter-spacing:.14em; text-transform:uppercase; padding:0; }
+
+/* lists — pink hairline dash / pink en-dot marks */
+ul.c-list li,ol.c-list li,ul.c-check li{ padding-left:30px; }
+ul.c-list li::before{ content:"—"; background:transparent; color:var(--accent);
+  width:auto; height:auto; left:0; top:0; font-weight:400; border-radius:0; }
+ul.c-check li::before{ content:"×"; background:transparent; color:var(--accent);
+  width:auto; height:auto; left:0; top:0; border-radius:0; }
+
+/* cards/panels: flat, no shadow — pink left callout-rail */
+.c-quote,.c-acc details,.c-tabs .tab-body,.c-iconlist .ili,.c-quiz,.c-note,.c-statement{
+  background:transparent; box-shadow:none; border:1px solid var(--hair); }
+.c-note{ border:none; border-left:1px solid var(--accent); padding-left:24px; color:var(--mute); }
+.c-note::before{ content:none; }
+.c-statement{ border:none; border-left:1px solid var(--accent); padding-left:24px;
+  background:transparent; color:var(--ink); }
+.c-statement::after{ display:none; }
+.c-quote{ border:none; border-left:1px solid var(--accent); }
+.c-quote::before{ color:var(--accent); opacity:.45; }
+.c-quote .by,.c-img figcaption{ color:var(--mute); font-family:var(--mono);
+  letter-spacing:.12em; text-transform:uppercase; }
+
+/* image: offset accent mark + hairline framing */
+.c-img::before{ background:var(--accent); opacity:.85; }
+.c-img img,.c-grid img{ border:1px solid var(--hair); }
+
+/* icon badges — hollow pink */
+.ico-badge{ background:transparent; color:var(--accent); border:1px solid var(--accent); }
+.ico-badge.plain{ border:none; }
+
+/* buttons / pills: 0-radius hollow pink, fill on hover */
+.c-btn{ background:transparent; color:var(--accent); border:1px solid var(--accent);
+  box-shadow:none; }
+.c-btn::after{ background:var(--accent); color:var(--on-accent); }
+.c-btn:hover{ background:var(--accent); color:var(--on-accent); }
+
+/* tabs */
+.c-tabs .tab-strip button{ background:transparent; color:var(--mute);
+  border:1px solid var(--hair); font-family:var(--mono); letter-spacing:.12em;
+  text-transform:uppercase; }
+.c-tabs .tab-strip button.active{ color:var(--accent); border-color:var(--accent); }
+
+/* accordion +/- */
+.c-acc summary::after{ color:var(--accent); }
+
+/* timeline — pink line + pink dots, dates in mono */
+.c-timeline::before{ background:var(--line-pink); }
+.ev::before{ background:var(--accent); box-shadow:0 0 16px var(--pink-glow); }
+.date{ color:var(--accent); font-family:var(--mono); letter-spacing:.12em; text-transform:uppercase; }
+
+/* quiz */
+.c-quiz .opt{ background:transparent; border:1px solid var(--hair); }
+.c-quiz .opt.sel{ border-color:var(--accent); }
+.c-quiz .opt.correct{ border-color:var(--accent); background:rgba(237,61,140,.08); }
+.c-quiz .opt.wrong{ border-color:var(--mute); }
+.c-quiz .check{ background:var(--accent); color:var(--on-accent); border:none; }
+
+/* sorting chips */
+.c-sort .chip{ background:transparent; border:1px solid var(--accent); color:var(--ink); }
+.c-sort .pile{ border:1px solid var(--hair); background:transparent; }
+.c-sort .pile.over{ border-color:var(--accent); }
+
+/* persistent chrome — editorial runner */
+.navbar{ background:transparent; border-top:1px solid var(--hair); }
+.navbar button{ background:transparent; color:var(--accent); border:1px solid var(--accent); }
+.navbar button.ghost{ color:var(--mute); border-color:var(--hair); }
+.navbar button:disabled{ opacity:.3; }
+.counter{ background:transparent; color:var(--mute); font-family:var(--mono);
+  letter-spacing:.14em; text-transform:uppercase; }
+.progress-strip{ height:1px; background:var(--accent); opacity:.45; }

@@ -1,0 +1,98 @@
+/* editorial-forest — serif-led literary-quarterly system: oat-cream paper ground,
+   deep forest green + dusty rose pink, Source Serif 4 @500 display, JetBrains Mono
+   chrome (uppercase, wide tracking). Flat/no-shadow; elevation via color-blocks +
+   2px hairline rules. Subtle 6/8px card radii; monogram circle is the only round mark.
+   Per editorial-forest/design.md (Overview, Depth & Elevation, Shapes, Signatures, Do/Don't, Colors). */
+
+/* This design's dominant color is forest GREEN (gravity surfaces, headings, rules);
+   dusty rose is the secondary accent. The auto palette picked rose as --accent, so
+   rebind --accent to green here and keep rose as a local for small marks. */
+:root{ --ef-green-deep:#243a21; --ef-green-lite:#3a5a36; --ef-pink-deep:#d27e96; --ef-cream2:#e6dcc4;
+  --accent:#243a21; --on-accent:#efe7d4; }
+
+/* Paper ground — flat, no overlays */
+.stage{ background: var(--paper); }
+.cover, .section{ background: var(--accent); }            /* green gravity surfaces */
+.cover-title, .section-title{ color: var(--paper); letter-spacing:-.02em; line-height:.96; }
+.cover-sub{ color: var(--line); }
+.section .num{ color: var(--muted); font-family: var(--mono); letter-spacing:.08em; }
+
+/* Eyebrow / labels — mono chrome, uppercase, wide tracking */
+.eyebrow{ background: transparent; color: var(--accent); border-radius:0;
+  font-family: var(--mono); font-weight:500; text-transform:uppercase; letter-spacing:.18em;
+  padding:0 0 8px; border-bottom: 2px solid var(--accent); }
+.slide-title{ letter-spacing:-.02em; }
+
+/* Display heads tighten; body stays serif 400 */
+.c-h{ color: var(--accent); letter-spacing:-.02em; }
+.c-p, .c-sub{ color: var(--ink); }
+.c-p em{ font-style: normal; color: var(--accent); }      /* no italics in the system */
+
+/* Lists — green/pink hairline-dot bullets */
+ul.c-list li, ul.c-check li{ padding-left:30px; }
+ul.c-list li::before{ content:""; width:12px; height:12px; left:0; top:.55em;
+  background: var(--ef-pink-deep); border-radius:2px; }    /* rose swatch — the secondary accent */
+ul.c-check li::before{ content:"+"; background:transparent; color: var(--accent);
+  font-family: var(--mono); font-weight:700; width:auto; height:auto; left:0; top:0; }
+ol.c-list li::before{ color: var(--accent); font-family: var(--mono); font-weight:500; letter-spacing:.08em; }
+
+/* Cards / panels — color-block or cream-2 + 2px green border, 6px radius, no shadow */
+.c-note, .c-acc details, .c-tabs .tab-body, .c-iconlist .ili, .c-quiz, .c-img figcaption{
+  background: var(--ef-cream2); border:2px solid var(--accent); border-radius:6px;
+  box-shadow:none; }
+.c-note::before{ content:"NOTE"; font-family: var(--mono); font-weight:500;
+  text-transform:uppercase; letter-spacing:.14em; font-size:.7em; color: var(--accent); }
+.c-statement{ background: var(--accent); color: var(--paper); border-radius:8px; box-shadow:none;
+  letter-spacing:-.01em; }
+.c-statement::after{ display:none; }
+
+/* Quote — green block, big serif quote mark, mono attribution */
+.c-quote{ background: var(--accent); color: var(--paper); border-radius:8px; box-shadow:none;
+  border:none; }
+.c-quote .qt{ font-family: var(--display); font-weight:500; letter-spacing:-.01em; }
+.c-quote::before{ color: var(--muted); font-family: var(--display); }
+.c-quote .by{ font-family: var(--mono); text-transform:uppercase; letter-spacing:.14em;
+  color: var(--muted); }
+
+/* Images — offset accent corner block, 6px radius */
+.c-img img, .c-grid img{ border-radius:6px; }
+.c-img::before{ background: var(--muted); border-radius:6px; }
+.c-img figcaption{ font-family: var(--mono); text-transform:uppercase; letter-spacing:.14em;
+  font-size:.72em; color: var(--accent); }
+
+/* Icons — outlined monogram-style mark, pink hairline ring */
+.ico-badge{ background: var(--ef-cream2); border:2px solid var(--muted); border-radius:50%;
+  color: var(--accent); box-shadow:none; }
+.ico-badge.plain{ background:transparent; }
+.ico-label{ font-family: var(--mono); text-transform:uppercase; letter-spacing:.14em; }
+
+/* Accordion / tabs — mono chrome, 2px rule feel */
+.c-acc summary{ font-family: var(--display); font-weight:500; color: var(--accent); }
+.c-acc summary::after{ color: var(--accent); }
+.c-tabs .tab-strip button{ font-family: var(--mono); text-transform:uppercase; letter-spacing:.14em;
+  border-radius:0; color: var(--ink); background:transparent; border-bottom:2px solid transparent; }
+.c-tabs .tab-strip button.active{ color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Timeline — 2px green rule, pink dots */
+.c-timeline::before{ background: var(--accent); width:2px; }
+.ev::before{ background: var(--muted); border:2px solid var(--accent); border-radius:50%; }
+.date{ font-family: var(--mono); text-transform:uppercase; letter-spacing:.14em; color: var(--accent); }
+
+/* Buttons + quiz check — flat green fill, square-ish 6px, no shadow */
+.c-btn{ background: var(--accent); color: var(--on-accent); border-radius:6px; box-shadow:none;
+  font-family: var(--mono); text-transform:uppercase; letter-spacing:.14em; }
+.c-btn::after{ background: var(--muted); color: var(--ef-green-deep); }
+.c-quiz .check{ background: var(--accent); color: var(--on-accent); border-radius:6px; box-shadow:none;
+  font-family: var(--mono); text-transform:uppercase; letter-spacing:.14em; }
+.c-quiz .opt{ border-radius:6px; border:2px solid var(--line); }
+.c-quiz .opt.sel{ border-color: var(--accent); }
+.c-quiz .opt.correct{ border-color: var(--accent); background: var(--ef-cream2); }
+.c-quiz .opt.wrong{ border-color: var(--ef-pink-deep); }
+
+/* Chrome — mono footer spine, 2px rule, pink progress */
+.navbar{ background: var(--paper); border-top:2px solid var(--accent); }
+.progress-strip{ height:4px; background: var(--muted); }
+.navbar button{ border-radius:6px; font-family: var(--mono); text-transform:uppercase;
+  letter-spacing:.12em; }
+.navbar button.ghost{ background:transparent; box-shadow: inset 0 0 0 2px var(--accent); color: var(--accent); }
+.counter{ font-family: var(--mono); text-transform:uppercase; letter-spacing:.14em; color: var(--ink); }

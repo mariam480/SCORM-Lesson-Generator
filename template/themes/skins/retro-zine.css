@@ -1,0 +1,125 @@
+/* retro-zine — risograph DIY-zine editorial: warm khaki paper (--bg), deep forest-green
+   accent (--accent #008F4D), ink-black 3px structural borders, Bebas Neue uppercase
+   tracked display. Signature moves: SVG print-grain overlay on every slide, paper-on-paper
+   green offset slabs behind cream cards (no box-shadow), stamp-mark rotations (-8deg),
+   green drop-cap quote mark, black-on-khaki inline marker highlight, square corners.
+   Source: bold-template-pack/templates/retro-zine/design.md */
+
+/* secondary accents from the doc (not the core palette) */
+:root { --rz-green-lt: #00A85D; --rz-cream: #F4EFE6; }
+
+/* --- square system: kill all radius per Shapes→Border Radius (0 everywhere) --- */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before { border-radius: 0 !important; }
+
+/* --- warm khaki paper canvas + SVG print-grain overlay on every slide --- */
+.stage { background: var(--bg); position: relative; }
+.cover, .cover.solo, .section { background: var(--bg); }
+.stage::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  opacity: .08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.slide { z-index: 3; }
+
+/* --- chrome: green progress strip, ink-bordered cream nav, Bebas tracked counter --- */
+.navbar { background: var(--bg); border-top: 3px solid var(--line); }
+.progress-strip { height: 4px; background: var(--accent); }
+.navbar button { background: var(--rz-cream); color: var(--ink); border: 2px solid var(--line);
+  font-family: var(--display); text-transform: uppercase; letter-spacing: .08em; }
+.navbar button.ghost { background: transparent; box-shadow: inset 0 0 0 2px var(--line); }
+.navbar button:disabled { opacity: .35; }
+.counter { background: var(--rz-cream); border: 2px solid var(--line); color: var(--ink);
+  font-family: var(--display); letter-spacing: .06em; }
+
+/* --- eyebrow: green ribbon-bar (solid green block, cream text), slightly stamped --- */
+.eyebrow { background: var(--accent); color: var(--rz-cream); padding: 4px 14px;
+  font-family: var(--display); text-transform: uppercase; letter-spacing: .2em;
+  transform: rotate(-2deg); transform-origin: left center; }
+
+/* --- section / cover: green Bebas hero, ink subtitle --- */
+.section .num, .cover-title, .section-title { color: var(--accent);
+  text-transform: uppercase; letter-spacing: .03em; }
+.slide-title { color: var(--ink); text-transform: uppercase; letter-spacing: .03em; }
+.cover-sub { color: var(--ink); }
+
+/* --- lists: square green tick marks (zine print-ticks) --- */
+ul.c-list, ol.c-list, ul.c-check { list-style: none; }
+ul.c-list li, ol.c-list li, ul.c-check li { padding-left: 30px; position: relative; }
+ul.c-list li::before, ol.c-list li::before {
+  content: ""; position: absolute; left: 2px; top: .5em; width: 12px; height: 12px;
+  background: var(--accent); border: none; }
+ul.c-check li::before { content: "\2713"; left: 0; top: 0; background: transparent;
+  color: var(--accent); width: auto; height: auto; font-weight: 700; }
+
+/* --- statement: solid green field, cream Bebas, white divider stub, no blob --- */
+.c-statement { background: var(--accent); color: var(--rz-cream); box-shadow: none;
+  border: 3px solid var(--line); letter-spacing: .02em; position: relative; }
+.c-statement::after { display: none; }
+.c-statement::before { content: ""; position: absolute; left: 50%; bottom: 18px;
+  transform: translateX(-50%); width: 70px; height: 4px; background: var(--rz-cream); }
+
+/* --- cards/panels: cream paper, 3px ink border, no shadow --- */
+.c-note, .c-quote, .c-acc details, .c-tabs .tab-body, .c-iconlist .ili,
+.c-quiz, .c-media, .c-code { background: var(--rz-cream); border: 3px solid var(--line);
+  box-shadow: none; }
+
+/* --- callout note: green ribbon flag instead of the emoji bulb --- */
+.c-note { border-left: 8px solid var(--accent); }
+.c-note::before { content: "NOTE"; background: var(--accent); color: var(--rz-cream);
+  font-family: var(--display); letter-spacing: .12em; padding: 2px 10px; transform: rotate(-3deg); }
+
+/* --- quote: oversized green Bebas quote mark, Caveat-grounded byline --- */
+.c-quote { border: none; border-left: 6px solid var(--accent); background: transparent; }
+.c-quote::before { color: var(--accent); font-family: var(--display); line-height: .6; }
+.c-quote .qt { text-transform: uppercase; letter-spacing: .02em; }
+.c-quote .by { color: var(--accent); letter-spacing: .04em; }
+
+/* --- icon list: cream cells, green stamp badges --- */
+.ico-badge { background: var(--accent); color: var(--rz-cream); border: 2px solid var(--line);
+  transform: rotate(-4deg); }
+.ico-badge.plain { background: transparent; border: none; color: var(--accent); transform: none; }
+.ili-h { font-family: var(--display); text-transform: uppercase; letter-spacing: .04em; }
+.ico-label { font-family: var(--display); text-transform: uppercase; letter-spacing: .12em; }
+
+/* --- tabs: ink-bordered cream tags, green active --- */
+.c-tabs .tab-strip button { background: var(--rz-cream); border: 2px solid var(--line);
+  font-family: var(--display); text-transform: uppercase; letter-spacing: .1em; color: var(--ink); }
+.c-tabs .tab-strip button.active { background: var(--accent); color: var(--rz-cream); }
+
+/* --- accordion: +/- in green Bebas --- */
+.c-acc summary { font-family: var(--display); text-transform: uppercase; letter-spacing: .03em; }
+.c-acc summary::after { color: var(--accent); }
+
+/* --- image: green offset slab behind, sharp; Bebas caption --- */
+.c-img::before { background: var(--accent); }
+.c-img img, .c-grid img { border: 3px solid var(--line); }
+.c-img figcaption, .c-grid figcaption { font-family: var(--display);
+  text-transform: uppercase; letter-spacing: .12em; color: var(--ink); }
+
+/* --- buttons: stamp-mark — black fill, green text, green border, rotated -6deg --- */
+.c-btn { background: var(--ink); color: var(--accent); border: 2px solid var(--accent);
+  font-family: var(--display); text-transform: uppercase; letter-spacing: .1em;
+  transform: rotate(-6deg); }
+.c-btn::after { background: var(--accent); color: var(--ink); border-radius: 50% !important; }
+
+/* --- timeline: ink spine, green dots, Bebas dates --- */
+.c-timeline::before { background: var(--line); width: 3px; }
+.ev::before { background: var(--accent); border: 2px solid var(--line); }
+.date { font-family: var(--display); text-transform: uppercase; letter-spacing: .1em;
+  color: var(--accent); }
+
+/* --- flashcards: cream faces, 3px ink border --- */
+.c-flash .face { background: var(--rz-cream); border: 3px solid var(--line); }
+
+/* --- sorting: cream chips, green correct / inked structure --- */
+.c-sort .chip { background: var(--rz-cream); border: 2px solid var(--line); }
+.c-sort .pile { border: 3px solid var(--line); background: transparent; }
+.c-sort .chip.correct { background: var(--accent); color: var(--rz-cream); }
+
+/* --- quiz: cream options, green selected/correct, stamp check button --- */
+.c-quiz .opt { background: var(--rz-cream); border: 2px solid var(--line); }
+.c-quiz .opt.sel { border-color: var(--accent); }
+.c-quiz .opt.correct { background: var(--accent); color: var(--rz-cream); border-color: var(--line); }
+.c-quiz .check { background: var(--ink); color: var(--accent); border: 2px solid var(--accent);
+  font-family: var(--display); text-transform: uppercase; letter-spacing: .1em; }
+
+/* --- inline emphasis: black-on-khaki marker swipe (never green) --- */
+.c-p em { font-style: normal; background: var(--ink); color: var(--bg); padding: 2px 8px; }

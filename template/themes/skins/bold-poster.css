@@ -1,0 +1,54 @@
+/* bold-poster — populist editorial poster.
+   White sheet, ONE tomato-red accent, heavy ink rules, tilted Shrikhand display,
+   red em-dash bullets, red-leftbar cards, square corners. No drop shadows.
+   Source: bold-template-pack/templates/bold-poster/design.md */
+
+.stage { background: var(--bg); }
+
+/* tilted display — the system's signature movement */
+.cover-title { transform: rotate(-2deg); transform-origin: left center; }
+.section .num { transform: rotate(-4deg); color: var(--accent); }
+.slide-title, .cover-title, .section-title, .c-h { letter-spacing: 0; }
+
+/* eyebrow -> Space Grotesk uppercase red label underlined in red (no fill pill) */
+.eyebrow {
+  background: transparent; color: var(--accent); border-radius: 0;
+  font-family: var(--mono); font-weight: 600; letter-spacing: 3px;
+  padding: 0 0 5px; border-bottom: 2px solid var(--accent);
+}
+
+/* red em-dash list bullets */
+ul.c-list li { padding-left: 28px; }
+ul.c-list li::before {
+  content: "—"; background: transparent; color: var(--accent);
+  width: auto; height: auto; left: 0; top: 1px; font-weight: 700; border-radius: 0;
+}
+ol.c-list li::before { border-radius: 0; }
+ul.c-check li::before { border-radius: 0; }
+
+/* statement -> full red panel, white text, stacked ink text-shadow (the one shadow) */
+.c-statement {
+  background: var(--accent); color: #fff; border-radius: 0;
+  text-shadow: 2px 2px 0 rgba(28,20,16,.25), 4px 4px 0 rgba(28,20,16,.2), 6px 6px 0 rgba(28,20,16,.15);
+}
+.c-statement::after { display: none; }
+
+/* editorial cards: cantilevered off a 4px red left rule, square, no float shadow */
+.c-quote, .c-acc details, .c-tabs .tab-body, .c-iconlist .ili, .c-quiz, .c-note {
+  border-radius: 0; box-shadow: none; background: var(--paper);
+  border-left: 4px solid var(--accent);
+}
+.c-note::before { content: none; }
+.c-quote::before { color: var(--accent); }
+.ico-badge { border-radius: 0; box-shadow: none; }
+
+/* tabular double border on galleries / grids */
+.c-grid img, .c-img img { border-radius: 0; box-shadow: none; }
+.c-img::before { border-radius: 0; }
+
+/* square chrome; thick red bottom rule = the poster trim */
+.navbar button, .c-btn, .c-btn::after, .c-quiz .check, .c-tabs .tab-strip button,
+.c-flash .face, .c-sort .chip { border-radius: 0; }
+.navbar button.ghost { box-shadow: inset 0 0 0 2px var(--accent); }
+.navbar { border-top: 2px solid var(--ink); }
+.progress-strip { height: 6px; }

@@ -1,0 +1,150 @@
+/* capsule — playful editorial pill system: sun-bleached bone canvas, Bodoni serif
+   headlines + Space Grotesk grotesk body, every container a pill (9999px small /
+   2rem cards) with a 2px ink stroke + soft hard-offset shadow (rgba ink .08),
+   nine-color candy palette used interchangeably, radial-glow atmosphere.
+   Recreates capsule/design.md (Memphis-meets-editorial). ROUNDED system. */
+
+/* ---- candy palette (extra literals from design.md Colors) ---- */
+:root{
+  --coral:#E85D4E; --lime:#C4D94E; --lav:#C5B5E0; --sky:#8BB4F7;
+  --violet:#A06CE8; --yellow:#F2D160; --peach:#F5B895; --mint:#A8E6CF;
+  --cap-shadow:rgba(26,26,26,.08); --cap-stroke:#1E1E1E;
+}
+
+/* ---- canvas: warm bone + radial candy glows + film grain ---- */
+.stage{ background:var(--bg); }
+.stage::before{ content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background:
+    radial-gradient(ellipse 60% 55% at 12% 8%, rgba(232,93,78,.12), transparent 60%),
+    radial-gradient(ellipse 55% 50% at 92% 88%, rgba(139,180,247,.13), transparent 60%),
+    radial-gradient(ellipse 50% 45% at 88% 12%, rgba(196,217,78,.10), transparent 60%); }
+.stage::after{ content:""; position:absolute; inset:0; pointer-events:none; z-index:2;
+  opacity:.04; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+.slide{ z-index:3; }
+
+/* ---- eyebrow / section tag: lavender header-tag pill ---- */
+.eyebrow{ display:inline-block; background:var(--lav); color:var(--ink);
+  border:2px solid var(--cap-stroke); border-radius:9999px; padding:.4rem 1.2rem;
+  font-family:var(--body); font-weight:600; text-transform:uppercase; letter-spacing:.12em; }
+
+/* ---- titles: Bodoni, ink, never colored, tight tracking ---- */
+.slide-title,.cover-title,.section-title,.c-h{ color:var(--ink); letter-spacing:-.02em; }
+.cover-title .u,.slide-title .u{ text-decoration:none;
+  background:linear-gradient(transparent 62%, var(--yellow) 0); }
+.section .num{ color:var(--coral); }
+
+/* cover subtitle: tracked uppercase grotesk */
+.cover-sub,.c-sub{ text-transform:uppercase; letter-spacing:.15em; font-family:var(--body);
+  color:var(--ink); opacity:.65; }
+.c-p,.ili-p,.cover-sub{ } /* body uses theme ink */
+
+/* ---- lists: candy dot pills with ink stroke ---- */
+ul.c-list li,ul.c-check li,ol.c-list li{ padding-left:30px; }
+ul.c-list li::before{ content:""; width:14px; height:14px; left:0; top:.45em;
+  background:var(--coral); border:2px solid var(--cap-stroke); border-radius:9999px; }
+ul.c-check li::before{ content:""; width:14px; height:14px; left:0; top:.45em;
+  background:var(--lime); border:2px solid var(--cap-stroke); border-radius:9999px; }
+ol.c-list{ counter-reset:capn; }
+ol.c-list li::before{ counter-increment:capn; content:counter(capn);
+  width:22px; height:22px; left:0; top:.2em; line-height:18px; text-align:center;
+  background:var(--sky); color:var(--ink); border:2px solid var(--cap-stroke);
+  border-radius:9999px; font-family:var(--body); font-weight:700; font-size:.7rem; }
+
+/* ---- cards / panels: white pill-cards, 2rem radius, 8px offset shadow ---- */
+.c-note,.c-acc details,.c-tabs .tab-body,.c-iconlist .ili,.c-quiz,.c-flash .face,
+.c-media,.c-code,.c-img img,.c-grid img{
+  background:var(--paper); border:2px solid var(--cap-stroke); border-radius:2rem;
+  box-shadow:8px 8px 0 var(--cap-shadow); }
+
+/* callout: replace 💡 with a coral dot pill */
+.c-note::before{ content:""; width:16px; height:16px; background:var(--coral);
+  border:2px solid var(--cap-stroke); border-radius:9999px; }
+
+/* ---- statement: yellow featured pill ---- */
+.c-statement{ background:var(--yellow); color:var(--ink); border:2px solid var(--cap-stroke);
+  border-radius:2rem; box-shadow:8px 8px 0 var(--cap-shadow); }
+.c-statement::after{ display:none; }
+
+/* ---- quote: white card + lime highlight, big Bodoni quote mark ---- */
+.c-quote{ background:var(--paper); border:2px solid var(--cap-stroke); border-radius:2rem;
+  box-shadow:8px 8px 0 var(--cap-shadow); }
+.c-quote::before{ color:var(--lime); font-family:var(--display); }
+.c-quote .qt em{ background:var(--lime); border:2px solid var(--cap-stroke);
+  border-radius:9999px; padding:.05em .5em; font-style:normal; }
+.c-quote .by{ text-transform:uppercase; letter-spacing:.1em; font-family:var(--body); }
+
+/* ---- images: 2rem frame, lifted 12px; offset accent shape becomes peach pill ---- */
+.c-img img,.c-grid img{ border-radius:2rem; box-shadow:12px 12px 0 var(--cap-shadow); }
+.c-img::before{ background:var(--peach); border:2px solid var(--cap-stroke); border-radius:2rem; }
+.c-img figcaption{ text-transform:uppercase; letter-spacing:.1em; font-family:var(--body);
+  opacity:.7; }
+
+/* ---- icons: circular candy pill badges ---- */
+.ico-badge{ background:var(--lav); color:var(--ink); border:2px solid var(--cap-stroke);
+  border-radius:50%; box-shadow:4px 4px 0 var(--cap-shadow); }
+.ico-badge.plain{ background:transparent; box-shadow:none; }
+.ico-label{ text-transform:uppercase; letter-spacing:.1em; font-family:var(--body); }
+
+/* ---- buttons: yellow pill + arrow circle ---- */
+.c-btn{ background:var(--yellow); color:var(--ink); border:2px solid var(--cap-stroke);
+  border-radius:9999px; box-shadow:4px 4px 0 var(--cap-shadow);
+  text-transform:uppercase; letter-spacing:.08em; font-family:var(--body); font-weight:600; }
+.c-btn::after{ background:var(--ink); color:var(--paper); border-radius:9999px; }
+
+/* ---- accordion / tabs ---- */
+.c-acc summary{ font-family:var(--display); color:var(--ink); }
+.c-acc summary::after{ background:var(--lime); color:var(--ink);
+  border:2px solid var(--cap-stroke); border-radius:9999px; }
+.c-tabs .tab-strip button{ background:var(--paper); color:var(--ink);
+  border:2px solid var(--cap-stroke); border-radius:9999px;
+  text-transform:uppercase; letter-spacing:.08em; font-family:var(--body); font-weight:600; }
+.c-tabs .tab-strip button.active{ background:var(--sky); }
+
+/* ---- flashcards ---- */
+.c-flash .face{ border-radius:2rem; }
+.c-flash .front{ background:var(--paper); }
+.c-flash .back{ background:var(--mint); }
+.c-flash .nav button{ background:var(--yellow); border:2px solid var(--cap-stroke);
+  border-radius:9999px; color:var(--ink); }
+
+/* ---- sorting: candy chips & cream piles, all pills ---- */
+.c-sort .chip{ background:var(--paper); border:2px solid var(--cap-stroke);
+  border-radius:9999px; box-shadow:4px 4px 0 var(--cap-shadow); color:var(--ink); }
+.c-sort .pile{ background:var(--bg); border:2px dashed var(--cap-stroke); border-radius:2rem; }
+.c-sort .pile.over{ background:rgba(196,217,78,.25); }
+.c-sort .chip.correct{ background:var(--lime); }
+.c-sort .chip.wrong{ background:var(--coral); }
+
+/* ---- timeline: ink line, candy dot pills ---- */
+.c-timeline::before{ background:var(--cap-stroke); width:4px; }
+.ev::before{ background:var(--coral); border:2px solid var(--cap-stroke); border-radius:50%;
+  box-shadow:4px 4px 0 var(--cap-shadow); }
+.ev .date{ background:var(--lav); border:2px solid var(--cap-stroke); border-radius:9999px;
+  color:var(--ink); padding:.25rem 1rem; text-transform:uppercase; letter-spacing:.08em;
+  font-family:var(--body); font-weight:600; }
+
+/* ---- quiz: pill options + yellow check ---- */
+.c-quiz .opt{ background:var(--paper); border:2px solid var(--cap-stroke);
+  border-radius:9999px; box-shadow:4px 4px 0 var(--cap-shadow); color:var(--ink); }
+.c-quiz .opt.sel{ background:var(--sky); }
+.c-quiz .opt.correct{ background:var(--lime); }
+.c-quiz .opt.wrong{ background:var(--coral); }
+.c-quiz input{ border:2px solid var(--cap-stroke); border-radius:9999px; }
+.c-quiz .check{ background:var(--yellow); color:var(--ink); border:2px solid var(--cap-stroke);
+  border-radius:9999px; text-transform:uppercase; letter-spacing:.08em;
+  font-family:var(--body); font-weight:600; }
+.c-quiz .fb{ border-radius:9999px; }
+.c-quiz .fb.ok{ background:var(--mint); color:var(--ink); }
+.c-quiz .fb.no{ background:var(--peach); color:var(--ink); }
+
+/* ---- chrome: bone bar, pill nav buttons, candy progress ---- */
+.navbar{ background:var(--bg); border-top:2px solid var(--cap-stroke); }
+.progress-strip{ height:6px; background:var(--coral); }
+.navbar button{ background:var(--paper); color:var(--ink); border:2px solid var(--cap-stroke);
+  border-radius:9999px; box-shadow:4px 4px 0 var(--cap-shadow);
+  text-transform:uppercase; letter-spacing:.08em; font-family:var(--body); font-weight:600; }
+.navbar button.ghost{ background:transparent; box-shadow:none; }
+.navbar button:disabled{ opacity:.4; box-shadow:none; }
+.counter{ background:var(--lav); color:var(--ink); border:2px solid var(--cap-stroke);
+  border-radius:9999px; font-family:var(--mono); padding:.25rem 1rem; }

@@ -1,0 +1,72 @@
+/* 8-bit-orbit — retro-futuristic pixel-art / CRT arcade.
+   Deep-navy void lit by neons, 40px cyan grid wallpaper, always-on scanline +
+   grain + CRT-vignette overlay, hard zero-blur offset shadows on the 4px unit,
+   mono "label pill" eyebrows, "+" bullets, square everything, crosshair cursor.
+   Source: bold-template-pack/templates/8-bit-orbit/design.md */
+
+:root { --cyan: #5EDCF4; --pink: #F0A6CA; --navy: #0F1B3D; }
+
+/* navy void + etched cyan grid wallpaper */
+.stage {
+  background-color: #0A0E27; cursor: crosshair;
+  background-image:
+    linear-gradient(rgba(94,220,244,.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94,220,244,.09) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+/* CRT vignette (behind) + scanlines (in front) — the system's identity overlay */
+.stage::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 52%, rgba(0,4,18,.6) 100%);
+}
+.stage::after {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(0,0,0,.16) 0 1px, transparent 1px 3px);
+  mix-blend-mode: multiply;
+}
+.slide { z-index: 3; }
+
+/* pixel discipline: nothing is rounded */
+.eyebrow, .c-statement, .c-note, .c-quote, .c-acc details, .c-tabs .tab-body, .c-tabs .tab-strip button,
+.c-iconlist .ili, .ico-badge, .c-quiz, .c-quiz .opt, .c-quiz .check, .c-quiz input,
+.c-btn, .c-btn::after, .navbar button, .c-flash .face, .c-sort .chip, .c-sort .pile,
+.c-img img, .c-grid img, .c-img::before { border-radius: 0 !important; }
+
+/* eyebrow -> mono label pill: navy fill, neon-yellow text, wide tracking */
+.eyebrow {
+  background: var(--navy); color: var(--accent); border: 2px solid var(--accent);
+  font-family: var(--mono); font-weight: 600; letter-spacing: .2em; padding: 5px 12px;
+}
+
+/* pixel hero text-shadow: cyan +4/+4 then navy +8/+8 */
+.cover-title, .slide-title, .section-title, .c-h { text-shadow: 4px 4px 0 var(--cyan), 8px 8px 0 var(--navy); }
+.section .num { color: var(--accent); text-shadow: 4px 4px 0 var(--cyan), 8px 8px 0 var(--navy); }
+
+/* "+" bullets in cyan (tier-feature glyph), never a disc */
+ul.c-list li { padding-left: 26px; }
+ul.c-list li::before {
+  content: "+"; background: transparent; color: var(--cyan);
+  width: auto; height: auto; left: 0; top: 1px; font-weight: 700; font-family: var(--mono);
+}
+
+/* frosted-navy tiles with hard offset shadow (the card grammar) */
+.c-quote, .c-acc details, .c-tabs .tab-body, .c-iconlist .ili, .c-quiz, .c-flash .front {
+  background: rgba(94,220,244,.06); border: 2px solid rgba(94,220,244,.35);
+  box-shadow: 8px 8px 0 rgba(15,27,61,.65);
+}
+.c-quote::before { color: var(--cyan); }
+.ico-badge { background: rgba(94,220,244,.1); box-shadow: none; color: var(--accent); }
+
+/* pixel buttons: six-step stacked cascade; "key-press" nudge on hover */
+.navbar button, .c-btn, .c-quiz .check {
+  background: var(--accent); color: #0A0E27; border: 2px solid #0A0E27;
+  box-shadow: 4px 4px 0 var(--navy), 8px 8px 0 var(--cyan);
+}
+.navbar button:hover, .c-btn:hover, .c-quiz .check:hover {
+  transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--navy), 4px 4px 0 var(--cyan); filter: none;
+}
+.navbar button.ghost { background: transparent; color: var(--accent); box-shadow: none; }
+.navbar button:disabled { box-shadow: none; }
+.navbar { background: var(--navy); border-top: 2px solid var(--cyan); }
+.counter { color: var(--cyan); font-family: var(--mono); }
+.progress-strip { height: 4px; background: var(--cyan); }

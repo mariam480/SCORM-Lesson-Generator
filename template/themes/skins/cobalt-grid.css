@@ -1,0 +1,120 @@
+/* cobalt-grid — Japanese trend-report monograph: warm cream paper + ONE electric cobalt
+   ink, a permanent 10%-cobalt graph-paper grid behind every slide, two 1.5px cobalt
+   hairlines framing the composition, Newsreader serif (wt 400) headlines, Hanken caps
+   labels, DM Mono chrome. Square, flat, no shadows/gradients. Signature: pixel-glitch
+   scanline column + QR-style mosaic patches. Two-color risograph only.
+   See cobalt-grid/design.md (Overview, Depth/Elevation, Shapes, Signature Treatments). */
+
+/* extra literals from the doc (cobalt at opacities — NOT a second hue) */
+:root{
+  --cg-grid: rgba(31,43,224,.10);
+  --cg-faint: rgba(31,43,224,.18);
+  --cg-soft: #5560E5;
+  --cg-cell: clamp(28px, 2.2vw, 44px);
+}
+
+/* zero radius — strict rectangles everywhere */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before { border-radius:0 !important; }
+
+/* ── canvas: cream paper + permanent graph-paper grid ── */
+.stage{ background: var(--paper); }
+.stage::before{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background-image:
+    linear-gradient(to right, var(--cg-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--cg-grid) 1px, transparent 1px);
+  background-size: var(--cg-cell) var(--cg-cell);
+}
+/* top + bottom 1.5px cobalt hairlines that frame every slide */
+.stage::after{
+  content:""; position:absolute; left:clamp(36px,3.6vw,80px); right:clamp(36px,3.6vw,80px);
+  top:2.6vh; height:1.5px; background: var(--accent); pointer-events:none; z-index:2;
+  box-shadow: 0 calc(95.4vh - 4.6vh) 0 0 var(--accent); /* mirrored hairline near bottom */
+}
+.slide{ z-index:3; }
+
+/* ── editorial chrome: labels, headlines, body all cobalt ── */
+.eyebrow{
+  background:transparent; color:var(--accent); padding:0 0 4px;
+  font-family:var(--body); font-weight:600; text-transform:uppercase; letter-spacing:.18em;
+}
+.slide-title,.cover-title,.section-title,.c-h,.c-statement,.c-quote .qt{
+  font-family:var(--display); font-weight:400; color:var(--accent);
+  letter-spacing:-.008em;
+}
+.c-p,.c-sub,.cover-sub,.ili-p,.acc-body{ color:var(--accent); }
+.c-sub,.cover-sub{ color:var(--cg-soft); }
+.section .num,.cover-title .u,.slide-title .u{ color:var(--accent); }
+.cover-title .u,.slide-title .u{ text-decoration:none; box-shadow: inset 0 -.08em 0 var(--accent); }
+
+/* ── lists: mono square-bracket index tags, faint divider rule ── */
+ul.c-list li,ol.c-list li,ul.c-check li{ padding-left:30px; border-bottom:1px solid var(--cg-faint); padding-bottom:7px; }
+ul.c-list li::before{
+  content:""; left:2px; top:.55em; width:9px; height:9px; background:var(--accent);
+  border-radius:0; }
+ol.c-list{ counter-reset:cg; }
+ol.c-list li::before{
+  content:counter(cg,decimal-leading-zero); counter-increment:cg; left:0; top:.05em;
+  width:auto; height:auto; background:transparent; color:var(--accent);
+  font-family:var(--mono); font-size:.8em; letter-spacing:.04em; }
+ul.c-check li::before{
+  content:"+"; left:0; top:0; width:auto; height:auto; background:transparent;
+  color:var(--accent); font-family:var(--mono); font-weight:400; }
+
+/* ── flat panels: structural rules, no cards/shadows ── */
+.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-iconlist .ili,.c-statement{
+  background:transparent; box-shadow:none; border:0; border-top:1.5px solid var(--accent);
+  padding-top:clamp(12px,1.4vh,22px); }
+.c-note::before{ content:"//"; font-family:var(--mono); color:var(--accent); }
+.c-statement{ color:var(--accent); }
+.c-statement::after{ display:none; }
+.c-quote{ border-top:1px solid var(--accent); }
+.c-quote::before{ color:var(--cg-faint); font-family:var(--display); }
+.c-quote .by{ font-family:var(--mono); letter-spacing:.04em; color:var(--accent); text-transform:uppercase; }
+
+/* ── icons: square cobalt-outline badges ── */
+.ico-badge{ background:transparent; color:var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.ico-badge.plain{ box-shadow:none; }
+.ico-label,.ili-h{ font-family:var(--body); font-weight:600; text-transform:uppercase; letter-spacing:.16em; color:var(--accent); }
+.c-iconlist .ili{ border-top:1px solid var(--cg-faint); padding-top:clamp(10px,1.2vh,18px); }
+
+/* ── image: offset square accent + cobalt frame ── */
+.c-img img,.c-grid img{ border:1.5px solid var(--accent); }
+.c-img::before{ background:transparent; box-shadow: inset 0 0 0 1.5px var(--accent); }
+.c-img figcaption{ font-family:var(--mono); letter-spacing:.04em; color:var(--accent); text-transform:uppercase; }
+
+/* ── buttons: square cobalt outline / fill ── */
+.c-btn{ background:var(--accent); color:var(--on-accent); box-shadow:none; }
+.c-btn::after{ background:var(--on-accent); color:var(--accent); }
+.navbar button{ background:transparent; color:var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.navbar button:not(.ghost){ background:var(--accent); color:var(--on-accent); box-shadow:none; }
+.navbar button:disabled{ opacity:.35; }
+.counter{ font-family:var(--mono); letter-spacing:.06em; color:var(--accent); background:transparent; }
+
+/* ── persistent nav bar: framed by cobalt hairline ── */
+.navbar{ background:var(--paper); border-top:1.5px solid var(--accent); }
+.progress-strip{ height:3px; background:var(--cg-faint); }
+.progress-strip > *{ background:var(--accent); }
+
+/* ── interactives: square, cobalt rules ── */
+.c-acc summary::after{ color:var(--accent); }
+.c-tabs .tab-strip button{ border:0; border-bottom:1.5px solid var(--cg-faint); color:var(--accent); }
+.c-tabs .tab-strip button.active{ border-bottom-color:var(--accent); }
+.c-flash .face{ border:1.5px solid var(--accent); background:transparent; }
+.c-sort .chip{ border:1.5px solid var(--accent); background:var(--paper); }
+.c-sort .pile{ border:1.5px dashed var(--cg-faint); }
+.c-sort .pile.over{ border-color:var(--accent); border-style:solid; }
+.c-sort .chip.correct{ background:var(--accent); color:var(--on-accent); }
+.c-sort .chip.wrong{ opacity:.5; }
+.c-timeline::before{ background:var(--accent); width:1.5px; }
+.ev::before{ background:var(--accent); border-radius:0; }
+.date{ font-family:var(--mono); letter-spacing:.04em; color:var(--accent); }
+
+/* ── quiz: square cobalt options ── */
+.c-quiz .opt{ border:1.5px solid var(--cg-faint); background:transparent; }
+.c-quiz .opt.sel{ border-color:var(--accent); }
+.c-quiz .opt.correct{ background:var(--accent); color:var(--on-accent); border-color:var(--accent); }
+.c-quiz .opt.wrong{ opacity:.5; }
+.c-quiz .check{ background:var(--accent); color:var(--on-accent); }
+.c-quiz .fb.ok{ color:var(--accent); }
+.c-quiz .fb.no{ color:var(--cg-soft); }

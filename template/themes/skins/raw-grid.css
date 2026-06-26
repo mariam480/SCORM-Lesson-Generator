@@ -1,0 +1,110 @@
+/* raw-grid — neobrutalist Swiss wireframe: white canvas, 3px solid black borders ARE
+   the layout, system sans at weight 900 uppercase (NO web font), hard offset shadows
+   (6px/4px, zero blur, solid black), muted blush/sage accent fills, → arrow prefixes,
+   black label pills, oversized low-opacity wallpaper numerals. Per raw-grid/design.md. */
+
+:root{
+  /* design's true primary is the black structure; accent fills are pastel surfaces */
+  --accent:#0A0A0A; --on-accent:#FFFFFF;
+  --rg-pink:#F2D4CF; --rg-green:#E5EDD6; --rg-gray:#F5F5F5; --rg-ink:#0A0A0A;
+}
+
+/* white canvas + a faint exposed Swiss grid overlay */
+.stage{ background:#FFFFFF; }
+.stage::before{ content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background-image:
+    linear-gradient(to right, rgba(10,10,10,.05) 3px, transparent 3px),
+    linear-gradient(to bottom, rgba(10,10,10,.05) 3px, transparent 3px);
+  background-size:80px 80px; }
+.stage::after{ content:""; position:absolute; inset:0; pointer-events:none; z-index:2;
+  border:3px solid var(--rg-ink); }
+.slide{ z-index:3; }
+
+/* radius reset — strict rectangles everywhere */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before,.c-icon,.c-media,.c-code,.c-tabs .tab-strip{ border-radius:0 !important; }
+
+/* uppercase display voice with negative tracking */
+.cover-title,.slide-title,.section-title,.c-h{ text-transform:uppercase; font-weight:900;
+  letter-spacing:-.01em; color:var(--rg-ink); }
+.section .num{ color:var(--rg-ink); opacity:.22; font-weight:900; letter-spacing:-.04em; }
+
+/* black label pill — the universal section tag */
+.eyebrow{ background:var(--rg-ink); color:#fff; border:none; padding:6px 14px;
+  font-family:var(--display); font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.c-sub{ text-transform:uppercase; letter-spacing:.04em; font-weight:700; }
+
+/* lists — → arrow prefix, the interactivity / progression signal */
+ul.c-list li,ol.c-list li,ul.c-check li{ padding-left:30px; }
+ul.c-list li::before,ol.c-list li::before{ content:"\2192"; background:transparent;
+  color:var(--rg-ink); width:auto; height:auto; left:0; top:0; font-weight:900; border-radius:0; }
+ul.c-check li::before{ content:"\2192"; background:transparent; color:var(--rg-ink);
+  width:auto; height:auto; left:0; font-weight:900; border-radius:0; }
+
+/* cards & panels — 3px black border, square, hard offset shadow, pastel fills */
+.c-statement{ background:var(--rg-green); color:var(--rg-ink); border:3px solid var(--rg-ink);
+  box-shadow:6px 6px 0 var(--rg-ink); text-shadow:none; }
+.c-statement::after{ display:none; }
+.c-note{ background:var(--rg-pink); color:var(--rg-ink); border:3px solid var(--rg-ink);
+  box-shadow:4px 4px 0 var(--rg-ink); }
+.c-note::before{ content:"\2192"; font-style:normal; }
+.c-quote{ background:#fff; color:var(--rg-ink); border:3px solid var(--rg-ink);
+  box-shadow:6px 6px 0 var(--rg-ink); }
+.c-quote::before{ color:var(--rg-ink); opacity:.15; font-weight:900; }
+.c-acc details,.c-tabs .tab-body,.c-iconlist .ili,.c-quiz{ background:#fff;
+  border:3px solid var(--rg-ink); box-shadow:none; }
+.ico-badge{ background:#fff; color:var(--rg-ink); border:3px solid var(--rg-ink); font-weight:900; }
+.ico-badge.plain{ background:var(--rg-green); }
+.ili-h{ text-transform:uppercase; font-weight:800; letter-spacing:.01em; }
+
+/* images — square framed, 3px border with hard offset block instead of soft shadow */
+.c-img img,.c-grid img{ border:3px solid var(--rg-ink); box-shadow:6px 6px 0 var(--rg-ink); }
+.c-img::before{ background:var(--rg-pink); border:3px solid var(--rg-ink); }
+.c-img figcaption{ text-transform:uppercase; font-weight:700; letter-spacing:.08em; }
+
+/* code & media */
+.c-code{ border:3px solid var(--rg-ink); box-shadow:4px 4px 0 var(--rg-ink); }
+.c-media{ border:3px solid var(--rg-ink); }
+
+/* buttons — square, arrow-prefixed, hard offset shadow */
+.c-btn{ background:var(--rg-ink); color:#fff; border:3px solid var(--rg-ink);
+  box-shadow:4px 4px 0 var(--rg-ink); text-transform:uppercase; font-weight:800; letter-spacing:.04em; }
+.c-btn::after{ background:#fff; color:var(--rg-ink); }
+
+/* accordion / tabs +/- and active state */
+.c-acc summary{ text-transform:uppercase; font-weight:800; letter-spacing:.01em; }
+.c-tabs .tab-strip{ border:3px solid var(--rg-ink); }
+.c-tabs .tab-strip button{ text-transform:uppercase; font-weight:700; letter-spacing:.06em;
+  border-right:3px solid var(--rg-ink); }
+.c-tabs .tab-strip button.active{ background:var(--rg-green); color:var(--rg-ink); }
+
+/* flashcards & sorting */
+.c-flash .face{ border:3px solid var(--rg-ink); box-shadow:6px 6px 0 var(--rg-ink); }
+.c-sort .chip{ border:3px solid var(--rg-ink); box-shadow:none; }
+.c-sort .pile{ border:3px solid var(--rg-ink); }
+.c-sort .pile.over{ background:var(--rg-green); }
+.c-sort .chip.correct{ background:var(--rg-green); }
+.c-sort .chip.wrong{ background:var(--rg-pink); }
+
+/* timeline — black line, square connector nodes */
+.c-timeline::before{ background:var(--rg-ink); width:3px; }
+.ev::before{ background:var(--rg-ink); border:3px solid var(--rg-ink); border-radius:0; }
+.date{ text-transform:uppercase; font-weight:800; letter-spacing:.06em; }
+
+/* quiz */
+.c-quiz .opt{ border:3px solid var(--rg-ink); }
+.c-quiz .opt.sel{ background:var(--rg-green); }
+.c-quiz .opt.correct{ background:var(--rg-green); }
+.c-quiz .opt.wrong{ background:var(--rg-pink); }
+.c-quiz .check{ background:var(--rg-ink); color:#fff; border:3px solid var(--rg-ink);
+  box-shadow:4px 4px 0 var(--rg-ink); text-transform:uppercase; font-weight:800; }
+.c-quiz .fb.ok{ background:var(--rg-green); border:3px solid var(--rg-ink); }
+.c-quiz .fb.no{ background:var(--rg-pink); border:3px solid var(--rg-ink); }
+
+/* chrome — exposed heavy rules, square ghost buttons */
+.navbar{ background:#fff; border-top:3px solid var(--rg-ink); }
+.progress-strip{ height:6px; background:var(--rg-ink); }
+.navbar button{ background:var(--rg-ink); color:#fff; border:3px solid var(--rg-ink);
+  text-transform:uppercase; font-weight:800; letter-spacing:.04em; }
+.navbar button.ghost{ background:#fff; color:var(--rg-ink); box-shadow:inset 0 0 0 3px var(--rg-ink); }
+.navbar button:disabled{ opacity:.35; }
+.counter{ font-weight:800; letter-spacing:.06em; color:var(--rg-ink); text-transform:uppercase; }

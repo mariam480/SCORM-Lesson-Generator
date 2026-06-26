@@ -1,0 +1,105 @@
+/* studio — "Boring Studios" agency manifesto: warm near-black ground, acid-yellow as
+   the SOLE accent AND primary text, Barlow 900 uppercase type-as-graphic-mass + IBM Plex
+   Mono spec-sheet metadata. Severely flat: no shadows, no radius, no third color, no
+   gradients. Hairline 1px chrome rules, 2px anchor rules, em-dash bullets, mono counter.
+   See studio/design.md (Overview, Depth/Elevation, Shapes, Signature Treatments, Do's/Don'ts). */
+
+/* The dominant color is acid-yellow on near-black; force that binary. */
+:root{
+  --bg:#1C1C1C; --paper:#242422; --ink:#F5D200; --accent:#F5D200; --on-accent:#1C1C1C;
+  --line:#2E2E2C; --muted:rgba(245,210,0,.58); --r:0;
+  --ay:#F5D200; --ay2:rgba(245,210,0,.32); --nb:#1C1C1C;
+}
+
+/* Square the whole system. */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before{ border-radius:0 !important; }
+
+/* Ground: flat warm near-black. */
+.stage{ background:var(--bg); }
+.slide{ z-index:3; }
+
+/* Headlines = graphic mass: uppercase, heavy, tight negative tracking, yellow. */
+.cover-title,.section-title,.slide-title,.c-h,.c-statement,.qt,.ili-h,.ico-label{
+  text-transform:uppercase; letter-spacing:-.015em; color:var(--ay); }
+.cover-title,.slide-title,.section-title,.c-statement{ font-weight:900; }
+
+/* Eyebrow / labels = IBM Plex Mono spec-sheet voice. */
+.eyebrow{ background:transparent; color:var(--muted); border:0;
+  font-family:var(--mono); font-weight:500; letter-spacing:.06em; text-transform:uppercase; }
+
+/* Section number — mono ledger digit. */
+.section .num{ font-family:var(--mono); color:var(--ay2); font-weight:500; }
+
+/* Em-dash bullets in surface accent — never dots. */
+ul.c-list li,ul.c-check li,ol.c-list li{ padding-left:1.6em; }
+ul.c-list li::before,ul.c-check li::before{ content:"—"; background:transparent !important;
+  color:var(--ay); width:auto; height:auto; left:0; top:0; font-weight:700; box-shadow:none; }
+ol.c-list{ list-style:none; }
+ol.c-list li::before{ color:var(--ay); font-family:var(--mono); font-weight:600; }
+
+/* Cards / panels: flat, hairline, no shadow. Statement = full acid-yellow field. */
+.c-note,.c-acc details,.c-tabs .tab-body,.c-iconlist .ili,.c-quiz,.c-media,.c-code{
+  background:var(--paper); border:1px solid var(--line); box-shadow:none; }
+.c-note::before{ content:none; }
+.c-note{ border-left:2px solid var(--ay); }
+
+.c-statement{ background:var(--ay); color:var(--nb); box-shadow:none; text-shadow:none; }
+.c-statement::after{ display:none; }
+
+/* Quote: chromeless, heavy uppercase, mono attribution. No quote mark ornament. */
+.c-quote{ background:transparent; border:0; border-left:2px solid var(--ay); box-shadow:none; }
+.c-quote::before{ display:none; }
+.qt{ font-weight:900; }
+.by{ font-family:var(--mono); color:var(--muted); letter-spacing:.06em; text-transform:uppercase; }
+
+/* Image: replace soft offset shape with a flat 2px corner rule; mono caption. */
+.c-img::before{ background:transparent !important; border-top:2px solid var(--ay);
+  border-left:2px solid var(--ay); border-radius:0; }
+.c-img figcaption{ font-family:var(--mono); color:var(--muted); letter-spacing:.04em;
+  text-transform:uppercase; }
+
+/* Icons: flat square badges in the binary. */
+.ico-badge{ background:var(--ay); color:var(--nb); box-shadow:none; }
+.ico-badge.plain{ background:transparent; color:var(--ay); box-shadow:inset 0 0 0 1px var(--line); }
+.ili{ background:var(--paper); }
+
+/* Buttons: square acid-yellow block, near-black text, mono-flat arrow. */
+.c-btn{ background:var(--ay); color:var(--nb); box-shadow:none; text-transform:uppercase;
+  letter-spacing:.04em; font-weight:700; }
+.c-btn::after{ background:var(--nb); color:var(--ay); }
+
+/* Accordion +/- in accent; flat dividers. */
+.c-acc summary{ text-transform:uppercase; letter-spacing:-.01em; }
+.c-acc summary::after{ color:var(--ay); }
+
+/* Tabs: square strip, accent-active. */
+.c-tabs .tab-strip button{ background:transparent; color:var(--muted); text-transform:uppercase;
+  letter-spacing:.04em; border-bottom:2px solid transparent; }
+.c-tabs .tab-strip button.active{ color:var(--ay); border-bottom-color:var(--ay); background:transparent; }
+
+/* Flashcards / sort: flat surfaces. */
+.c-flash .face{ background:var(--paper); border:1px solid var(--line); box-shadow:none; }
+.c-sort .chip{ background:var(--ay); color:var(--nb); box-shadow:none; }
+.c-sort .pile{ background:transparent; border:1px solid var(--line); }
+.c-sort .pile.over{ border-color:var(--ay); }
+
+/* Timeline: hairline spine, accent dots, mono dates. */
+.c-timeline::before{ background:var(--line); }
+.ev::before{ background:var(--ay); box-shadow:none; border-radius:0; }
+.date{ font-family:var(--mono); color:var(--muted); letter-spacing:.06em; }
+
+/* Quiz: flat options, accent check, square states. */
+.c-quiz .opt{ background:var(--paper); border:1px solid var(--line); }
+.c-quiz .opt.sel{ border-color:var(--ay); }
+.c-quiz .opt.correct{ border-color:var(--ay); box-shadow:inset 0 0 0 1px var(--ay); }
+.c-quiz .opt.wrong{ border-color:var(--muted); }
+.c-quiz .check{ background:var(--ay); color:var(--nb); text-transform:uppercase; letter-spacing:.04em; }
+
+/* Chrome bar = mono spec sheet: hairline rules, mono counter. */
+.navbar{ background:var(--bg); border-top:1px solid var(--line); }
+.progress-strip{ height:2px; background:var(--ay); }
+.navbar button{ background:var(--ay); color:var(--nb); box-shadow:none; text-transform:uppercase;
+  letter-spacing:.04em; font-weight:700; }
+.navbar button.ghost{ background:transparent; color:var(--ay); box-shadow:inset 0 0 0 1px var(--line); }
+.navbar button:disabled{ opacity:.32; }
+.counter{ font-family:var(--mono); color:var(--muted); letter-spacing:.08em; background:transparent; }

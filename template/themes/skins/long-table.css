@@ -1,0 +1,116 @@
+/* long-table — single-ink supper-club / Risograph zine program: warm rust terracotta
+   ink (#B53D2A) on buttery cream paper, Bricolage display (var(--display)) UPPERCASE
+   + Fraunces italic body (var(--body)), 4px radial-dot paper texture overlay, outlined
+   shapes only (no fills, no shadows), pill buttons (999px) + sharp cards, 1px @ 32%
+   solid/dashed internal rules. See long-table/design.md. */
+
+/* --- paper ground + radial-dot texture (on every slide) --- */
+.stage { background: var(--paper); }
+.stage::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background-image: radial-gradient(circle at 1px 1px, var(--accent) 0.5px, transparent 1px);
+  background-size: 4px 4px; opacity: .10;
+}
+.slide { z-index: 3; }
+
+/* radius reset — sharp corners everywhere except pills/badges */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-flash .face,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before { border-radius: 0 !important; }
+
+/* --- display voice: Bricolage 800 UPPERCASE, negative tracking --- */
+.cover-title,.slide-title,.section-title,.c-h,.cover-sub { text-transform: uppercase; letter-spacing: -.012em; }
+.cover-title,.slide-title,.section-title { font-weight: 800; }
+.section .num { font-family: var(--body); font-style: italic; font-weight: 400; color: var(--accent); }
+
+/* --- eyebrow: tracked italic edition-label, paired with a circular badge --- */
+.eyebrow { background: transparent; color: var(--accent); font-family: var(--display);
+  font-weight: 700; letter-spacing: .18em; text-transform: uppercase; padding: 0; }
+
+/* universal topbar divider beneath the head */
+.slide-head { border-bottom: 1.5px solid var(--accent); padding-bottom: var(--gap-tight, 12px); }
+
+/* --- body: Fraunces italic by default --- */
+.c-p,.c-sub,.c-statement,.qt,.c-note,.cover-sub { font-style: italic; }
+.c-p em { font-weight: 600; font-style: italic; }
+
+/* --- lists: italic Fraunces marker, dash-like ink ticks --- */
+ul.c-list li, ul.c-check li { padding-left: 30px; font-style: italic; }
+ul.c-list li::before { content: "—"; background: transparent; color: var(--accent);
+  width: auto; height: auto; left: 0; top: 0; font-weight: 700; }
+ol.c-list li::before { color: var(--accent); font-family: var(--body); font-style: italic; }
+ul.c-check li::before { content: "✓"; background: transparent; color: var(--accent);
+  width: auto; height: auto; left: 0; top: 0; font-weight: 700; }
+
+/* --- cards / panels: 1.5px outlined, no fill, no shadow --- */
+.c-quote,.c-acc details,.c-tabs .tab-body,.c-iconlist .ili,.c-quiz,.c-note,.c-statement {
+  background: transparent; box-shadow: none; border: 1.5px solid var(--accent); }
+
+/* statement: outlined panel, kill the blob */
+.c-statement { color: var(--accent); }
+.c-statement::after { display: none; }
+
+/* note: replace 💡 with an italic edition-style label */
+.c-note { border-left: 1.5px solid var(--accent); }
+.c-note::before { content: "NB —"; font-family: var(--display); font-style: normal;
+  font-weight: 700; letter-spacing: .14em; color: var(--accent); }
+
+/* quote: big italic Fraunces mark, hairline attribution rule */
+.c-quote .qt { font-family: var(--display); font-style: normal; text-transform: uppercase;
+  font-weight: 700; letter-spacing: -.012em; }
+.c-quote::before { color: var(--accent); font-family: var(--body); font-style: italic; opacity: .32; }
+.c-quote .by { font-family: var(--display); text-transform: uppercase; font-weight: 700;
+  letter-spacing: .04em; padding-top: 10px; border-top: 1px dashed rgba(181,61,42,.32); }
+
+/* image: offset becomes a thin ink outline, sharp corners */
+.c-img::before { background: transparent; border: 1.5px solid var(--accent); }
+.c-img img,.c-grid img { border: 1.5px solid var(--accent); }
+.c-img figcaption { font-style: italic; color: rgba(181,61,42,.78); }
+
+/* --- icons: outlined circular/square badges, no fill --- */
+.ico-badge { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); }
+.ico-badge.plain { border: none; }
+.ico-label { font-family: var(--display); text-transform: uppercase; font-weight: 700; letter-spacing: -.005em; }
+.ili-p { font-style: italic; }
+
+/* --- pills & buttons: 999px outlined, italic Fraunces, no fill --- */
+.c-btn { background: transparent; color: var(--accent); border: 1.5px solid var(--accent);
+  border-radius: 999px; font-family: var(--body); font-style: italic; font-weight: 400; }
+.c-btn::after { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); }
+
+/* --- accordion / tabs --- */
+.c-acc summary { font-family: var(--display); text-transform: uppercase; font-weight: 700; letter-spacing: -.008em; }
+.c-acc summary::after { color: var(--accent); }
+.acc-body { font-style: italic; }
+.c-tabs .tab-strip button { background: transparent; border: 1.5px solid var(--accent);
+  color: var(--accent); font-family: var(--body); font-style: italic; }
+.c-tabs .tab-strip button.active { background: var(--accent); color: var(--on-accent); font-style: italic; }
+
+/* --- flashcards --- */
+.c-flash .face { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); box-shadow: none; }
+
+/* --- sorting --- */
+.c-sort .chip { background: transparent; border: 1.5px solid var(--accent); color: var(--accent);
+  font-style: italic; border-radius: 999px; }
+.c-sort .pile { background: transparent; border: 1.5px dashed rgba(181,61,42,.32); }
+.c-sort .pile.over { border-color: var(--accent); border-style: solid; }
+
+/* --- timeline: ledger-style ink rule + outlined dots --- */
+.c-timeline::before { background: rgba(181,61,42,.32); }
+.ev::before { background: var(--paper); border: 1.5px solid var(--accent); }
+.date { font-family: var(--body); font-style: italic; color: rgba(181,61,42,.78); }
+
+/* --- quiz: outlined options + pill check --- */
+.c-quiz .opt { background: transparent; border: 1.5px solid rgba(181,61,42,.32); font-style: italic; }
+.c-quiz .opt.sel { border-color: var(--accent); }
+.c-quiz .opt.correct { border-color: var(--accent); }
+.c-quiz .opt.wrong { border-color: var(--accent); border-style: dashed; }
+.c-quiz .check { background: var(--accent); color: var(--on-accent); border-radius: 999px;
+  font-family: var(--body); font-style: italic; }
+
+/* --- chrome: ledger topbar, italic pagenum counter --- */
+.navbar { border-top: 1.5px solid var(--accent); background: var(--paper); }
+.progress-strip { height: 3px; background: rgba(181,61,42,.32); }
+.navbar button { background: transparent; border: 1.5px solid var(--accent); color: var(--accent);
+  border-radius: 999px; font-family: var(--body); font-style: italic; font-weight: 400; }
+.navbar button.ghost { background: transparent; }
+.navbar button:disabled { opacity: .35; }
+.counter { font-family: var(--body); font-style: italic; color: var(--accent); letter-spacing: .02em; }

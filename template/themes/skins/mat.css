@@ -1,0 +1,116 @@
+/* mat — material-tactile product-launch system: deep forest-green field warmed by a
+   bottom-right wood-brown atmospheric glow, warm cream type floating with no frames,
+   one burnt-copper orange accent (kicker / em-dash bullet / inline em only), heavy
+   mixed-case Bricolage Grotesque display + DM Mono micro-labels, cream "info-card"
+   inset as the signature material-contrast move, 1px hairline rules only, square,
+   ZERO shadows.  Cites: bold-template-pack/templates/mat/design.md
+   (Overview, Layout→Persistent Chrome, Depth/Elevation, Shapes/Treatment,
+   Signature Treatments, Do's & Don'ts, Colors→Defaults). */
+
+/* ---- local palette literals from design.md ---- */
+:root{
+  --green:#232E26; --green-alt:#2E3D30; --cream:#EDE6D0; --cream-deep:#E4DAC4;
+  --wood:#7A4E24; --hair:rgba(240,232,210,.12); --hair-d:rgba(30,40,32,.14);
+  --ink-d:#1E2820; --ink-d2:rgba(30,40,32,.6); --cream2:rgba(240,232,210,.58);
+}
+
+/* ---- forest-green field + bottom-right wood-brown atmospheric glow (non-optional) ---- */
+.stage{ background:var(--green); }
+.stage::after{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background:radial-gradient(55% 70% at 78% 88%,
+    rgba(122,78,36,.30) 0%, rgba(80,50,20,.15) 42%, rgba(80,50,20,0) 72%);
+}
+.slide{ z-index:3; }
+
+/* ---- square discipline: no rounded corners on any structural element, no shadows ---- */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,
+.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,
+.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,
+.c-img::before,.c-media,.c-code{ border-radius:0 !important; box-shadow:none !important; }
+
+/* headlines are cream on the green field, mixed case, tight negative tracking — never orange */
+.cover-title,.slide-title,.section-title,.c-h{ color:var(--ink-cream,var(--ink)); letter-spacing:-.025em; }
+.section .num{ color:var(--cream2); font-family:var(--display); letter-spacing:-.02em; }
+
+/* ---- kicker / eyebrow: DM Mono uppercase, wide +tracking, warm orange, no fill ---- */
+.eyebrow{ background:transparent; color:var(--accent); font-family:var(--mono); font-weight:400;
+  text-transform:uppercase; letter-spacing:.12em; padding:0 0 8px;
+  border-bottom:1px solid var(--hair); }
+.cover-sub,.ico-label,.date{ font-family:var(--mono); text-transform:uppercase; letter-spacing:.12em; }
+.slide-title .u{ background:linear-gradient(var(--accent),var(--accent)) bottom/100% .1em no-repeat;
+  padding-bottom:.02em; color:inherit; }
+
+/* ---- list bullets: orange em-dash in DM Mono — never a dot, check, or numeral ---- */
+ul.c-list li,ol.c-list li,ul.c-check li{ padding-left:1.6em; }
+ul.c-list li::before,ol.c-list li::before,ul.c-check li::before{
+  content:"—"; background:transparent; color:var(--accent); font-family:var(--mono); font-weight:400;
+  width:auto; height:auto; left:0; top:0; border-radius:0; }
+
+/* ---- info-card: warm cream paper inset on the green field — no border, no shadow ---- */
+.c-note,.c-statement,.c-iconlist .ili{
+  background:var(--cream); color:var(--ink-d); border:none; }
+.c-note .c-h,.c-statement .c-h,.ili-h{ color:var(--ink-d); }
+.c-note .c-p,.c-statement .c-p,.ili-p{ color:var(--ink-d2); }
+.c-note::before{ content:none; }              /* drop the 💡 — Mat has no emoji marks */
+.c-statement::after{ display:none; }           /* drop the blob — flat material reading */
+
+/* ---- quote: oversized orange opening mark, cream text, hairline only ---- */
+.c-quote{ background:transparent; border:none; border-left:1px solid var(--hair); }
+.c-quote::before{ color:var(--accent); font-family:var(--display); font-weight:800; }
+.c-quote .qt{ font-family:var(--display); font-weight:600; letter-spacing:-.02em; color:var(--ink); }
+.c-quote .by{ font-family:var(--mono); text-transform:uppercase; letter-spacing:.12em; color:var(--accent); }
+
+/* ---- panels & containers: chromeless / hairline-divided, never carded ---- */
+.c-acc details,.c-tabs .tab-body{ background:transparent; border:1px solid var(--hair); }
+.c-acc summary{ color:var(--ink); font-family:var(--display); font-weight:600; }
+.c-acc summary::after{ color:var(--accent); }
+.c-tabs .tab-strip button{ background:transparent; color:var(--cream2);
+  font-family:var(--mono); text-transform:uppercase; letter-spacing:.12em; border:none;
+  border-bottom:1px solid transparent; }
+.c-tabs .tab-strip button.active{ color:var(--accent); border-bottom-color:var(--accent); }
+
+/* ---- icon badges: cream paper chips, dark ink glyph (material contrast) ---- */
+.ico-badge{ background:var(--cream); color:var(--ink-d); }
+.ico-badge.plain{ background:transparent; color:var(--accent); }
+
+/* ---- image: hairline-bordered void, faint cream ground, offset accent shape ---- */
+.c-img img,.c-grid img{ border:1px solid var(--hair); }
+.c-img::before{ background:var(--accent); }
+.c-img figcaption{ font-family:var(--mono); text-transform:uppercase; letter-spacing:.12em; color:var(--cream2); }
+
+/* ---- buttons: cream paper face, dark ink text; orange arrow; ghost = hairline outline ---- */
+.c-btn,.c-quiz .check{ background:var(--cream); color:var(--ink-d); border:none; font-weight:600; }
+.c-btn::after{ background:var(--accent); color:var(--cream); }
+.c-btn .btn-ico{ color:var(--accent); }
+
+/* ---- quiz: hairline options, cream-paper correct / orange-marked states ---- */
+.c-quiz{ background:transparent; border:1px solid var(--hair); }
+.c-quiz .opt{ background:transparent; border:1px solid var(--hair); color:var(--ink); }
+.c-quiz .opt.sel{ border-color:var(--accent); }
+.c-quiz .opt.correct{ background:var(--cream); color:var(--ink-d); border-color:var(--cream); }
+.c-quiz .opt.wrong{ border-color:var(--wood); color:var(--cream2); }
+.c-quiz .fb.ok{ color:var(--accent); }
+.c-quiz .fb.no{ color:var(--cream2); }
+
+/* ---- flashcards / sorting: cream paper faces & chips, dark ink ---- */
+.c-flash .face{ background:var(--cream); color:var(--ink-d); border:none; }
+.c-flash .hint,.c-sort .chip{ font-family:var(--mono); }
+.c-sort .chip{ background:var(--cream); color:var(--ink-d); border:none; }
+.c-sort .pile{ background:transparent; border:1px solid var(--hair); }
+.c-sort .pile.over{ border-color:var(--accent); }
+.c-sort .chip.correct{ border:1px solid var(--accent); }
+.c-sort .chip.wrong{ opacity:.55; }
+
+/* ---- timeline: hairline spine, orange event dots, mono dates ---- */
+.c-timeline::before{ background:var(--hair); }
+.c-timeline .ev::before{ background:var(--accent); }
+.c-timeline .date{ color:var(--accent); }
+
+/* ---- chrome: hairline-topped foot band, mono counter, thin orange progress ---- */
+.navbar{ background:var(--green); border-top:1px solid var(--hair); }
+.navbar button{ background:var(--cream); color:var(--ink-d); border:none; font-weight:600; }
+.navbar button.ghost{ background:transparent; color:var(--cream2); box-shadow:inset 0 0 0 1px var(--hair); }
+.navbar button:disabled{ opacity:.35; }
+.counter{ color:var(--cream2); font-family:var(--mono); letter-spacing:.12em; }
+.progress-strip{ height:2px; background:var(--accent); }

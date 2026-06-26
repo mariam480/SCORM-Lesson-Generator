@@ -1,0 +1,132 @@
+/* blue-professional — consulting-grade restraint: warm cream paper (#fdfae7), one
+   electric cobalt accent (#1e2bfa) carrying every emphasis moment, soft cobalt-tinted
+   cards (4% fill / 20% border, 10-14px radius), no drop shadows, pill chrome.
+   Space Grotesk display + Inter body. Source: blue-professional/design.md
+   (Overview, Depth and Elevation, Shapes and Treatment, Signature Treatments, Do's/Don'ts). */
+
+/* literal accent tints from design.md (cobalt #1e2bfa at varying opacity) */
+:root{
+  --cobalt: #1e2bfa;
+  --cobalt-04: rgba(30,43,250,.04);
+  --cobalt-08: rgba(30,43,250,.08);
+  --cobalt-15: rgba(30,43,250,.15);
+  --cobalt-20: rgba(30,43,250,.2);
+}
+
+/* warm cream ground on every surface, never white */
+.stage{ background: var(--bg); }
+
+/* atmospheric concentric circles, closing-class style, kept faint so content reads */
+.stage::after{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background:
+    radial-gradient(circle at 88% 18%, transparent 178px, var(--cobalt-20) 179px 180px, transparent 181px),
+    radial-gradient(circle at 88% 18%, transparent 128px, var(--cobalt-20) 129px 130px, transparent 131px);
+  opacity:.35;
+}
+.slide{ z-index:3; }
+
+/* eyebrow — cobalt, uppercase, wide 0.08em tracking, no fill (signature) */
+.eyebrow{ background:transparent; color:var(--accent); border-radius:0;
+  font-family:var(--display); font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  padding:0; }
+
+/* cover — short 60x4 cobalt accent rule above the title */
+.cover-title::before{ content:""; display:block; width:60px; height:4px; border-radius:2px;
+  background:var(--accent); margin-bottom:.7em; }
+.cover-sub{ color:var(--muted); }
+
+/* section number — cobalt numeral, the system's data voice */
+.section .num{ color:var(--accent); font-family:var(--display); font-weight:700; }
+
+/* headlines stay near-black with tight tracking; cobalt is NEVER on headlines */
+.slide-title,.section-title,.c-h{ color:var(--ink); letter-spacing:-.02em; }
+.c-sub{ color:var(--muted); }
+.c-p,.c-p em{ color:var(--muted); }
+.c-p em{ font-style:normal; color:var(--ink); }
+
+/* bullets — small solid cobalt dot, quiet and precise */
+ul.c-list li,ul.c-check li{ padding-left:26px; }
+ul.c-list li::before{ content:""; width:8px; height:8px; border-radius:50%;
+  background:var(--accent); left:2px; top:.55em; }
+ul.c-check li::before{ content:"\2713"; background:transparent; color:var(--accent);
+  width:auto; height:auto; left:0; top:0; font-weight:700; }
+/* numbered insight list — cobalt Space Grotesk counter */
+ol.c-list li::before{ color:var(--accent); font-family:var(--display); font-weight:600; }
+
+/* tinted cards — cobalt 4% fill, 1.5px cobalt-20% border, soft radius, no shadow */
+.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-iconlist .ili,.c-quiz,
+.c-flash .face,.c-media,.c-code{
+  background:var(--cobalt-04); border:1.5px solid var(--cobalt-20); border-radius:14px;
+  box-shadow:none; }
+
+/* statement / highlight callout — tinted fill with 4px cobalt left rule */
+.c-statement{ background:var(--cobalt-08); color:var(--ink); border-radius:12px;
+  border-left:4px solid var(--accent); box-shadow:none; }
+.c-statement::after{ display:none; }
+
+/* note callout — drop the emoji, keep tinted block + left rule */
+.c-note{ border-left:4px solid var(--accent); }
+.c-note::before{ content:none; }
+
+/* quote — oversized faint cobalt mark, Space Grotesk body */
+.c-quote{ border-left:4px solid var(--accent); }
+.c-quote .qt{ font-family:var(--display); font-weight:500; color:var(--ink); }
+.c-quote .by{ font-family:var(--display); text-transform:uppercase; letter-spacing:.04em;
+  color:var(--muted); }
+.c-quote::before{ color:var(--accent); opacity:.15; }
+
+/* image — replace offset accent shape with a soft tinted frame */
+.c-img::before{ background:var(--cobalt-08); border-radius:14px; }
+.c-img img,.c-grid img{ border-radius:14px; }
+.c-img figcaption{ color:var(--muted); }
+
+/* icons — soft tinted cobalt badge */
+.ico-badge{ background:var(--cobalt-08); color:var(--accent); border:1px solid var(--cobalt-20);
+  border-radius:12px; }
+.ico-badge.plain{ background:transparent; border:none; }
+.ili-h{ color:var(--ink); }
+.ili-p{ color:var(--muted); }
+
+/* accordion / tabs — pill-ish chrome, cobalt active state */
+.c-acc summary{ color:var(--ink); font-family:var(--display); font-weight:600; }
+.c-acc summary::after{ color:var(--accent); }
+.c-tabs .tab-strip button{ border-radius:100px; color:var(--muted);
+  font-family:var(--display); font-weight:500; }
+.c-tabs .tab-strip button.active{ background:var(--accent); color:var(--on-accent); }
+
+/* timeline — cobalt vertical line + cobalt dots, cobalt dates */
+.c-timeline::before{ background:var(--cobalt-20); }
+.ev::before{ background:var(--accent); border:none; }
+.date{ color:var(--accent); font-family:var(--display); font-weight:700; }
+
+/* buttons — solid cobalt pills with cream text (the only solid-color element) */
+.c-btn{ background:var(--accent); color:var(--on-accent); border-radius:100px;
+  font-family:var(--display); font-weight:600; }
+.c-btn::after{ background:rgba(253,250,231,.25); border-radius:50%; }
+
+/* quiz — tinted options, cobalt selected/check, soft green/red feedback */
+.c-quiz .opt{ background:var(--cobalt-04); border:1px solid var(--cobalt-20); border-radius:12px; }
+.c-quiz .opt.sel{ border-color:var(--accent); background:var(--cobalt-08); }
+.c-quiz .opt.correct{ border-color:#059669; }
+.c-quiz .opt.wrong{ border-color:#dc2626; }
+.c-quiz .check{ background:var(--accent); color:var(--on-accent); border-radius:100px;
+  font-family:var(--display); font-weight:600; }
+.c-quiz .fb.ok{ color:#059669; }
+.c-quiz .fb.no{ color:#dc2626; }
+
+/* sorting — tinted chips/piles, cobalt drop target */
+.c-sort .chip{ background:var(--cobalt-04); border:1px solid var(--cobalt-20); border-radius:100px; }
+.c-sort .pile{ border:1.5px dashed var(--cobalt-20); border-radius:14px; }
+.c-sort .pile.over{ border-color:var(--accent); background:var(--cobalt-04); }
+.c-sort .chip.correct{ border-color:#059669; }
+.c-sort .chip.wrong{ border-color:#dc2626; }
+
+/* persistent chrome — thin cobalt progress strip, circular nav buttons */
+.navbar{ background:var(--bg); border-top:1px solid var(--cobalt-20); }
+.progress-strip{ height:3px; background:var(--accent); }
+.navbar button{ border-radius:50%; border:1.5px solid var(--cobalt-20); background:var(--bg);
+  color:var(--accent); }
+.navbar button:hover:not(:disabled){ background:var(--accent); color:var(--on-accent); }
+.navbar button:disabled{ opacity:.3; }
+.counter{ font-family:var(--display); font-weight:500; letter-spacing:.05em; color:var(--muted); }

@@ -1,0 +1,111 @@
+/* block-frame — neobrutalist: 4px black borders, 8px hard offset shadows,
+   pastel-neon color blocks, square corners, tilted decorative marks.
+   Per design.md (BlockFrame): templates/block-frame/design.md */
+
+/* pastel palette (design.md Colors) */
+.stage { --bf-pink:#FE90E8; --bf-blue:#C0F7FE; --bf-green:#99E885; --bf-yellow:#F7CB46; --bf-cream:#FFDC8B; background: var(--bg); }
+
+/* warm canvas + faint dot-grid + tilted decorative block punctures the grid */
+.stage::before { content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background-image: radial-gradient(circle, var(--ink) 1.2px, transparent 1.2px); background-size:24px 24px; opacity:.18; }
+.stage::after { content:""; position:absolute; top:34px; right:48px; width:90px; height:90px; pointer-events:none; z-index:2;
+  background: var(--bf-pink); border:3px solid var(--ink); box-shadow:6px 6px 0 var(--ink); transform:rotate(-9deg); }
+.slide { z-index:3; }
+
+/* radius reset — square corners are non-negotiable */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before { border-radius:0 !important; }
+
+/* label-pill eyebrow: 3px border + 4px hard shadow + pastel fill, wide-tracked mono */
+.eyebrow { display:inline-block; background:var(--bf-yellow); color:var(--ink); border:3px solid var(--ink);
+  box-shadow:4px 4px 0 var(--ink); padding:6px 16px; font-family:var(--mono); font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
+
+/* display headlines: heavy uppercase, negative tracking */
+.slide-title,.cover-title,.section-title,.c-h { text-transform:uppercase; letter-spacing:-.02em; font-weight:900; }
+.slide-title .u,.cover-title .u { text-decoration:none; background:var(--bf-green); box-shadow:3px 3px 0 var(--ink); padding:0 6px; }
+.cover-art img { border:4px solid var(--ink); box-shadow:8px 8px 0 var(--ink); }
+
+/* section number: square yellow block */
+.section .num { background:var(--bf-yellow); color:var(--ink); border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); border-radius:0; }
+
+/* statement: bold pastel block with hard shadow */
+.c-statement { background:var(--bf-blue); color:var(--ink); border:4px solid var(--ink); box-shadow:8px 8px 0 var(--ink); }
+.c-statement::after { display:none; }
+
+/* callout note: bordered card, stapled-on corner notch */
+.c-note { background:#fff; color:var(--ink); border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); position:relative; }
+.c-note::before { content:"💡"; }
+
+/* quote: poster card with oversized mark */
+.c-quote { background:var(--bf-cream); color:var(--ink); border:4px solid var(--ink); box-shadow:8px 8px 0 var(--ink); position:relative; }
+.c-quote .qt { text-transform:uppercase; font-weight:900; letter-spacing:-.02em; }
+.c-quote .by { font-family:var(--mono); text-transform:uppercase; letter-spacing:.06em; }
+.c-quote::before { content:"\201C"; position:absolute; top:-6px; left:14px; font-family:var(--display); font-weight:900; font-size:64px; color:var(--bf-pink); -webkit-text-stroke:2px var(--ink); }
+
+/* lists: square yellow list-number bullets / check squares */
+ul.c-list li,ol.c-list li,ul.c-check li { padding-left:40px; }
+ul.c-list li::before,ol.c-list li::before { content:""; position:absolute; left:0; top:2px; width:22px; height:22px;
+  background:var(--bf-yellow); border:3px solid var(--ink); border-radius:0; }
+ul.c-check li::before { content:"\2713"; position:absolute; left:0; top:2px; width:22px; height:22px; display:flex; align-items:center; justify-content:center;
+  background:var(--bf-green); color:var(--ink); border:3px solid var(--ink); border-radius:0; font-weight:900; }
+
+/* images: black border + hard shadow, offset frame mark behind */
+.c-img img,.c-grid img { border:4px solid var(--ink); box-shadow:8px 8px 0 var(--ink); }
+.c-img { position:relative; }
+.c-img::before { content:""; position:absolute; inset:10px -10px -10px 10px; background:var(--bf-blue); border:3px solid var(--ink); z-index:-1; }
+.c-img figcaption { font-family:var(--mono); text-transform:uppercase; letter-spacing:.05em; }
+
+/* media + code: bordered blocks */
+.c-media,.c-code { border:4px solid var(--ink); box-shadow:8px 8px 0 var(--ink); }
+
+/* button: yellow CTA, 3px border, 4px shadow, square arrow chip */
+.c-btn { background:var(--bf-yellow); color:var(--ink); border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); font-weight:700; text-transform:uppercase; }
+.c-btn::after { content:"\2192"; background:var(--ink); color:var(--bf-yellow); }
+
+/* icons: pastel square badges */
+.ico-badge { background:var(--bf-pink); color:var(--ink); border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); }
+.ico-badge.plain { box-shadow:none; }
+.ili-h { text-transform:uppercase; font-weight:700; }
+
+/* icon-list / accordion / tabs cards */
+.c-iconlist .ili { background:#fff; border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); }
+.c-acc details { background:#fff; border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); }
+.c-acc summary { text-transform:uppercase; font-weight:700; }
+.c-acc summary::after { content:"+"; font-weight:900; }
+.c-acc details[open] summary::after { content:"\2013"; }
+.c-tabs .tab-strip button { background:#fff; border:3px solid var(--ink); font-family:var(--mono); text-transform:uppercase; letter-spacing:.05em; }
+.c-tabs .tab-strip button.active { background:var(--bf-pink); box-shadow:4px 4px 0 var(--ink); }
+.c-tabs .tab-body { background:#fff; border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); }
+
+/* flashcards */
+.c-flash .face { background:#fff; border:4px solid var(--ink); box-shadow:8px 8px 0 var(--ink); }
+.c-flash .nav button { background:#fff; border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); }
+
+/* sorting */
+.c-sort .chip { background:var(--bf-cream); border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); font-weight:700; }
+.c-sort .pile { background:#fff; border:4px solid var(--ink); }
+.c-sort .pile.over { background:var(--bf-blue); }
+.c-sort .chip.correct { background:var(--bf-green); }
+.c-sort .chip.wrong { background:var(--bf-pink); }
+
+/* timeline: black line, square pastel dots */
+.c-timeline::before { background:var(--ink); width:4px; }
+.ev::before { background:var(--bf-yellow); border:3px solid var(--ink); border-radius:0; width:18px; height:18px; }
+.date { font-family:var(--mono); text-transform:uppercase; letter-spacing:.05em; }
+
+/* quiz: bordered blocks, yellow check button */
+.c-quiz { background:#fff; border:4px solid var(--ink); box-shadow:8px 8px 0 var(--ink); }
+.c-quiz .opt { background:#fff; border:3px solid var(--ink); }
+.c-quiz .opt.sel { background:var(--bf-blue); }
+.c-quiz .opt.correct { background:var(--bf-green); }
+.c-quiz .opt.wrong { background:var(--bf-pink); }
+.c-quiz .check { background:var(--bf-yellow); color:var(--ink); border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); font-weight:700; text-transform:uppercase; }
+.c-quiz .fb.ok { color:var(--ink); }
+.c-quiz .fb.no { color:var(--ink); }
+
+/* chrome: bordered nav + square counter */
+.navbar { border-top:4px solid var(--ink); background:var(--bf-offwhite,#FFFDF5); }
+.progress-strip { background:var(--bf-pink); }
+.navbar button { background:#fff; border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); font-weight:700; }
+.navbar button.ghost { box-shadow:none; }
+.navbar button:disabled { box-shadow:none; opacity:.4; }
+.counter { background:#fff; color:var(--ink); border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); font-family:var(--mono); font-weight:700; letter-spacing:.1em; text-transform:uppercase; }

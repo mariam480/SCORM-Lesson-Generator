@@ -1,0 +1,137 @@
+/* soft-editorial — warm magazine-spread system from soft-editorial/design.md:
+   aged-cream paper field, Cormorant Garamond serif headlines w/ italic <em>, Work Sans
+   body, five interchangeable pastel card fills (text always ink, never inverted),
+   generously rounded translucent cards (24–36px), NO drop shadows, dashed warm-ink
+   hairlines, italic-serif ornament (kickers, page nums, quote mark), lowercase-roman
+   step numerals, drop caps. Lime/lemon accent is light → on-accent stays ink. */
+
+:root {
+  /* lemon/chartreuse is the brightest accent but text on it must stay readable ink */
+  --accent: #D6DD63;
+  --on-accent: #2A241B;
+  --se-pink: #E1A4C2;
+  --se-lemon: #D6DD63;
+  --se-blush: #E8C9B6;
+  --se-sage: #B7C7A8;
+  --se-lilac: #C9BEDC;
+  --se-card: rgba(255, 255, 255, 0.55);
+  --se-rule-soft: rgba(42, 36, 27, 0.18);
+  --se-rule-med: rgba(42, 36, 27, 0.35);
+}
+
+/* Cream paper field — the constant; warm, never screen-white. No floating shapes. */
+.stage { background: var(--paper); }
+
+/* Headlines in serif; gentle italic emphasis drops weight (system's signal) */
+.cover-title, .slide-title, .cover-sub, .section-title, .c-h, .c-sub, .qt,
+.c-statement, .c-quote, .ico-label, .ili-h, .c-flash .face {
+  font-family: var(--display); font-weight: 500; letter-spacing: -0.01em;
+}
+.c-h em, .c-p em, .slide-title em, .cover-title em {
+  font-style: italic; font-weight: 400; font-family: var(--display);
+}
+.cover-sub { font-style: italic; color: var(--muted); }
+
+/* Eyebrow: plain Work Sans, sentence case — never mono, never uppercase */
+.eyebrow {
+  background: transparent; color: var(--ink); border-radius: 0; padding: 0 0 4px;
+  font-family: var(--body); font-weight: 400; letter-spacing: 0; text-transform: none;
+}
+
+/* Chrome: page numeral / counter in italic serif ink-soft */
+.counter { font-family: var(--display); font-style: italic; color: var(--muted);
+  border-radius: 999px; background: transparent; }
+.navbar { background: var(--paper); border-top: 1px dashed var(--se-rule-soft); }
+.progress-strip { height: 3px; background: var(--se-rule-soft); }
+.progress-strip > * { background: var(--accent); }
+
+/* Lists: italic-serif marker, no filled bullets */
+ul.c-list li, ol.c-list li, ul.c-check li { padding-left: 30px; }
+ul.c-list li::before {
+  content: "—"; background: transparent; color: var(--muted); border-radius: 0;
+  width: auto; height: auto; left: 0; top: 0; font-family: var(--display); font-weight: 500;
+}
+ul.c-check li::before { content: "✓"; background: transparent; color: var(--se-sage);
+  width: auto; height: auto; left: 0; border-radius: 0; font-weight: 600; }
+
+/* Cards / panels: translucent white, generous radius, no shadow, dashed rule accents */
+.c-statement, .c-note, .c-quote, .c-acc details, .c-tabs .tab-body,
+.c-iconlist .ili, .c-quiz, .c-media, .c-code, .c-img figcaption {
+  background: var(--se-card); border: none; border-radius: 28px;
+  box-shadow: none; border-top: 1px dashed var(--se-rule-soft);
+}
+
+/* Statement: pastel blush moment, ink text (never inverted), hide blob */
+.c-statement { background: var(--se-blush); color: var(--ink); border-radius: 32px;
+  border-top: none; }
+.c-statement::after { display: none; }
+
+/* Callout: lemon action-bar feel, swap the emoji for an italic serif mark */
+.c-note { background: var(--se-lemon); color: var(--ink); border-radius: 24px;
+  border-top: none; }
+.c-note::before { content: "¶"; font-family: var(--display); font-style: italic;
+  background: transparent; color: var(--ink); }
+
+/* Quote: soft-peach 220px italic mark, centered serif pull-quote */
+.c-quote { background: transparent; border-top: none; }
+.c-quote::before { color: var(--se-blush); font-family: var(--display); font-style: italic;
+  font-weight: 500; }
+.c-quote .qt { font-family: var(--display); font-weight: 500; }
+.c-quote .by { font-family: var(--body); font-weight: 500; color: var(--muted); }
+
+/* Image: offset accent shape becomes a soft pink rounded tile */
+.c-img img, .c-grid img { border-radius: 24px; }
+.c-img::before { background: var(--se-pink); border-radius: 24px; }
+.c-img figcaption { font-family: var(--display); font-style: italic; color: var(--muted);
+  background: transparent; border-top: 1px dashed var(--se-rule-soft); border-radius: 0; }
+
+/* Icons: pastel rounded badges, ink glyphs */
+.ico-badge { background: var(--se-sage); color: var(--ink); border-radius: 22px; }
+.ico-badge.plain { background: transparent; color: var(--ink); }
+.ili { border-radius: 24px; }
+.ili-h { font-family: var(--display); }
+.ili-p { font-family: var(--body); color: var(--muted); }
+
+/* Buttons + nav + quiz check: pill-rounded, lemon fill w/ readable ink */
+.c-btn, .navbar button, .c-quiz .check {
+  border-radius: 999px; background: var(--accent); color: var(--on-accent);
+  border: none; font-family: var(--body); font-weight: 500;
+}
+.c-btn::after { background: var(--on-accent); color: var(--accent); border-radius: 999px; }
+.navbar button.ghost { background: transparent; color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--se-rule-med); }
+.navbar button:disabled { opacity: .4; }
+
+/* Accordion / tabs */
+.c-acc summary { font-family: var(--display); font-weight: 500; }
+.c-acc summary::after { color: var(--muted); }
+.c-tabs .tab-strip button { border-radius: 999px; background: transparent;
+  font-family: var(--body); color: var(--muted); border: none; }
+.c-tabs .tab-strip button.active { background: var(--se-lilac); color: var(--ink); }
+
+/* Quiz options as soft cards */
+.c-quiz .opt { border-radius: 18px; background: var(--se-card); border: 1px dashed var(--se-rule-soft); }
+.c-quiz .opt.sel { box-shadow: inset 0 0 0 1.5px var(--se-rule-med); }
+.c-quiz .opt.correct { background: var(--se-lemon); border-color: transparent; }
+.c-quiz .opt.wrong { background: var(--se-pink); border-color: transparent; }
+.c-quiz .fb.ok { color: var(--ink); }
+
+/* Flashcards / sorting / timeline: rounded pastel softness */
+.c-flash .face { border-radius: 28px; background: var(--se-card); }
+.c-flash .back { background: var(--se-blush); }
+.c-sort .chip { border-radius: 999px; background: var(--se-card); }
+.c-sort .pile { border-radius: 24px; border: 1px dashed var(--se-rule-soft); }
+.c-sort .chip.correct { background: var(--se-lemon); }
+.c-sort .chip.wrong { background: var(--se-pink); }
+.c-timeline::before { background: var(--se-rule-soft); }
+.ev::before { background: var(--se-pink); border: none; }
+.date { font-family: var(--display); font-style: italic; color: var(--muted); }
+
+/* Section number: oversized italic serif numeral */
+.section .num { font-family: var(--display); font-style: italic; color: var(--se-pink); }
+
+/* Drop-cap: first letter of a lead paragraph floats — the editorial signature */
+.slide-body > .c-p:first-child::first-letter {
+  font-family: var(--display); font-weight: 500; font-size: 3.4em; line-height: 0.85;
+  float: left; padding: 8px 14px 0 0; color: var(--ink);
+}

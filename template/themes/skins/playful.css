@@ -1,0 +1,106 @@
+/* playful — hand-crafted studio editorial: warm peach-clay canvas, charcoal ink as the
+   ONLY color (no bright accent — ink IS the accent), Syne display w/ tight tracking,
+   Space Grotesk body. Signature: double-stroke offset borders, ±deg hand-placed rotation,
+   organic blob marks, ghost-blob wallpaper. No web shadows. Per playful/design.md. */
+
+/* Ink is the accent — emphasis via weight/shape, never a third hue */
+:root{ --accent: var(--ink); --on-accent: var(--bg); }
+
+/* Square / round / blob only — kill medium radii */
+.eyebrow,.c-statement,.c-note,.c-quote,.c-acc details,.c-tabs .tab-body,.c-tabs .tab-strip button,.c-iconlist .ili,.ico-badge,.c-quiz,.c-quiz .opt,.c-quiz .check,.c-quiz input,.c-btn,.c-btn::after,.navbar button,.c-flash .face,.c-sort .chip,.c-sort .pile,.counter,.c-img img,.c-grid img,.c-img::before { border-radius:0 !important; }
+
+/* Peach-clay canvas + atmospheric ghost-blob wallpaper */
+.stage { background: var(--bg); }
+.stage::before { content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  width:520px; height:520px; left:auto; right:-140px; top:-160px; bottom:auto;
+  background: var(--ink); opacity:.07;
+  border-radius:40% 60% 70% 30% / 40% 50% 60% 50%; }
+.stage::after { content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  width:300px; height:300px; right:auto; left:-110px; top:auto; bottom:-120px;
+  background: var(--ink); opacity:.06;
+  border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; }
+.slide { z-index:3; }
+
+/* Display = Syne, tight negative tracking, hand-placed tilt */
+.cover-title,.slide-title,.section-title,.c-h,.c-statement,.qt,.section .num,.cover-sub {
+  font-family: var(--display); letter-spacing:-0.02em; }
+.cover-title { transform: rotate(-1.5deg); transform-origin:left center; }
+.section .num { font-weight:800; transform: rotate(-2deg); }
+
+/* Eyebrow — Space Grotesk, uppercase, wide track, ink underline */
+.eyebrow { font-family: var(--body); font-weight:600; text-transform:uppercase;
+  letter-spacing:.15em; background:transparent; color:var(--ink); padding:0 0 5px;
+  border-bottom:2px solid var(--ink); }
+
+/* List bullets — small charcoal squares, hand-drawn feel */
+ul.c-list li, ul.c-check li { padding-left:30px; }
+ul.c-list li::before { content:""; background:var(--ink); color:transparent;
+  width:12px; height:12px; left:0; top:.5em; border-radius:0;
+  transform: rotate(-6deg); }
+ul.c-check li::before { content:"✓"; background:var(--ink); color:var(--bg);
+  width:20px; height:20px; left:0; top:.25em; border-radius:0;
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.8em; }
+ol.c-list li::before { color:var(--ink); font-family:var(--display); font-weight:800; }
+
+/* Double-stroke offset border = the elevation device (no shadows) */
+.c-quote,.c-acc details,.c-tabs .tab-body,.c-iconlist .ili,.c-quiz,.c-note,.c-flash .face {
+  background: var(--bg); border:3px solid var(--ink); box-shadow:none; position:relative; }
+.c-iconlist .ili::before, .c-quote::after {
+  content:""; position:absolute; inset:0; z-index:-1;
+  border:2px solid var(--ink); transform: translate(7px,7px); }
+
+/* Statement — inverted charcoal block, peach text, slight tilt */
+.c-statement { background: var(--ink); color: var(--bg); box-shadow:none;
+  border:3px solid var(--ink); transform: rotate(-1deg); }
+.c-statement::after { display:none; }
+
+/* Callout — replace lightbulb with a hand-drawn scribble star, offset ghost border */
+.c-note { border-left:3px solid var(--ink); }
+.c-note::before { content:"✶"; font-family:var(--display); font-weight:800;
+  background:transparent; color:var(--ink); }
+
+/* Quote — big Syne quote mark in ink */
+.c-quote::before { color:var(--ink); font-family:var(--display); opacity:.9; }
+.c-quote .by { font-family:var(--body); font-weight:600; }
+
+/* Image — offset accent shape becomes an ink ghost-frame */
+.c-img img, .c-grid img { border:3px solid var(--ink); }
+.c-img::before { background:transparent; border:2px solid var(--ink); }
+.c-img figcaption { font-family:var(--body); font-weight:500; }
+
+/* Icon badges — outlined round doodles */
+.ico-badge { background:var(--bg); border:3px solid var(--ink); color:var(--ink);
+  border-radius:50% !important; }
+.ico-badge.plain { background:transparent; }
+
+/* Buttons + nav — square, outlined, ink */
+.c-btn { background:var(--ink); color:var(--bg); border:3px solid var(--ink); }
+.c-btn::after { background:var(--bg); color:var(--ink); }
+.navbar button { background:var(--bg); color:var(--ink); border:2px solid var(--ink); }
+.navbar button.ghost { background:transparent; }
+.navbar button:disabled { opacity:.35; }
+.navbar { border-top:2px solid var(--ink); }
+.progress-strip { height:4px; background:var(--ink); }
+.counter { font-family:var(--display); font-weight:800; letter-spacing:-0.01em; }
+
+/* Tabs — active tab inverts to charcoal */
+.c-tabs .tab-strip button { background:var(--bg); border:3px solid var(--ink); }
+.c-tabs .tab-strip button.active { background:var(--ink); color:var(--bg); }
+
+/* Accordion +/- and quiz check inherit the square ink language */
+.c-acc summary { font-family:var(--display); font-weight:700; letter-spacing:-0.01em; }
+.c-quiz .opt { border:2px solid var(--ink); background:var(--bg); }
+.c-quiz .opt.sel { background:var(--ink); color:var(--bg); }
+.c-quiz .opt.correct { box-shadow:inset 0 0 0 3px var(--ink); }
+.c-quiz .check { background:var(--ink); color:var(--bg); border:3px solid var(--ink); }
+
+/* Timeline — ink track + square hand-placed dots */
+.c-timeline::before { background:var(--ink); width:2px; }
+.ev::before { background:var(--ink); border-radius:50%; }
+.date { font-family:var(--display); font-weight:800; letter-spacing:-0.01em; }
+
+/* Sorting chips — outlined, square */
+.c-sort .chip { background:var(--bg); border:2px solid var(--ink); }
+.c-sort .pile { border:3px dashed var(--ink); }
+.c-sort .chip.correct { background:var(--ink); color:var(--bg); }
+.c-sort .chip.wrong { box-shadow:inset 0 0 0 3px var(--ink); }
