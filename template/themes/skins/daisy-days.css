@@ -18,7 +18,8 @@
 .stage::before{ background-image:
   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110' viewBox='0 0 110 110'%3E%3Cg stroke='%232D2D2D' stroke-width='3'%3E%3Cg fill='%23fff'%3E%3Cellipse cx='55' cy='22' rx='13' ry='20'/%3E%3Cellipse cx='55' cy='88' rx='13' ry='20'/%3E%3Cellipse cx='22' cy='55' rx='20' ry='13'/%3E%3Cellipse cx='88' cy='55' rx='20' ry='13'/%3E%3Cellipse cx='32' cy='32' rx='14' ry='18' transform='rotate(-45 32 32)'/%3E%3Cellipse cx='78' cy='32' rx='14' ry='18' transform='rotate(45 78 32)'/%3E%3Cellipse cx='32' cy='78' rx='14' ry='18' transform='rotate(45 32 78)'/%3E%3Cellipse cx='78' cy='78' rx='14' ry='18' transform='rotate(-45 78 78)'/%3E%3C/g%3E%3Ccircle cx='55' cy='55' r='16' fill='%23FDE68A'/%3E%3C/g%3E%3C/svg%3E"),
   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46' viewBox='0 0 46 46'%3E%3Cpath d='M23 3l5.5 11.5L41 16l-9 9 2.5 13L23 32 11.5 38 14 25 5 16l12.5-1.5z' fill='%23F7C8D4' stroke='%232D2D2D' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-position: -28px -30px, calc(100% - 40px) 36px; }
+  background-size: 92px auto, 42px auto;
+  background-position: -46px -44px, calc(100% - 34px) 30px; }
 /* star + rainbow bottom-right region */
 .stage::after{ background-image:
   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath d='M26 4l6 13 14 1.5-10.5 9.5 3 14L26 47 13.5 41l3-14L6 18.5 20 17z' fill='%23A8E6CF' stroke='%232D2D2D' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E"),
@@ -35,9 +36,10 @@
   border:3px solid var(--dd-dark); border-radius:50px; padding:6px 18px;
   box-shadow: var(--dd-shadow-sm); font-family: var(--display); letter-spacing:.02em; }
 
-/* ---- Section number → outlined coral disc ---- */
+/* ---- Section number → outlined coral disc (fixed-size circle, not a bar) ---- */
 .section .num{ background: var(--dd-coral); color:#fff; border:3px solid var(--dd-dark);
-  border-radius:50%; box-shadow: var(--dd-shadow); font-family: var(--display); }
+  border-radius:50%; box-shadow: var(--dd-shadow); font-family: var(--display);
+  display:inline-grid; place-items:center; width:1.5em; height:1.5em; line-height:1; }
 
 /* ---- List bullets: outlined butter discs (no glyphs) ---- */
 ul.c-list li, ul.c-check li{ padding-left:34px; }

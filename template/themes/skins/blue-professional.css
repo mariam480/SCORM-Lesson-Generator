@@ -60,6 +60,10 @@ ol.c-list li::before{ color:var(--accent); font-family:var(--display); font-weig
   background:var(--cobalt-04); border:1.5px solid var(--cobalt-20); border-radius:14px;
   box-shadow:none; }
 
+/* code — base template ships light text for a dark block; this skin uses a light
+   tinted card, so force readable dark ink (otherwise it's invisible) */
+.c-code{ color:var(--ink); }
+
 /* statement / highlight callout — tinted fill with 4px cobalt left rule */
 .c-statement{ background:var(--cobalt-08); color:var(--ink); border-radius:12px;
   border-left:4px solid var(--accent); box-shadow:none; }
